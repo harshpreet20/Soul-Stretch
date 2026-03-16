@@ -1,11 +1,19 @@
 'use client'
 
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 
 export default function ContactPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-soul-black" />}>
+      <ContactPageContent />
+    </Suspense>
+  )
+}
+
+function ContactPageContent() {
   const searchParams = useSearchParams()
   const initialType = (searchParams.get('type') as 'athlete' | 'distributor' | 'retailer') || 'athlete'
 
@@ -250,7 +258,7 @@ export default function ContactPage() {
                 a: 'We dispatch most orders within 24-48 hours. Pan-India delivery typically takes 3-7 business days.',
               },
               {
-                q: 'What if I'm not satisfied with a product?',
+                q: "What if I'm not satisfied with a product?",
                 a: 'We offer 100% satisfaction guarantee. Contact us within 30 days for returns or exchanges.',
               },
               {
