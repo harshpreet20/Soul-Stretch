@@ -77,7 +77,7 @@ export default function ProductDetailPage({
   return (
     <div className="min-h-screen bg-soul-black">
       {/* Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-6">
         <Link href="/products" className="text-soul-orange hover:text-orange-600 text-sm font-medium">
           ← Back to Products
         </Link>

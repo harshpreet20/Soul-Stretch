@@ -25,7 +25,7 @@ const itemVariants = {
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative w-full min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-soul-black via-soul-black to-soul-black">
         <div className="absolute inset-0 opacity-20">

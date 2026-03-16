@@ -392,7 +392,7 @@ export default function GuidesPage() {
   return (
     <div className="min-h-screen bg-soul-black">
       {/* Header */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative pt-28 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-soul-orange/5 via-soul-black to-soul-black" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

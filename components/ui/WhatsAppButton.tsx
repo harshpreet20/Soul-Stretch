@@ -15,7 +15,7 @@ export default function WhatsAppButton() {
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ delay: 0.5, type: 'spring', stiffness: 200 }}
-      className="fixed bottom-6 right-6 z-40 group"
+      className="fixed bottom-6 right-6 z-[60] group"
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
     >
