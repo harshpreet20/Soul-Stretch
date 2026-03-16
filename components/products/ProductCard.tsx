@@ -62,14 +62,14 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
       >
         {/* Image Section */}
         <div
-          className="relative h-64 overflow-hidden cursor-pointer"
+          className="relative h-64 overflow-hidden cursor-pointer bg-white/5"
           onClick={() => onToggle(product.slug)}
         >
           <Image
             src={product.imageUrl}
             alt={product.name}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-soul-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
