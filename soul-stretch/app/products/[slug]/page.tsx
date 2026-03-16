@@ -1,8 +1,7 @@
 import { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { getProductBySlug, getAllProductSlugs } from '@/lib/products'
-import { motion } from 'framer-motion'
+import ProductImageGallery from '@/components/products/ProductImageGallery'
 
 export async function generateStaticParams() {
   const slugs = getAllProductSlugs()
@@ -77,7 +76,7 @@ export default function ProductDetailPage({
   return (
     <div className="min-h-screen bg-soul-black">
       {/* Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-6">
         <Link href="/products" className="text-soul-orange hover:text-orange-600 text-sm font-medium">
           ← Back to Products
         </Link>
@@ -87,17 +86,12 @@ export default function ProductDetailPage({
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Product Image */}
-            <div className="relative h-96 sm:h-[500px] rounded-2xl overflow-hidden">
-              <Image
-                src={product.imageUrl}
-                alt={product.name}
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-soul-black/30 to-transparent" />
-            </div>
+            {/* Product Image Gallery */}
+            <ProductImageGallery
+              imageUrl={product.imageUrl}
+              images={product.images}
+              name={product.name}
+            />
 
             {/* Product Info */}
             <div className="space-y-8">

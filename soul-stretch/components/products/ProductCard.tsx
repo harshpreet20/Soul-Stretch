@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -15,7 +15,10 @@ interface ProductCardProps {
 export default function ProductCard({ product, isExpanded, onToggle }: ProductCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
   const [tilt, setTilt] = useState({ x: 0, y: 0 })
-  const [imgError, setImgError] = useState(false)
+  const [height, setHeight] = useState('auto')
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
+
+  const allImages = [product.imageUrl, ...product.images]
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return
@@ -33,6 +36,14 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
   const handleMouseLeave = () => {
     setTilt({ x: 0, y: 0 })
   }
+
+  useEffect(() => {
+    if (cardRef.current && isExpanded) {
+      setHeight(`${cardRef.current.scrollHeight}px`)
+    } else {
+      setHeight('auto')
+    }
+  }, [isExpanded])
 
   return (
     <motion.div
@@ -57,25 +68,57 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
           className="relative h-64 overflow-hidden cursor-pointer bg-white/5"
           onClick={() => onToggle(product.slug)}
         >
-          {imgError ? (
-            <div className="w-full h-full bg-gradient-to-br from-soul-card to-soul-black flex flex-col items-center justify-center gap-2">
-              <div className="w-16 h-16 rounded-full bg-soul-orange/10 flex items-center justify-center">
-                <svg className="w-8 h-8 text-soul-orange/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <span className="text-xs text-soul-orange/40 font-medium uppercase tracking-widest">Soul Stretch</span>
-            </div>
-          ) : (
-            <Image
-              src={product.imageUrl}
-              alt={product.name}
-              fill
-              className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
-              onError={() => setImgError(true)}
-            />
-          )}
+          <Image
+            src={allImages[activeImageIndex]}
+            alt={product.name}
+            fill
+            className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-soul-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+          {/* Image Navigation Arrows */}
+          {allImages.length > 1 && (
+            <>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setActiveImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length)
+                }}
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-soul-black/60 hover:bg-soul-orange/80 text-white rounded-full w-7 h-7 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-xs"
+              >
+                ‹
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setActiveImageIndex((prev) => (prev + 1) % allImages.length)
+                }}
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-soul-black/60 hover:bg-soul-orange/80 text-white rounded-full w-7 h-7 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-xs"
+              >
+                ›
+              </button>
+            </>
+          )}
+
+          {/* Image Dots */}
+          {allImages.length > 1 && (
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+              {allImages.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setActiveImageIndex(idx)
+                  }}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    idx === activeImageIndex
+                      ? 'bg-soul-orange w-4'
+                      : 'bg-white/40 hover:bg-white/60'
+                  }`}
+                />
+              ))}
+            </div>
+          )}
 
           {/* Expand Icon */}
           <motion.div

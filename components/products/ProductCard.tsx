@@ -16,6 +16,9 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
   const cardRef = useRef<HTMLDivElement>(null)
   const [tilt, setTilt] = useState({ x: 0, y: 0 })
   const [height, setHeight] = useState('auto')
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
+
+  const allImages = [product.imageUrl, ...product.images]
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return
@@ -66,12 +69,56 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
           onClick={() => onToggle(product.slug)}
         >
           <Image
-            src={product.imageUrl}
+            src={allImages[activeImageIndex]}
             alt={product.name}
             fill
             className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-soul-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+          {/* Image Navigation Arrows */}
+          {allImages.length > 1 && (
+            <>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setActiveImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length)
+                }}
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-soul-black/60 hover:bg-soul-orange/80 text-white rounded-full w-7 h-7 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-xs"
+              >
+                ‹
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setActiveImageIndex((prev) => (prev + 1) % allImages.length)
+                }}
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-soul-black/60 hover:bg-soul-orange/80 text-white rounded-full w-7 h-7 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-xs"
+              >
+                ›
+              </button>
+            </>
+          )}
+
+          {/* Image Dots */}
+          {allImages.length > 1 && (
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+              {allImages.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setActiveImageIndex(idx)
+                  }}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    idx === activeImageIndex
+                      ? 'bg-soul-orange w-4'
+                      : 'bg-white/40 hover:bg-white/60'
+                  }`}
+                />
+              ))}
+            </div>
+          )}
 
           {/* Expand Icon */}
           <motion.div
