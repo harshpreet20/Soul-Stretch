@@ -46,7 +46,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     shortDescription: '60kg resistance hand gripper for elite grip training.',
     description: 'The Soul Stretch Hand Gripper is built for athletes who demand elite grip performance. Precision-engineered steel coil with ergonomic knurled handles delivers 60kg of consistent resistance for serious strength development. Every rep builds unstoppable grip.',
     category: 'strength',
-    imageUrl: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80',
+    imageUrl: '/images/products/hand-gripper.jpeg',
     benefits: ['Builds forearm and grip strength', 'Improves pulling and deadlift performance', 'Portable training anywhere'],
     features: ['60kg fixed resistance', 'Hardened steel spring', 'Knurled anti-slip handles', 'Compact carry size']
   },
@@ -58,7 +58,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     shortDescription: '10-60kg adjustable resistance for progressive grip training.',
     description: 'Train smarter with the Soul Stretch Adjustable Hand Gripper. Dial in your resistance from 10 to 60kg and progress with your strength. Ideal for beginners building their foundation and advanced athletes pushing their limits beyond plateaus.',
     category: 'strength',
-    imageUrl: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80',
+    imageUrl: '/images/products/adjustable-hand-gripper.jpeg',
     benefits: ['Progressive overload built-in', 'Suitable for all fitness levels', 'Prevents training plateaus'],
     features: ['10-60kg adjustable dial', 'Zinc alloy body', 'Anti-slip grip surface', 'Resistance indicator window']
   },
@@ -82,7 +82,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     shortDescription: 'BPA-free 700ml shaker with leak-proof design.',
     description: 'The Soul Stretch Protein Shaker keeps your nutrition on track with a 700ml BPA-free vessel, stainless mixing ball for lump-free blends, and a secure leak-proof lid. Take your recovery formula wherever your training takes you.',
     category: 'accessories',
-    imageUrl: 'https://images.unsplash.com/photo-1611073615830-9b2eb7fe8b9f?w=600&q=80',
+    imageUrl: '/images/products/protein-shaker.jpeg',
     benefits: ['Smooth lump-free protein blends', 'Leak-proof at any angle', 'Easy to clean'],
     features: ['700ml BPA-free Tritan', 'Stainless mixing ball', 'Screw-lock lid', 'Measurement markings']
   },
@@ -94,7 +94,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     shortDescription: 'Dual resistance system for compound strength and toning.',
     description: 'The Soul Stretch Double Toning Equipment creates bilateral resistance for compound movement patterns, activating multiple muscle groups simultaneously for efficient full-body conditioning and lean muscle development.',
     category: 'strength',
-    imageUrl: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80',
+    imageUrl: '/images/products/double-toning-tube.jpeg',
     benefits: ['Activates multiple muscle groups', 'Improves bilateral strength balance', 'Portable full-body workout'],
     features: ['Dual spring resistance', 'Padded handles', 'Non-slip feet', 'Foldable for storage']
   },
