@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from 'react'
 import { useScroll, useTransform, motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const products = [
   {
@@ -10,6 +11,7 @@ const products = [
     title: 'RECOVER FASTER',
     subtitle: 'Deep tissue relief engineered for peak recovery',
     product: 'Foam Roller',
+    slug: 'foam-roller',
     image: 'https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?w=800&q=80',
   },
   {
@@ -17,6 +19,7 @@ const products = [
     title: 'MOVE BETTER',
     subtitle: 'Progressive resistance for every movement pattern',
     product: 'Resistance Bands',
+    slug: 'resistance-band-set',
     image: 'https://images.unsplash.com/photo-1598971457999-ca4ef48a9a71?w=800&q=80',
   },
   {
@@ -24,6 +27,7 @@ const products = [
     title: 'BUILD STRENGTH',
     subtitle: 'Anti-slip grip and wrist support for serious athletes',
     product: 'Gym Gloves',
+    slug: 'gym-gloves',
     image: 'https://images.unsplash.com/photo-1606170033648-5d55a3edf314?w=800&q=80',
   },
 ]
@@ -110,13 +114,15 @@ function ProductRevealSection({
                 {product.product} delivers premium performance engineered for serious athletes.
               </p>
 
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="mt-8 px-8 py-3 bg-soul-orange text-soul-black font-bold rounded-lg hover:bg-orange-600 transition-colors inline-block"
-              >
-                Learn More
-              </motion.button>
+              <Link href={`/products/${product.slug}`}>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="mt-8 px-8 py-3 bg-soul-orange text-soul-black font-bold rounded-lg hover:bg-orange-600 transition-colors inline-block"
+                >
+                  Learn More
+                </motion.button>
+              </Link>
             </div>
           </motion.div>
 
