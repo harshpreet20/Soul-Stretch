@@ -32,15 +32,17 @@ export default function DistributorCTA() {
             </p>
           </div>
 
-          <Link href="/contact?type=distributor">
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(255, 122, 24, 0.4)' }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block px-10 py-4 bg-soul-orange text-soul-black font-bold text-lg rounded-lg hover:bg-orange-600 transition-all"
-            >
-              Contact Us
-            </motion.button>
-          </Link>
+          <div className="pt-2">
+            <Link href="/contact?type=distributor">
+              <motion.button
+                whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(255, 122, 24, 0.4)' }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-block px-10 py-4 bg-soul-orange text-soul-black font-bold text-lg rounded-lg hover:bg-orange-600 transition-all"
+              >
+                Contact Us
+              </motion.button>
+            </Link>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8">
             {[

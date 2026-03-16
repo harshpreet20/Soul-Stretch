@@ -65,7 +65,7 @@ export default function HeroSection() {
         {/* CTA Buttons */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20"
         >
           <Link href="/products">
             <motion.button
@@ -89,11 +89,11 @@ export default function HeroSection() {
 
         {/* Scroll Indicator */}
         <motion.div
+          variants={itemVariants}
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         >
-          <svg className="w-6 h-6 text-soul-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-6 h-6 text-soul-orange mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </motion.div>
