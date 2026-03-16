@@ -4,15 +4,17 @@ import { fetchProducts } from '@/lib/products'
 import ProductGrid from '@/components/products/ProductGrid'
 
 export const metadata: Metadata = {
-  title: 'Premium Recovery & Performance Accessories | Soul Stretch',
+  title: 'Buy Gym Accessories Online India | Soul Stretch',
   description:
-    'Shop our complete range of premium fitness recovery equipment. Foam rollers, resistance bands, grip trainers, and more engineered for serious athletes.',
+    'Buy premium fitness recovery equipment online in India. Shop foam rollers, resistance bands, grip trainers and gym accessories at Soul Stretch.',
   keywords: [
     'buy gym accessories online India',
-    'foam roller online',
-    'resistance bands buy',
-    'grip trainer online',
-    'recovery equipment',
+    'premium fitness recovery equipment',
+    'foam roller buy online India',
+    'resistance bands India',
+    'grip trainer online India',
+    'premium fitness equipment India',
+    'gym accessories online shopping',
   ],
 }
 

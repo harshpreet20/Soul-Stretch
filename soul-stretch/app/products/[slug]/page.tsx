@@ -25,24 +25,27 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${product.name} | Soul Stretch`,
-    description: product.description,
+    title: `Buy ${product.name} Online India | Soul Stretch`,
+    description: product.shortDescription + ' Buy online in India from Soul Stretch.',
     keywords: [
       product.name,
+      `${product.name} India`,
+      `buy ${product.name.toLowerCase()} online India`,
       product.category,
-      'buy online',
-      'India',
+      'premium fitness equipment India',
+      'buy online India',
+      'Soul Stretch',
       ...product.benefits,
     ],
     openGraph: {
-      title: product.name,
-      description: product.description,
+      title: `${product.name} - Premium Fitness Equipment | Soul Stretch India`,
+      description: product.shortDescription,
       images: [
         {
           url: product.imageUrl,
           width: 800,
           height: 600,
-          alt: product.name,
+          alt: `${product.name} - Soul Stretch Premium Fitness Equipment India`,
         },
       ],
     },
@@ -76,6 +79,43 @@ export default function ProductDetailPage({
 
   return (
     <div className="min-h-screen bg-soul-black">
+      {/* Product JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Product',
+            name: product.name,
+            description: product.description,
+            image: product.imageUrl,
+            brand: {
+              '@type': 'Brand',
+              name: 'Soul Stretch',
+            },
+            offers: {
+              '@type': 'Offer',
+              availability: 'https://schema.org/InStock',
+              priceCurrency: 'INR',
+              price: '',
+              priceValidUntil: '2027-12-31',
+              url: `https://soulstretch.in/products/${product.slug}`,
+              seller: {
+                '@type': 'Organization',
+                name: 'Soul Stretch',
+              },
+              shippingDetails: {
+                '@type': 'OfferShippingDetails',
+                shippingDestination: {
+                  '@type': 'DefinedRegion',
+                  addressCountry: 'IN',
+                },
+              },
+            },
+            category: product.category,
+          }),
+        }}
+      />
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-6">
         <Link href="/products" className="text-soul-orange hover:text-orange-600 text-sm font-medium">

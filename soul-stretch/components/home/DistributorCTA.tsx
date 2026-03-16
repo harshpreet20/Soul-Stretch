@@ -27,8 +27,8 @@ export default function DistributorCTA() {
               <span className="text-soul-orange">Retail Partner</span>
             </h2>
             <p className="text-xl text-soul-gray max-w-2xl mx-auto leading-relaxed">
-              We partner with gyms, sports retailers, and fitness studios across India.
-              Together, we elevate the recovery game.
+              We partner with gyms, sports retailers, and fitness studios to distribute premium fitness equipment across India.
+              Stock the best gym accessories for athletes India trusts. Grow together.
             </p>
           </div>
 
@@ -46,9 +46,9 @@ export default function DistributorCTA() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8">
             {[
-              { label: 'Partner with Elite Athletes', icon: '⭐' },
-              { label: 'Premium Margin Structure', icon: '📈' },
-              { label: 'Marketing Support Included', icon: '📢' },
+              { label: 'Stock Premium Fitness Equipment', icon: '⭐' },
+              { label: 'High-Margin Gym Accessories', icon: '📈' },
+              { label: 'Pan-India Marketing Support', icon: '📢' },
             ].map((item) => (
               <motion.div
                 key={item.label}

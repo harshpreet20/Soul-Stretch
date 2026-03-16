@@ -71,18 +71,59 @@ function ContactPageContent() {
     }
   }
 
+  const faqs = [
+    {
+      q: 'How quickly will I receive my order?',
+      a: 'Soul Stretch delivery time in India is among the fastest for premium fitness equipment. We dispatch most orders within 24-48 hours from our warehouse. Standard pan-India delivery takes 3-7 business days depending on your location, with metro cities like Mumbai, Delhi, Bangalore, and Chennai typically receiving orders within 3-4 days. You will receive tracking details via email and WhatsApp once your order is shipped.',
+    },
+    {
+      q: "What is Soul Stretch's return policy for fitness equipment?",
+      a: 'Soul Stretch offers a comprehensive 30-day satisfaction guarantee on all fitness equipment and recovery accessories. If you are not completely satisfied with your purchase, you can initiate a return or exchange within 30 days of delivery. The product must be in its original packaging and unused condition. To start a return, contact our support team via WhatsApp or email, and we will arrange a hassle-free pickup at no extra cost. Refunds are processed within 5-7 business days after we receive the returned item.',
+    },
+    {
+      q: 'Do you offer bulk discounts for gym equipment orders in India?',
+      a: 'Yes, Soul Stretch provides attractive bulk pricing for gym equipment orders across India. Whether you are a gym owner, fitness studio, corporate wellness program, school, or institutional buyer, we offer volume-based discounts on orders of 10 or more units. Our bulk gym equipment packages include foam rollers, resistance bands, grip trainers, and complete recovery kits. Contact our dedicated B2B team via the form above or WhatsApp to receive a customized quote tailored to your requirements.',
+    },
+    {
+      q: 'How does Soul Stretch ensure product quality?',
+      a: 'Soul Stretch product quality is guaranteed through a rigorous multi-step quality assurance process. Every piece of fitness equipment undergoes thorough testing for durability, material integrity, and performance before it reaches our customers. We source only premium-grade materials from trusted manufacturers, including high-density EVA foam for rollers, natural latex for resistance bands, and hardened steel for grip trainers. Each product is designed to withstand intensive daily use by professional athletes and fitness enthusiasts alike, ensuring long-lasting performance.',
+    },
+    {
+      q: 'Does Soul Stretch ship fitness equipment internationally?',
+      a: 'Currently, Soul Stretch focuses on delivering premium fitness equipment across all states and union territories in India, including remote and rural areas. International shipping for fitness equipment is not available at this time, but we are actively working to expand our delivery network to select international destinations. If you are located outside India and interested in our products, please contact us through the form above or via WhatsApp, and we will notify you as soon as international shipping becomes available for your region.',
+    },
+  ]
+
   return (
     <div className="min-h-screen bg-soul-black">
+      {/* FAQPage JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: faqs.map((faq) => ({
+              '@type': 'Question',
+              name: faq.q,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.a,
+              },
+            })),
+          }),
+        }}
+      />
       {/* Header */}
       <section className="relative pt-28 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-soul-orange/5 via-soul-black to-soul-black" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-soul-white mb-4">
-            Get in Touch
+            Contact Soul Stretch
           </h1>
           <p className="text-xl text-soul-gray max-w-2xl mx-auto leading-relaxed">
-            Have a question? Want to partner with us? Let's talk.
+            Questions about our premium fitness equipment? Want to buy gym accessories online in India? Let's talk.
           </p>
         </div>
       </section>
@@ -101,7 +142,7 @@ function ContactPageContent() {
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-soul-white">Quick Contact</h3>
                 <p className="text-soul-gray">
-                  Reach out via WhatsApp for the fastest response. We typically respond within hours.
+                  Need help choosing the right fitness recovery equipment? Reach out via WhatsApp for the fastest response. We typically reply within hours.
                 </p>
               </div>
 
@@ -147,9 +188,9 @@ function ContactPageContent() {
 
               {/* Distributor Section */}
               <div className="bg-soul-card rounded-xl p-6 border border-soul-orange/10 space-y-3">
-                <h4 className="font-bold text-soul-orange">For Distributors</h4>
+                <h4 className="font-bold text-soul-orange">Distribute Premium Fitness Equipment</h4>
                 <p className="text-sm text-soul-gray">
-                  Interested in retail partnerships? Fill the form with distributor inquiry.
+                  Interested in stocking the best gym accessories for athletes in India? Fill the form with a distributor inquiry.
                 </p>
               </div>
             </motion.div>
@@ -224,7 +265,7 @@ function ContactPageContent() {
                     required
                     rows={5}
                     className="w-full px-4 py-3 bg-soul-black border border-soul-orange/20 rounded-lg text-soul-white placeholder-soul-gray focus:border-soul-orange focus:outline-none transition-colors resize-none"
-                    placeholder="Tell us what you're interested in..."
+                    placeholder="Tell us about your fitness equipment needs..."
                   />
                 </div>
 
@@ -247,7 +288,7 @@ function ContactPageContent() {
 
                 {/* Info Text */}
                 <p className="text-xs text-soul-gray text-center">
-                  We'll get back to you within a few hours.
+                  Our premium fitness equipment team will get back to you within a few hours.
                 </p>
               </form>
             </motion.div>
@@ -259,32 +300,11 @@ function ContactPageContent() {
       <section className="py-20 bg-gradient-to-r from-soul-orange/10 via-soul-black to-soul-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-black text-soul-white mb-12 text-center">
-            Frequently Asked Questions
+            Premium Fitness Equipment FAQs
           </h2>
 
           <div className="space-y-6">
-            {[
-              {
-                q: 'How quickly will I receive my order?',
-                a: 'We dispatch most orders within 24-48 hours. Pan-India delivery typically takes 3-7 business days.',
-              },
-              {
-                q: "What if I'm not satisfied with a product?",
-                a: 'We offer 100% satisfaction guarantee. Contact us within 30 days for returns or exchanges.',
-              },
-              {
-                q: 'Do you offer bulk discounts?',
-                a: 'Yes. Contact us for gym, studio, or institutional bulk orders with special pricing.',
-              },
-              {
-                q: 'Are products authentic and high-quality?',
-                a: 'Every product is rigorously quality-tested. We use only premium materials sourced from trusted manufacturers.',
-              },
-              {
-                q: 'Do you ship internationally?',
-                a: 'Currently, we focus on India. International shipping may be available soon. Contact us for details.',
-              },
-            ].map((faq, idx) => (
+            {faqs.map((faq, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 10 }}

@@ -59,7 +59,7 @@ export default function HeroSection() {
           variants={itemVariants}
           className="text-lg sm:text-xl text-soul-gray mb-10 max-w-2xl mx-auto leading-relaxed"
         >
-          Premium recovery and mobility accessories engineered for athletes.
+          India's premium fitness equipment for serious athletes. Recovery tools, grip trainers, resistance bands, and gym accessories — engineered to elevate your performance.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -73,7 +73,7 @@ export default function HeroSection() {
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-soul-orange text-soul-black font-bold rounded-lg hover:bg-orange-600 transition-colors"
             >
-              Explore Products
+              Shop Premium Equipment
             </motion.button>
           </Link>
           <Link href="/guides">
@@ -82,7 +82,7 @@ export default function HeroSection() {
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 border-2 border-soul-orange text-soul-orange font-bold rounded-lg hover:bg-soul-orange hover:text-soul-black transition-colors"
             >
-              Read Guides
+              Recovery Guides
             </motion.button>
           </Link>
         </motion.div>

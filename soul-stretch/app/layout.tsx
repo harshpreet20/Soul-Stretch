@@ -10,12 +10,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     template: '%s | Soul Stretch',
-    default: 'Premium Fitness Recovery Accessories India | Soul Stretch',
+    default: 'Premium Fitness Equipment India | Soul Stretch',
   },
   description:
-    'Soul Stretch delivers premium gym accessories, foam rollers, resistance bands, grip trainers and recovery tools engineered for Indian athletes. Shop performance gear online.',
+    'Shop premium fitness equipment in India. Soul Stretch offers foam rollers, resistance bands, grip trainers and recovery gear engineered for Indian athletes.',
   keywords: [
-    'premium gym accessories India',
+    'premium fitness equipment India',
+    'buy gym accessories online India',
     'fitness recovery equipment India',
     'foam roller muscle recovery',
     'resistance bands India',
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
     'home gym accessories India',
     'sports recovery tools',
     'athletic performance equipment',
+    'premium gym equipment online',
   ],
   authors: [{ name: 'Soul Stretch' }],
   creator: 'Soul Stretch',
@@ -32,9 +34,9 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: siteUrl,
     siteName: 'Soul Stretch',
-    title: 'Premium Fitness Recovery Accessories India | Soul Stretch',
+    title: 'Premium Fitness Equipment India | Soul Stretch',
     description:
-      'Train Better. Recover Faster. Stretch Further. Premium recovery and mobility accessories engineered for athletes.',
+      'Shop premium fitness equipment in India. Soul Stretch offers recovery and mobility accessories engineered for Indian athletes.',
     images: [
       {
         url: `${siteUrl}/og-image.jpg`,
@@ -46,8 +48,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Soul Stretch | Premium Fitness Recovery',
-    description: 'Train Better. Recover Faster. Stretch Further.',
+    title: 'Soul Stretch | Premium Fitness Equipment India',
+    description: 'Shop premium fitness equipment in India. Train Better. Recover Faster. Stretch Further.',
     images: [`${siteUrl}/og-image.jpg`],
     creator: '@soulstretchIN',
   },
@@ -74,7 +76,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
+      <body className="bg-soul-black text-soul-white">
         {/* Schema.org Organization */}
         <script
           type="application/ld+json"
@@ -83,15 +85,15 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Organization',
               name: 'Soul Stretch',
-              url: siteUrl,
-              logo: `${siteUrl}/logo.png`,
+              url: 'https://soulstretch.in',
+              logo: 'https://soulstretch.in/logo.png',
               description:
-                'Premium recovery and mobility accessories engineered for athletes.',
+                'Soul Stretch is India\u2019s premium fitness equipment and recovery accessories brand, offering high-quality foam rollers, resistance bands, grip trainers, and athletic recovery tools engineered for Indian athletes and fitness enthusiasts.',
               foundingDate: '2024',
               contactPoint: {
                 '@type': 'ContactPoint',
                 contactType: 'Customer Service',
-                availableLanguageID: 'en',
+                availableLanguage: 'en',
               },
               sameAs: [
                 'https://instagram.com/soulstretchIN',
@@ -104,8 +106,6 @@ export default function RootLayout({
             }),
           }}
         />
-      </head>
-      <body className="bg-soul-black text-soul-white">
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
