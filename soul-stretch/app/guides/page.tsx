@@ -399,6 +399,41 @@ Train grip. Improve everything. Shop premium fitness equipment at Soul Stretch I
 export default function GuidesPage() {
   return (
     <div className="min-h-screen bg-soul-black">
+      {/* Article JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': guides.map((guide) => ({
+              '@type': 'Article',
+              headline: guide.title,
+              description: guide.excerpt,
+              articleSection: guide.category,
+              author: {
+                '@type': 'Organization',
+                name: 'Soul Stretch',
+                url: 'https://soulstretch.in',
+              },
+              publisher: {
+                '@type': 'Organization',
+                name: 'Soul Stretch',
+                url: 'https://soulstretch.in',
+                logo: {
+                  '@type': 'ImageObject',
+                  url: 'https://soulstretch.in/logo.png',
+                },
+              },
+              mainEntityOfPage: {
+                '@type': 'WebPage',
+                '@id': `https://soulstretch.in/guides#guide-${guide.id}`,
+              },
+              inLanguage: 'en',
+              isAccessibleForFree: true,
+            })),
+          }),
+        }}
+      />
       {/* Header */}
       <section className="relative pt-28 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-soul-orange/5 via-soul-black to-soul-black" />

@@ -17,6 +17,30 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-soul-black">
+      {/* BreadcrumbList JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://soulstretch.in',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'About',
+                item: 'https://soulstretch.in/about',
+              },
+            ],
+          }),
+        }}
+      />
       {/* Header */}
       <section className="relative pt-28 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-soul-orange/5 via-soul-black to-soul-black" />
