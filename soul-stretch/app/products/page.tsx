@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import { fetchProducts } from '@/lib/products'
 import ProductGrid from '@/components/products/ProductGrid'
 
@@ -51,11 +52,11 @@ export default async function ProductsPage() {
           <p className="text-soul-gray text-lg">
             Contact us directly for bulk orders, custom solutions, or partnerships.
           </p>
-          <a href="https://wa.me/919876543210?text=Hi, I'm interested in Soul Stretch products">
+          <Link href="/contact">
             <button className="px-8 py-4 bg-soul-orange text-soul-black font-bold rounded-lg hover:bg-orange-600 transition-colors">
-              Chat on WhatsApp
+              Contact Us
             </button>
-          </a>
+          </Link>
         </div>
       </section>
     </div>

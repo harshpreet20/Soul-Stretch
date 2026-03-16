@@ -1,51 +1,251 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useRef, useEffect } from 'react'
+import { sendToN8N } from '@/lib/n8n'
 
 const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210'
 
-export default function WhatsAppButton() {
-  const [showTooltip, setShowTooltip] = useState(false)
+interface ChatMessage {
+  id: number
+  text: string
+  sender: 'user' | 'bot'
+}
 
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi, I'm interested in Soul Stretch products`
+export default function WhatsAppButton() {
+  const [isOpen, setIsOpen] = useState(false)
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    { id: 0, text: "Hey! How can we help you today?", sender: 'bot' },
+  ])
+  const [input, setInput] = useState('')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [step, setStep] = useState<'chat' | 'details'>('chat')
+  const [isSending, setIsSending] = useState(false)
+  const messagesEndRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
+
+  const handleSendMessage = async () => {
+    if (!input.trim()) return
+
+    const userMsg: ChatMessage = { id: Date.now(), text: input.trim(), sender: 'user' }
+    setMessages((prev) => [...prev, userMsg])
+    const userText = input.trim()
+    setInput('')
+
+    if (step === 'chat' && !name) {
+      setStep('details')
+      setMessages((prev) => [
+        ...prev,
+        { id: Date.now() + 1, text: "Thanks! Could you share your name and email so we can get back to you?", sender: 'bot' },
+      ])
+      return
+    }
+
+    setIsSending(true)
+    const success = await sendToN8N({
+      source: 'chat_message',
+      name: name || undefined,
+      email: email || undefined,
+      message: userText,
+      timestamp: new Date().toISOString(),
+      page: typeof window !== 'undefined' ? window.location.pathname : '/',
+    })
+
+    setMessages((prev) => [
+      ...prev,
+      {
+        id: Date.now() + 1,
+        text: success
+          ? "Got it! We'll get back to you soon. You can also reach us on WhatsApp for a faster response."
+          : "Sorry, something went wrong. Please try WhatsApp instead.",
+        sender: 'bot',
+      },
+    ])
+    setIsSending(false)
+  }
+
+  const handleDetailsSubmit = async () => {
+    if (!name.trim() || !email.trim()) return
+
+    setMessages((prev) => [
+      ...prev,
+      { id: Date.now(), text: `${name} - ${email}`, sender: 'user' },
+    ])
+    setStep('chat')
+    setMessages((prev) => [
+      ...prev,
+      { id: Date.now() + 1, text: `Thanks ${name}! What can we help you with?`, sender: 'bot' },
+    ])
+  }
+
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I'm interested in Soul Stretch products")}`
 
   return (
-    <motion.div
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ delay: 0.5, type: 'spring', stiffness: 200 }}
-      className="fixed bottom-6 right-6 z-[60] group"
-      onMouseEnter={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}
-    >
-      <motion.a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full shadow-lg hover:shadow-xl transition-all"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <svg
-          className="w-7 h-7 text-white"
-          fill="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-5.031 1.378c-3.55 2.152-5.831 6.003-5.831 10.252 0 1.052.148 2.102.44 3.104l.6 2.256-2.404.6c-1.084.271-2.007.887-2.727 1.78-.52.639-.89 1.375-1.077 2.153H0c0-4.97 2.02-9.317 5.303-12.557C8.104 2.529 12.361.996 16.807.996c4.443 0 8.696 1.533 11.976 4.322 3.28 2.788 5.301 6.531 5.301 10.456 0 4.926-2.021 9.674-5.302 12.457-3.281 2.783-7.535 4.313-11.976 4.313-1.052 0-2.102-.148-3.104-.44l-2.256-.6.6 2.404c.271 1.084.887 2.007 1.78 2.727.639.52 1.375.89 2.153 1.077v2.151c-4.97 0-9.317-2.02-12.557-5.303C2.529 39.896.996 35.639.996 31.193c0-4.443 1.533-8.696 4.322-11.976z"/>
-        </svg>
-      </motion.a>
+    <>
+      {/* Chat Widget */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="fixed bottom-24 right-6 z-[60] w-80 sm:w-96 bg-soul-card border border-soul-orange/20 rounded-2xl shadow-2xl overflow-hidden"
+          >
+            {/* Header */}
+            <div className="bg-soul-orange px-4 py-3 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-soul-black/20 rounded-full flex items-center justify-center">
+                  <span className="text-sm font-bold">SS</span>
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-soul-black">Soul Stretch</p>
+                  <p className="text-xs text-soul-black/60">Usually replies within hours</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-soul-black/60 hover:text-soul-black transition-colors"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
 
-      {showTooltip && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 10 }}
-          className="absolute bottom-full right-0 mb-3 bg-soul-card border border-soul-orange border-opacity-30 rounded-lg px-3 py-2 whitespace-nowrap text-sm"
+            {/* Messages */}
+            <div className="h-64 overflow-y-auto p-4 space-y-3">
+              {messages.map((msg) => (
+                <div
+                  key={msg.id}
+                  className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div
+                    className={`max-w-[80%] rounded-2xl px-4 py-2 text-sm ${
+                      msg.sender === 'user'
+                        ? 'bg-soul-orange text-soul-black rounded-br-sm'
+                        : 'bg-soul-black/50 text-soul-white rounded-bl-sm'
+                    }`}
+                  >
+                    {msg.text}
+                  </div>
+                </div>
+              ))}
+              {isSending && (
+                <div className="flex justify-start">
+                  <div className="bg-soul-black/50 text-soul-gray rounded-2xl rounded-bl-sm px-4 py-2 text-sm">
+                    Sending...
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+
+            {/* Input Area */}
+            <div className="border-t border-soul-orange/10 p-3">
+              {step === 'details' ? (
+                <div className="space-y-2">
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Your name"
+                    className="w-full px-3 py-2 bg-soul-black border border-soul-orange/20 rounded-lg text-soul-white text-sm placeholder-soul-gray focus:border-soul-orange focus:outline-none"
+                  />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Your email"
+                    className="w-full px-3 py-2 bg-soul-black border border-soul-orange/20 rounded-lg text-soul-white text-sm placeholder-soul-gray focus:border-soul-orange focus:outline-none"
+                    onKeyDown={(e) => e.key === 'Enter' && handleDetailsSubmit()}
+                  />
+                  <button
+                    onClick={handleDetailsSubmit}
+                    disabled={!name.trim() || !email.trim()}
+                    className="w-full py-2 bg-soul-orange text-soul-black font-bold text-sm rounded-lg hover:bg-orange-600 transition-colors disabled:opacity-50"
+                  >
+                    Continue
+                  </button>
+                </div>
+              ) : (
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
+                    placeholder="Type a message..."
+                    className="flex-1 px-3 py-2 bg-soul-black border border-soul-orange/20 rounded-lg text-soul-white text-sm placeholder-soul-gray focus:border-soul-orange focus:outline-none"
+                  />
+                  <button
+                    onClick={handleSendMessage}
+                    disabled={!input.trim() || isSending}
+                    className="px-3 py-2 bg-soul-orange text-soul-black rounded-lg hover:bg-orange-600 transition-colors disabled:opacity-50"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
+                  </button>
+                </div>
+              )}
+
+              {/* WhatsApp Fallback Link */}
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-1.5 mt-2 text-xs text-green-400 hover:text-green-300 transition-colors"
+                onClick={() => {
+                  sendToN8N({
+                    source: 'whatsapp_click',
+                    name: name || undefined,
+                    email: email || undefined,
+                    timestamp: new Date().toISOString(),
+                    page: typeof window !== 'undefined' ? window.location.pathname : '/',
+                  })
+                }}
+              >
+                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403C6.036 21.785 2 17.748 2 12.785 2 7.267 6.477 2.79 11.995 2.79c2.67 0 5.15 1.04 7.027 2.926A9.862 9.862 0 0122 12.785c0 5.508-4.477 9.985-9.995 9.985m0-21.97C5.372.815 0 6.187 0 12.785c0 2.178.585 4.316 1.689 6.164L.057 24.439l5.624-1.475a11.907 11.907 0 005.373 1.29h.005C17.618 24.254 24 18.882 24 12.284 24 5.687 17.618-.584 11.055-.584" />
+                </svg>
+                Or chat on WhatsApp
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Floating Button */}
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ delay: 0.5, type: 'spring', stiffness: 200 }}
+        className="fixed bottom-6 right-6 z-[60]"
+      >
+        <motion.button
+          onClick={() => setIsOpen(!isOpen)}
+          className={`flex items-center justify-center w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all ${
+            isOpen ? 'bg-soul-black/80 border border-soul-orange/30' : 'bg-soul-orange hover:bg-orange-600'
+          }`}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
         >
-          Chat with us
-        </motion.div>
-      )}
-    </motion.div>
+          {isOpen ? (
+            <svg className="w-6 h-6 text-soul-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg className="w-7 h-7 text-soul-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+          )}
+        </motion.button>
+      </motion.div>
+    </>
   )
 }

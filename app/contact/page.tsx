@@ -4,6 +4,7 @@ import { Suspense, useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+import { sendToN8N } from '@/lib/n8n'
 
 export default function ContactPage() {
   return (
@@ -40,17 +41,27 @@ function ContactPageContent() {
     setIsSubmitting(true)
 
     try {
-      const whatsappMessage = `Name: ${formData.name}\nEmail: ${formData.email}\nType: ${formData.type}\n\nMessage:\n${formData.message}`
-      const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(whatsappMessage)}`
+      const success = await sendToN8N({
+        source: 'contact_form',
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        type: formData.type,
+        timestamp: new Date().toISOString(),
+        page: '/contact',
+      })
 
-      window.open(whatsappUrl, '_blank')
-      setSubmitStatus('success')
-      setFormData({ name: '', email: '', message: '', type: 'athlete' })
+      if (success) {
+        setSubmitStatus('success')
+        setFormData({ name: '', email: '', message: '', type: 'athlete' })
+      } else {
+        setSubmitStatus('error')
+      }
 
       setTimeout(() => {
         setSubmitStatus('idle')
       }, 3000)
-    } catch (error) {
+    } catch {
       setSubmitStatus('error')
       setTimeout(() => {
         setSubmitStatus('idle')
@@ -231,12 +242,12 @@ function ContactPageContent() {
                         : 'bg-soul-orange text-soul-black hover:bg-orange-600'
                   }`}
                 >
-                  {isSubmitting ? 'Sending...' : submitStatus === 'success' ? 'Opening WhatsApp!' : 'Send via WhatsApp'}
+                  {isSubmitting ? 'Sending...' : submitStatus === 'success' ? 'Message Sent!' : submitStatus === 'error' ? 'Failed - Try Again' : 'Send Message'}
                 </motion.button>
 
                 {/* Info Text */}
                 <p className="text-xs text-soul-gray text-center">
-                  Your message will be sent directly to our WhatsApp. We'll respond within hours.
+                  We'll get back to you within a few hours.
                 </p>
               </form>
             </motion.div>

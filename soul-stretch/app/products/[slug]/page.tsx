@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { getProductBySlug, getAllProductSlugs } from '@/lib/products'
 import ProductImageGallery from '@/components/products/ProductImageGallery'
+import ProductCTAButtons from '@/components/products/ProductCTAButtons'
 
 export async function generateStaticParams() {
   const slugs = getAllProductSlugs()
@@ -138,18 +139,7 @@ export default function ProductDetailPage({
               </div>
 
               {/* CTA Buttons */}
-              <div className="space-y-3 pt-8">
-                <a href={`https://wa.me/919876543210?text=Hi, I'm interested in ${product.name}`} target="_blank" rel="noopener noreferrer">
-                  <button className="w-full px-8 py-4 bg-soul-orange text-soul-black font-bold rounded-lg hover:bg-orange-600 transition-colors text-lg">
-                    Contact via WhatsApp
-                  </button>
-                </a>
-                <Link href="/contact">
-                  <button className="w-full px-8 py-4 border-2 border-soul-orange text-soul-orange font-bold rounded-lg hover:bg-soul-orange hover:text-soul-black transition-colors text-lg">
-                    Send Inquiry
-                  </button>
-                </Link>
-              </div>
+              <ProductCTAButtons productName={product.name} productSlug={product.slug} />
 
               {/* Trust Badges */}
               <div className="bg-soul-card rounded-lg p-6 border border-soul-orange/10 space-y-3">
