@@ -27,15 +27,15 @@ export default function ProductCTAButtons({ productName, productSlug }: ProductC
   }
 
   return (
-    <div className="space-y-3 pt-8">
+    <div className="space-y-3 pt-6 sm:pt-8">
       <button
         onClick={handleWhatsAppClick}
-        className="w-full px-8 py-4 bg-soul-orange text-soul-black font-bold rounded-lg hover:bg-orange-600 transition-colors text-lg"
+        className="w-full px-8 py-3.5 sm:py-4 bg-soul-orange text-soul-black font-bold rounded-lg hover:bg-orange-600 transition-colors text-base sm:text-lg touch-manipulation"
       >
         Contact via WhatsApp
       </button>
       <Link href={`/contact?type=athlete&product=${encodeURIComponent(productName)}`}>
-        <button className="w-full px-8 py-4 border-2 border-soul-orange text-soul-orange font-bold rounded-lg hover:bg-soul-orange hover:text-soul-black transition-colors text-lg">
+        <button className="w-full px-8 py-3.5 sm:py-4 border-2 border-soul-orange text-soul-orange font-bold rounded-lg hover:bg-soul-orange hover:text-soul-black transition-colors text-base sm:text-lg touch-manipulation mt-3">
           Send Inquiry
         </button>
       </Link>

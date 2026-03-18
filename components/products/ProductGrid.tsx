@@ -1,16 +1,17 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import ProductCard from './ProductCard'
 import { Product } from '@/lib/products'
+import { useSegment } from '@/components/segments/SegmentProvider'
 
 interface ProductGridProps {
   products: Product[]
 }
 
 const categories = [
-  { id: 'all', label: 'All Products' },
+  { id: 'all', label: 'All' },
   { id: 'recovery', label: 'Recovery' },
   { id: 'strength', label: 'Strength' },
   { id: 'support', label: 'Support' },
@@ -21,11 +22,27 @@ const categories = [
 export default function ProductGrid({ products }: ProductGridProps) {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [expandedId, setExpandedId] = useState<string | null>(null)
+  const { config } = useSegment()
 
-  const filteredProducts =
-    selectedCategory === 'all'
-      ? products
-      : products.filter((p) => p.category === selectedCategory)
+  // Sort products based on segment priority categories
+  const sortedProducts = useMemo(() => {
+    const filtered =
+      selectedCategory === 'all'
+        ? products
+        : products.filter((p) => p.category === selectedCategory)
+
+    if (selectedCategory !== 'all') return filtered
+
+    // Prioritize based on segment
+    const prioritized = config.priorityCategories
+    return [...filtered].sort((a, b) => {
+      const aIdx = prioritized.indexOf(a.category)
+      const bIdx = prioritized.indexOf(b.category)
+      const aScore = aIdx === -1 ? 999 : aIdx
+      const bScore = bIdx === -1 ? 999 : bIdx
+      return aScore - bScore
+    })
+  }, [products, selectedCategory, config.priorityCategories])
 
   const handleToggle = (slug: string) => {
     setExpandedId(expandedId === slug ? null : slug)
@@ -35,9 +52,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
+      transition: { staggerChildren: 0.08 },
     },
   }
 
@@ -46,17 +61,17 @@ export default function ProductGrid({ products }: ProductGridProps) {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 },
+      transition: { duration: 0.4 },
     },
   }
 
   return (
-    <div className="space-y-12">
-      {/* Category Filter */}
+    <div className="space-y-8 sm:space-y-12">
+      {/* Category Filter - horizontal scroll on mobile */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex flex-wrap gap-3 justify-center"
+        className="flex gap-2 sm:gap-3 justify-start sm:justify-center overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide"
       >
         {categories.map((cat) => (
           <motion.button
@@ -65,12 +80,11 @@ export default function ProductGrid({ products }: ProductGridProps) {
               setSelectedCategory(cat.id)
               setExpandedId(null)
             }}
-            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className={`px-4 py-2 rounded-full font-medium transition-all text-sm sm:text-base ${
+            className={`px-3 sm:px-4 py-2 rounded-full font-medium transition-all text-xs sm:text-sm whitespace-nowrap flex-shrink-0 ${
               selectedCategory === cat.id
                 ? 'bg-soul-orange text-soul-black'
-                : 'bg-soul-card border border-soul-orange/20 text-soul-white hover:border-soul-orange/50'
+                : 'bg-soul-card border border-soul-orange/20 text-soul-white active:bg-soul-orange/20'
             }`}
           >
             {cat.label}
@@ -83,10 +97,10 @@ export default function ProductGrid({ products }: ProductGridProps) {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
       >
         <AnimatePresence mode="wait">
-          {filteredProducts.map((product) => (
+          {sortedProducts.map((product) => (
             <motion.div
               key={product.id}
               variants={itemVariants}
@@ -104,7 +118,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
       </motion.div>
 
       {/* No Results */}
-      {filteredProducts.length === 0 && (
+      {sortedProducts.length === 0 && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

@@ -115,23 +115,23 @@ function ContactPageContent() {
         }}
       />
       {/* Header */}
-      <section className="relative pt-28 pb-20 overflow-hidden">
+      <section className="relative pt-20 sm:pt-28 pb-12 sm:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-soul-orange/5 via-soul-black to-soul-black" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-soul-white mb-4">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-soul-white mb-3 sm:mb-4">
             Contact Soul Stretch
           </h1>
-          <p className="text-xl text-soul-gray max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-xl text-soul-gray max-w-2xl mx-auto leading-relaxed px-2">
             Questions about our premium fitness equipment? Want to buy gym accessories online in India? Let's talk.
           </p>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="py-20">
+      <section className="py-10 sm:py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12">
             {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -297,13 +297,13 @@ function ContactPageContent() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gradient-to-r from-soul-orange/10 via-soul-black to-soul-black">
+      <section className="py-12 sm:py-20 bg-gradient-to-r from-soul-orange/10 via-soul-black to-soul-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-black text-soul-white mb-12 text-center">
+          <h2 className="text-2xl sm:text-4xl font-black text-soul-white mb-8 sm:mb-12 text-center">
             Premium Fitness Equipment FAQs
           </h2>
 
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {faqs.map((faq, idx) => (
               <motion.div
                 key={idx}

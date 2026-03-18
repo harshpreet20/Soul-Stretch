@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
+import { useRef } from 'react'
 import { useScroll, useTransform, motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -67,8 +67,6 @@ function ProductRevealSection({
   scrollYProgress,
   total,
 }: ProductRevealSectionProps) {
-  const [isInView, setIsInView] = useState(false)
-
   const scale = useTransform(
     scrollYProgress,
     [index / total, (index + 1) / total],
@@ -82,7 +80,7 @@ function ProductRevealSection({
   )
 
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[80vh] sm:min-h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-soul-black via-soul-card to-soul-black" />
 
@@ -91,34 +89,33 @@ function ProductRevealSection({
 
       {/* Content Grid */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center py-12 sm:py-20">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6 order-2 lg:order-1"
           >
             <div>
-              <h2 className="text-5xl sm:text-6xl font-black text-soul-orange mb-4">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-soul-orange mb-3 sm:mb-4">
                 {product.title}
               </h2>
-              <p className="text-xl sm:text-2xl text-soul-white font-light leading-relaxed">
+              <p className="text-lg sm:text-xl md:text-2xl text-soul-white font-light leading-relaxed">
                 {product.subtitle}
               </p>
             </div>
 
-            <div className="space-y-4 pt-8">
-              <p className="text-lg text-soul-gray leading-relaxed">
+            <div className="space-y-4 pt-4 sm:pt-8">
+              <p className="text-base sm:text-lg text-soul-gray leading-relaxed">
                 {product.product} delivers premium performance engineered for serious athletes.
               </p>
 
               <Link href={`/products/${product.slug}`}>
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="mt-8 px-8 py-3 bg-soul-orange text-soul-black font-bold rounded-lg hover:bg-orange-600 transition-colors inline-block"
+                  className="mt-6 sm:mt-8 w-full sm:w-auto px-8 py-3 bg-soul-orange text-soul-black font-bold rounded-lg hover:bg-orange-600 transition-colors inline-block touch-manipulation"
                 >
                   Learn More
                 </motion.button>
@@ -129,14 +126,16 @@ function ProductRevealSection({
           {/* Product Image */}
           <motion.div
             style={{ scale, opacity }}
-            className="relative aspect-square"
+            className="relative aspect-square order-1 lg:order-2 max-h-[50vh] sm:max-h-none"
           >
-            <div className="relative w-full h-full rounded-2xl overflow-hidden">
+            <div className="relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden">
               <Image
                 src={product.image}
                 alt={product.product}
                 fill
+                sizes="(max-width: 640px) 100vw, 50vw"
                 className="object-cover"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-soul-black/50 to-transparent" />
             </div>

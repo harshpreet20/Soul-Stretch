@@ -94,7 +94,7 @@ export default function WhatsAppButton() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-6 z-[60] w-80 sm:w-96 bg-soul-card border border-soul-orange/20 rounded-2xl shadow-2xl overflow-hidden"
+            className="fixed bottom-20 sm:bottom-24 right-3 sm:right-6 left-3 sm:left-auto z-[60] sm:w-96 bg-soul-card border border-soul-orange/20 rounded-2xl shadow-2xl overflow-hidden"
           >
             {/* Header */}
             <div className="bg-soul-orange px-4 py-3 flex items-center justify-between">
@@ -225,11 +225,11 @@ export default function WhatsAppButton() {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 0.5, type: 'spring', stiffness: 200 }}
-        className="fixed bottom-6 right-6 z-[60]"
+        className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-[60]"
       >
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
-          className={`flex items-center justify-center w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all ${
+          className={`flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg hover:shadow-xl transition-all touch-manipulation ${
             isOpen ? 'bg-soul-black/80 border border-soul-orange/30' : 'bg-soul-orange hover:bg-orange-600'
           }`}
           whileHover={{ scale: 1.1 }}

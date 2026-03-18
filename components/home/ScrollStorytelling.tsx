@@ -98,7 +98,7 @@ export default function ScrollStorytelling() {
         <section
           key={section.id}
           id={`section-${section.id}`}
-          className="relative min-h-screen w-full flex items-center justify-center overflow-hidden"
+          className="relative min-h-[80vh] sm:min-h-screen w-full flex items-center justify-center overflow-hidden"
         >
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
@@ -106,31 +106,32 @@ export default function ScrollStorytelling() {
               src={section.image}
               alt={section.title}
               fill
+              sizes="100vw"
               className="object-cover opacity-20"
-              priority
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-soul-black via-soul-black/50 to-transparent" />
           </div>
 
           {/* Content */}
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="space-y-6">
-              <div className="space-y-4">
+            <div className="space-y-4 sm:space-y-6">
+              <div className="space-y-3 sm:space-y-4">
                 <h2
                   data-title
-                  className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-none"
+                  className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none"
                   style={{ color: section.color }}
                 >
                   {section.title}
                 </h2>
                 <p
                   data-subtitle
-                  className="text-2xl sm:text-3xl text-soul-white font-light max-w-2xl"
+                  className="text-xl sm:text-2xl md:text-3xl text-soul-white font-light max-w-2xl"
                 >
                   {section.subtitle}
                 </p>
               </div>
-              <p className="text-lg text-soul-gray max-w-xl leading-relaxed italic">
+              <p className="text-base sm:text-lg text-soul-gray max-w-xl leading-relaxed italic">
                 {section.description}
               </p>
             </div>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppButton from '@/components/ui/WhatsAppButton'
+import SegmentProvider from '@/components/segments/SegmentProvider'
 import './globals.css'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://soulstretch.in'
@@ -76,7 +77,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-soul-black text-soul-white">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="theme-color" content="#0e0e0e" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+      </head>
+      <body className="bg-soul-black text-soul-white antialiased">
         {/* Schema.org Organization */}
         <script
           type="application/ld+json"
@@ -106,10 +115,12 @@ export default function RootLayout({
             }),
           }}
         />
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        <SegmentProvider>
+          <Navbar />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+          <WhatsAppButton />
+        </SegmentProvider>
       </body>
     </html>
   )

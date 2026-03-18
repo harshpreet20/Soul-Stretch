@@ -14,69 +14,30 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, isExpanded, onToggle }: ProductCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
-  const [tilt, setTilt] = useState({ x: 0, y: 0 })
-  const [height, setHeight] = useState('auto')
   const [activeImageIndex, setActiveImageIndex] = useState(0)
 
   const allImages = [product.imageUrl, ...product.images]
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return
-
-    const rect = cardRef.current.getBoundingClientRect()
-    const x = (e.clientX - rect.left) / rect.width - 0.5
-    const y = (e.clientY - rect.top) / rect.height - 0.5
-
-    setTilt({
-      x: y * 5,
-      y: -x * 5,
-    })
-  }
-
-  const handleMouseLeave = () => {
-    setTilt({ x: 0, y: 0 })
-  }
-
-  useEffect(() => {
-    if (cardRef.current && isExpanded) {
-      setHeight(`${cardRef.current.scrollHeight}px`)
-    } else {
-      setHeight('auto')
-    }
-  }, [isExpanded])
-
   return (
-    <motion.div
-      ref={cardRef}
-      className="group"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
+    <motion.div ref={cardRef} className="group">
       {/* Card Container */}
-      <motion.div
-        className="bg-soul-card rounded-2xl overflow-hidden border border-soul-orange/10 hover:border-soul-orange/30 transition-all"
-        style={
-          !isExpanded
-            ? {
-                transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-              }
-            : undefined
-        }
-      >
+      <div className="bg-soul-card rounded-xl sm:rounded-2xl overflow-hidden border border-soul-orange/10 hover:border-soul-orange/30 transition-all active:border-soul-orange/40">
         {/* Image Section */}
         <div
-          className="relative h-64 overflow-hidden cursor-pointer bg-white/5"
+          className="relative h-48 sm:h-64 overflow-hidden cursor-pointer bg-white/5"
           onClick={() => onToggle(product.slug)}
         >
           <Image
             src={allImages[activeImageIndex]}
             alt={product.name}
             fill
-            className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-contain p-3 sm:p-4 group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-soul-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
-          {/* Image Navigation Arrows */}
+          {/* Image Navigation Arrows - larger touch targets on mobile */}
           {allImages.length > 1 && (
             <>
               <button
@@ -84,7 +45,7 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
                   e.stopPropagation()
                   setActiveImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length)
                 }}
-                className="absolute left-2 top-1/2 -translate-y-1/2 bg-soul-black/60 hover:bg-soul-orange/80 text-white rounded-full w-7 h-7 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-xs"
+                className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 bg-soul-black/60 hover:bg-soul-orange/80 text-white rounded-full w-8 h-8 sm:w-7 sm:h-7 flex items-center justify-center sm:opacity-0 sm:group-hover:opacity-100 transition-opacity text-xs touch-manipulation"
               >
                 ‹
               </button>
@@ -93,7 +54,7 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
                   e.stopPropagation()
                   setActiveImageIndex((prev) => (prev + 1) % allImages.length)
                 }}
-                className="absolute right-2 top-1/2 -translate-y-1/2 bg-soul-black/60 hover:bg-soul-orange/80 text-white rounded-full w-7 h-7 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-xs"
+                className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 bg-soul-black/60 hover:bg-soul-orange/80 text-white rounded-full w-8 h-8 sm:w-7 sm:h-7 flex items-center justify-center sm:opacity-0 sm:group-hover:opacity-100 transition-opacity text-xs touch-manipulation"
               >
                 ›
               </button>
@@ -102,7 +63,7 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
 
           {/* Image Dots */}
           {allImages.length > 1 && (
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+            <div className="absolute bottom-2 sm:bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
               {allImages.map((_, idx) => (
                 <button
                   key={idx}
@@ -110,7 +71,7 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
                     e.stopPropagation()
                     setActiveImageIndex(idx)
                   }}
-                  className={`w-2 h-2 rounded-full transition-all ${
+                  className={`w-2 h-2 rounded-full transition-all touch-manipulation ${
                     idx === activeImageIndex
                       ? 'bg-soul-orange w-4'
                       : 'bg-white/40 hover:bg-white/60'
@@ -122,11 +83,11 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
 
           {/* Expand Icon */}
           <motion.div
-            className="absolute bottom-4 right-4 bg-soul-orange/90 rounded-full p-2 backdrop-blur-sm"
+            className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 bg-soul-orange/90 rounded-full p-1.5 sm:p-2 backdrop-blur-sm"
             animate={{ rotate: isExpanded ? 180 : 0 }}
           >
             <svg
-              className="w-5 h-5 text-soul-black"
+              className="w-4 h-4 sm:w-5 sm:h-5 text-soul-black"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -142,17 +103,17 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
         </div>
 
         {/* Content Section */}
-        <div className="p-6 space-y-3">
+        <div className="p-4 sm:p-6 space-y-2 sm:space-y-3">
           <div>
-            <h3 className="text-lg font-bold text-soul-white group-hover:text-soul-orange transition-colors">
+            <h3 className="text-base sm:text-lg font-bold text-soul-white group-hover:text-soul-orange transition-colors">
               {product.name}
             </h3>
-            <p className="text-sm text-soul-orange font-medium">{product.tagline}</p>
+            <p className="text-xs sm:text-sm text-soul-orange font-medium">{product.tagline}</p>
           </div>
 
           {/* Collapsed - Short Description */}
           {!isExpanded && (
-            <p className="text-sm text-soul-gray truncate-2">
+            <p className="text-xs sm:text-sm text-soul-gray truncate-2">
               {product.shortDescription}
             </p>
           )}
@@ -165,20 +126,20 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
-                className="space-y-4 pt-2 overflow-hidden"
+                className="space-y-3 sm:space-y-4 pt-2 overflow-hidden"
               >
                 {/* Full Description */}
-                <p className="text-sm text-soul-gray leading-relaxed">
+                <p className="text-xs sm:text-sm text-soul-gray leading-relaxed">
                   {product.description}
                 </p>
 
                 {/* Benefits */}
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-soul-white">Benefits:</h4>
+                <div className="space-y-1.5 sm:space-y-2">
+                  <h4 className="text-xs sm:text-sm font-semibold text-soul-white">Benefits:</h4>
                   <ul className="space-y-1">
                     {product.benefits.map((benefit, idx) => (
-                      <li key={idx} className="text-sm text-soul-gray flex items-start gap-2">
-                        <span className="text-soul-orange mt-1">▸</span>
+                      <li key={idx} className="text-xs sm:text-sm text-soul-gray flex items-start gap-2">
+                        <span className="text-soul-orange mt-0.5">▸</span>
                         <span>{benefit}</span>
                       </li>
                     ))}
@@ -186,12 +147,12 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
                 </div>
 
                 {/* Features */}
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-soul-white">Features:</h4>
+                <div className="space-y-1.5 sm:space-y-2">
+                  <h4 className="text-xs sm:text-sm font-semibold text-soul-white">Features:</h4>
                   <ul className="space-y-1">
                     {product.features.slice(0, 3).map((feature, idx) => (
-                      <li key={idx} className="text-sm text-soul-gray flex items-start gap-2">
-                        <span className="text-soul-orange mt-1">▪</span>
+                      <li key={idx} className="text-xs sm:text-sm text-soul-gray flex items-start gap-2">
+                        <span className="text-soul-orange mt-0.5">▪</span>
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -203,13 +164,12 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="pt-4"
+                  className="pt-3 sm:pt-4"
                 >
                   <Link href={`/products/${product.slug}`}>
                     <motion.button
-                      whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-full py-2 bg-soul-orange/20 border border-soul-orange text-soul-orange font-medium rounded-lg hover:bg-soul-orange hover:text-soul-black transition-all text-sm"
+                      className="w-full py-2.5 sm:py-2 bg-soul-orange/20 border border-soul-orange text-soul-orange font-medium rounded-lg hover:bg-soul-orange hover:text-soul-black transition-all text-sm touch-manipulation"
                     >
                       View Full Details
                     </motion.button>
@@ -219,7 +179,7 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
             )}
           </AnimatePresence>
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   )
 }
