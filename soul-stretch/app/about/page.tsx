@@ -4,7 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'About Soul Stretch | Premium Fitness Equipment India',
   description:
-    'About Soul Stretch, a premium fitness brand in India. Delivering elite recovery and performance equipment for Indian athletes nationwide.',
+    'Discover Soul Stretch, India\'s premium fitness equipment brand. Elite recovery tools and performance gear engineered for Indian athletes. Pan-India delivery.',
   keywords: [
     'about Soul Stretch',
     'premium fitness brand India',
@@ -50,7 +50,7 @@ export default function AboutPage() {
             The Soul Stretch Story
           </h1>
           <p className="text-2xl text-soul-gray max-w-3xl mx-auto leading-relaxed">
-            India's premium fitness equipment brand. Built by athletes. Engineered for recovery.
+            India's premium fitness equipment brand. Built by athletes. Engineered for recovery. Trusted nationwide.
           </p>
         </div>
       </section>
@@ -62,16 +62,16 @@ export default function AboutPage() {
             <h2 className="text-5xl font-black text-soul-white">Our Mission</h2>
             <div className="space-y-4 text-lg text-soul-gray leading-relaxed">
               <p>
-                Soul Stretch exists to deliver premium fitness equipment to every serious athlete in India. We bridge the gap between elite-grade fitness recovery equipment and everyday accessibility.
+                Soul Stretch exists to deliver premium fitness equipment to every serious athlete in India. We bridge the gap between elite-grade fitness recovery equipment and everyday accessibility, so nothing stands between you and peak performance.
               </p>
               <p>
                 For too long, athletes in India had two choices: settle for cheap gym accessories or overpay for imported fitness recovery equipment. We changed that.
               </p>
               <p>
-                We engineer and deliver premium gym accessories online in India — foam rollers, resistance bands, hand grippers, protein shakers, toning tubes — at prices that make professional-grade recovery accessible to every athlete.
+                We engineer and deliver premium gym accessories online in India: foam rollers, resistance bands, hand grippers, protein shakers, and toning tubes. All at prices that make professional-grade recovery accessible to every athlete.
               </p>
               <p>
-                Your muscles grow after training. Your mind sharpens after rest. Your performance builds in recovery. We engineer the premium fitness equipment that powers that transformation.
+                Your muscles grow after training. Your mind sharpens after rest. Your performance builds in recovery. We engineer the premium fitness equipment that ignites that transformation.
               </p>
             </div>
           </div>
@@ -86,12 +86,12 @@ export default function AboutPage() {
               },
               {
                 title: 'Made for India',
-                description: 'Premium fitness equipment designed for Indian athletes. Fast gym equipment delivery India-wide.',
+                description: 'Premium fitness equipment designed for Indian athletes, with fast gym equipment delivery India-wide.',
                 icon: '🇮🇳',
               },
               {
                 title: 'Relentless Innovation',
-                description: 'We evolve our gym accessories based on athlete feedback and sports science. Better tools. Better results.',
+                description: 'We evolve our gym accessories based on athlete feedback and sports science. Better tools, better results, relentless progress.',
                 icon: '🚀',
               },
             ].map((value) => (
@@ -121,14 +121,14 @@ export default function AboutPage() {
             <div className="space-y-3">
               <h3 className="text-2xl font-bold text-soul-orange">Recover Faster</h3>
               <p className="text-lg text-soul-gray leading-relaxed">
-                Recovery is not passive rest. It's active restoration. Foam rollers, resistance bands, toning tubes — fitness recovery equipment is not luxury. It's necessity.
+                Recovery is not passive rest. It's active restoration. Foam rollers, resistance bands, toning tubes. Fitness recovery equipment is not a luxury. It's a necessity.
               </p>
             </div>
 
             <div className="space-y-3">
               <h3 className="text-2xl font-bold text-soul-orange">Stretch Further</h3>
               <p className="text-lg text-soul-gray leading-relaxed">
-                Your potential isn't fixed. It stretches with every session, every recovery, every intentional movement. Buy fitness recovery tools online and push that boundary further.
+                Your potential is not fixed. It stretches with every session, every recovery, every intentional movement. Buy premium recovery tools online and push that boundary further.
               </p>
             </div>
           </div>
@@ -151,10 +151,10 @@ export default function AboutPage() {
               Meanwhile, Indian athletes are training harder than ever. Running marathons. Competing in powerlifting. Wrestling. Climbing. Playing football, cricket, badminton at elite levels.
             </p>
             <p>
-              These athletes deserve the best gym accessories for athletes — the same recovery tools as Olympians. Not someday. Now.
+              These athletes deserve the best gym accessories for athletes, the same recovery tools used by Olympians. Not someday. Now.
             </p>
             <p className="text-xl text-soul-orange font-semibold">
-              Soul Stretch democratizes premium fitness equipment in India.
+              Soul Stretch is here to democratize premium fitness equipment in India.
             </p>
           </div>
         </div>
@@ -182,20 +182,20 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <h2 className="text-4xl font-bold text-soul-white">
-            Shop Premium Fitness Equipment in India
+            Elevate Your Training With Premium Fitness Equipment
           </h2>
           <p className="text-lg text-soul-gray max-w-2xl mx-auto">
-            Your training demands premium fitness recovery equipment. Build your arsenal with Soul Stretch.
+            Your training demands premium fitness recovery equipment. Build your arsenal and transform your performance with Soul Stretch.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/products">
               <button className="px-8 py-4 bg-soul-orange text-soul-black font-bold rounded-lg hover:bg-orange-600 transition-colors">
-                Shop Equipment
+                Shop Premium Equipment
               </button>
             </Link>
             <Link href="/contact">
               <button className="px-8 py-4 border-2 border-soul-orange text-soul-orange font-bold rounded-lg hover:bg-soul-orange hover:text-soul-black transition-colors">
-                Get in Touch
+                Contact Us Today
               </button>
             </Link>
           </div>

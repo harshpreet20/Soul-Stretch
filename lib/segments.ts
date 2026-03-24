@@ -16,10 +16,10 @@ export const SEGMENT_CONFIGS: Record<AudienceSegment, SegmentConfig> = {
   athlete: {
     id: 'athlete',
     label: 'Serious Athlete',
-    description: 'Competitive athletes focused on performance and recovery',
-    heroHeadline: 'Train Better. Recover Faster. Stretch Further.',
+    description: 'Competitive athletes driven to elevate performance and accelerate recovery',
+    heroHeadline: 'Train Better. Recover Faster. Dominate Every Rep.',
     heroSubtext:
-      "India's premium fitness equipment for serious athletes. Recovery tools, grip trainers, resistance bands, and gym accessories — engineered to elevate your performance.",
+      "India's premium fitness equipment for serious athletes. Recovery tools, grip trainers, resistance bands, and gym accessories, all engineered to unleash your peak performance.",
     ctaLabel: 'Shop Premium Equipment',
     ctaLink: '/products',
     priorityCategories: ['recovery', 'strength', 'cardio'],
@@ -29,9 +29,9 @@ export const SEGMENT_CONFIGS: Record<AudienceSegment, SegmentConfig> = {
     id: 'gym-owner',
     label: 'Gym / Studio Owner',
     description: 'Gym owners and studio managers buying in bulk',
-    heroHeadline: 'Equip Your Gym. Elevate Your Members.',
+    heroHeadline: 'Equip Your Gym. Elevate Every Member.',
     heroSubtext:
-      'Bulk pricing on premium fitness equipment for gyms and studios across India. Stock the recovery and strength tools your members actually use.',
+      'Bulk pricing on premium fitness equipment for gyms and studios across India. Stock the recovery and strength tools your members demand.',
     ctaLabel: 'Get Bulk Pricing',
     ctaLink: '/contact?type=gym',
     priorityCategories: ['recovery', 'accessories', 'strength'],
@@ -40,10 +40,10 @@ export const SEGMENT_CONFIGS: Record<AudienceSegment, SegmentConfig> = {
   beginner: {
     id: 'beginner',
     label: 'Fitness Beginner',
-    description: 'New to fitness, looking for accessible entry-level gear',
-    heroHeadline: 'Start Your Fitness Journey Right.',
+    description: 'New to fitness and ready to build strength with accessible starter gear',
+    heroHeadline: 'Ignite Your Fitness Journey Today.',
     heroSubtext:
-      'Premium yet accessible fitness equipment designed for every level. Resistance bands, foam rollers, and more — everything you need to build a home gym in India.',
+      'Premium yet accessible fitness equipment designed for every level. Resistance bands, foam rollers, and more. Everything you need to build a powerful home gym in India.',
     ctaLabel: 'Explore Starter Gear',
     ctaLink: '/products',
     priorityCategories: ['accessories', 'cardio', 'recovery'],
@@ -52,8 +52,8 @@ export const SEGMENT_CONFIGS: Record<AudienceSegment, SegmentConfig> = {
   rehab: {
     id: 'rehab',
     label: 'Rehab / Physio',
-    description: 'Rehabilitation patients and physiotherapy practitioners',
-    heroHeadline: 'Recover With Confidence.',
+    description: 'Rehabilitation patients and physiotherapy practitioners seeking safe, effective recovery tools',
+    heroHeadline: 'Recover With Confidence. Rebuild With Purpose.',
     heroSubtext:
       'Gentle yet effective recovery and mobility equipment trusted by physiotherapists across India. Support your rehabilitation journey with tools designed for safe, progressive recovery.',
     ctaLabel: 'View Recovery Tools',
@@ -65,9 +65,9 @@ export const SEGMENT_CONFIGS: Record<AudienceSegment, SegmentConfig> = {
     id: 'distributor',
     label: 'Distributor / Retailer',
     description: 'Wholesale and retail distribution partners',
-    heroHeadline: 'Partner With India\'s Fastest-Growing Fitness Brand.',
+    heroHeadline: 'Partner With India\'s Fastest-Growing Premium Fitness Brand.',
     heroSubtext:
-      'High-margin premium fitness equipment with pan-India demand. Become a Soul Stretch retail partner and grow with us.',
+      'High-margin premium fitness equipment with pan-India demand. Become a Soul Stretch retail partner and dominate the fitness market with us.',
     ctaLabel: 'Become a Partner',
     ctaLink: '/contact?type=distributor',
     priorityCategories: ['recovery', 'strength', 'accessories'],

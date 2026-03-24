@@ -4,7 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Fitness Recovery Guides & Gym Tips | Soul Stretch',
   description:
-    'Expert fitness recovery guides and gym equipment usage tips for India. Learn foam rolling, resistance training, and grip strength techniques.',
+    'Expert fitness recovery guides and gym equipment tips for Indian athletes. Master foam rolling, resistance training, and grip strength techniques to transform your performance.',
   keywords: [
     'fitness recovery guides',
     'gym equipment usage tips India',
@@ -24,7 +24,7 @@ const guides = [
 
 ## The Science
 
-When you exercise intensely, your muscles develop micro-tears. More critically, muscle fibers develop adhesions—tight knots that restrict blood flow and oxygen delivery. Foam rolling breaks these adhesions, improving circulation and reducing soreness.
+When you exercise intensely, your muscles develop micro-tears. More critically, muscle fibers develop adhesions, tight knots that restrict blood flow and oxygen delivery. Foam rolling breaks these adhesions, improving circulation and reducing soreness.
 
 Studies show that athletes who foam roll for 5-10 minutes daily experience 30% faster recovery compared to control groups. That's not marginal. That's why the foam roller is essential premium fitness equipment for any athlete in India or anywhere.
 
@@ -36,7 +36,7 @@ Place the foam roller under your quads. Support yourself on your forearms. Roll 
 Why: Quads absorb impact from every sprint, jump, and squat. Tight quads restrict hip mobility and knee stability.
 
 ### 2. IT Band Release
-Lie on your side, foam roller under your hip. Cross your top leg over for stability. Roll from hip to knee. This is intense—breathe through it. 90 seconds per side.
+Lie on your side, foam roller under your hip. Cross your top leg over for stability. Roll from hip to knee. This is intense, so breathe through it. 90 seconds per side.
 
 Why: The IT band is notoriously tight. It stabilizes every lateral movement. Releasing it prevents knee pain and improves lateral agility.
 
@@ -68,7 +68,7 @@ Why: Calves are constantly contracted. Tight calves create plantar fasciitis, re
 ### 8. Thoracic Spine Extension
 Foam roller perpendicular under your mid-back. Hands behind your head. Slowly extend backward, letting your spine articulate around the roller. 12-15 reps.
 
-Why: This isn't rolling—it's mobility work. It opens your chest and restores thoracic extension needed for pressing.
+Why: This is not rolling. It's mobility work. It opens your chest and restores thoracic extension needed for pressing.
 
 ### 9. Spinal Rotations
 Foam roller under your mid-back, perpendicular to your spine. Hands behind your head. Rotate your torso right and left. 15 reps each side.
@@ -96,14 +96,14 @@ Days 2-5: Focus on your specific tight areas (5-10 minutes)
 Day 6: Light full-body rolling
 Day 7: Complete rest
 
-Performance is not built in the gym alone. It's built in recovery. Buy a foam roller online and make rolling non-negotiable. Soul Stretch delivers premium fitness recovery equipment across India — fast.`,
+Performance is not built in the gym alone. It's built in recovery. Buy a foam roller online and make rolling non-negotiable. Soul Stretch delivers premium fitness recovery equipment across India, fast and reliable.`,
     category: 'Recovery',
     readTime: '12 min read',
   },
   {
     id: 2,
     title: 'Best Resistance Bands India: Complete Home Workout & Toning Tube Exercise Guide',
-    excerpt: 'Full-body resistance band and toning tube exercise program. The best gym accessories for athletes in India — infinite workout variations, zero equipment footprint.',
+    excerpt: 'Full-body resistance band and toning tube exercise program. The best gym accessories for athletes in India with infinite workout variations and zero equipment footprint.',
     content: `Resistance bands are the most underrated premium fitness equipment you can own. They're portable. They're affordable. They deliver variable resistance that dumbbells cannot.
 
 Elite athletes across India use resistance bands and toning tubes because they work. Full stop.
@@ -112,7 +112,7 @@ Elite athletes across India use resistance bands and toning tubes because they w
 
 Traditional weights use fixed resistance. 20 pounds is 20 pounds at the start and end of the movement. Resistance bands use variable resistance. They increase as you stretch. This matches the strength curve of most movements perfectly.
 
-Second: bands produce mechanical tension at the range where you're strongest—the lockout. This drives hypertrophy and strength gains.
+Second: bands produce mechanical tension at the range where you're strongest, the lockout. This drives hypertrophy and strength gains.
 
 Third: bands are safer on your joints. They reduce deceleration forces. Your rotator cuff stays healthy while you build serious strength.
 
@@ -376,7 +376,7 @@ Integrate grip training directly into sport movements:
 
 ## Results Timeline
 
-- Week 1: Grip soreness (normal—new stimulus)
+- Week 1: Grip soreness (normal, it's a new stimulus)
 - Week 2: Improved dead hang time
 - Week 4: Noticeable deadlift improvement
 - Week 8: Sport-specific performance gains
@@ -384,7 +384,7 @@ Integrate grip training directly into sport movements:
 
 ## The Tools
 
-Soul Stretch offers the complete grip arsenal — the best hand gripper India has available:
+Soul Stretch offers the complete grip arsenal. The best hand gripper India has available:
 - Fixed 60 kg professional grip strength trainer for maximal strength
 - Adjustable 10-60 kg hand gripper for progressive overload
 - Wrist Exerciser for rotational strength
@@ -444,7 +444,7 @@ export default function GuidesPage() {
             <span className="text-soul-orange">Equipment Guides</span>
           </h1>
           <p className="text-xl text-soul-gray max-w-2xl mx-auto leading-relaxed">
-            Expert guides on premium fitness equipment, recovery techniques, and strength training. The best gym accessories for athletes in India — explained.
+            Expert guides on premium fitness equipment, recovery techniques, and strength training. The best gym accessories for athletes in India, explained by experts.
           </p>
         </div>
       </section>
@@ -504,7 +504,7 @@ export default function GuidesPage() {
 
               {/* Share & CTA */}
               <div className="flex flex-col sm:flex-row gap-4 items-center justify-between border-t border-soul-orange/10 pt-8 mt-12">
-                <p className="text-soul-gray">Found this guide helpful?</p>
+                <p className="text-soul-gray">Did this guide elevate your training knowledge?</p>
                 <div className="flex gap-3">
                   <a
                     href={`https://wa.me/919876543210?text=I found your guide "${guide.title}" helpful!`}
@@ -516,7 +516,7 @@ export default function GuidesPage() {
                   </a>
                   <Link href="/products">
                     <button className="px-6 py-3 border border-soul-orange text-soul-orange font-bold rounded-lg hover:bg-soul-orange hover:text-soul-black transition-colors">
-                      Shop Now
+                      Shop the Gear
                     </button>
                   </Link>
                 </div>
@@ -534,13 +534,13 @@ export default function GuidesPage() {
       {/* Bottom CTA */}
       <section className="py-20 bg-gradient-to-r from-soul-orange/10 via-soul-black to-soul-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <h2 className="text-4xl font-bold text-soul-white">Ready to Buy Fitness Recovery Tools Online?</h2>
+          <h2 className="text-4xl font-bold text-soul-white">Ready to Transform Your Recovery?</h2>
           <p className="text-soul-gray text-lg">
-            Every guide features Soul Stretch premium fitness equipment. Browse our complete collection with fast gym equipment delivery India-wide.
+            Every guide features Soul Stretch premium fitness equipment. Browse our complete collection and buy gym accessories online with fast delivery India-wide.
           </p>
           <Link href="/products">
             <button className="px-8 py-4 bg-soul-orange text-soul-black font-bold rounded-lg hover:bg-orange-600 transition-colors">
-              Shop Premium Equipment
+              Explore Premium Equipment
             </button>
           </Link>
         </div>
