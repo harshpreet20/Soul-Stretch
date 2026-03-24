@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210'
+const WHATSAPP_NUMBER = '919217103413'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()

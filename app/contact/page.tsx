@@ -147,7 +147,7 @@ function ContactPageContent() {
               </div>
 
               <a
-                href="https://wa.me/919876543210?text=Hi, I'd like to know more about Soul Stretch products"
+                href="https://wa.me/919217103413?text=Hi, I'd like to know more about Soul Stretch products"
                 target="_blank"
                 rel="noopener noreferrer"
               >

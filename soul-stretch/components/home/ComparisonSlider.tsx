@@ -65,8 +65,14 @@ export default function ComparisonSlider() {
             className="relative w-full h-80 sm:h-96 md:h-[500px] rounded-xl sm:rounded-2xl overflow-hidden cursor-col-resize group bg-soul-card select-none touch-pan-y"
           >
             {/* Left Panel - Resistance Bands */}
-            <div className="absolute left-0 top-0 w-full h-full overflow-hidden">
-              <div className="relative w-full h-full bg-gradient-to-br from-soul-orange/10 to-soul-orange/5 p-4 sm:p-8 flex flex-col justify-center">
+            <div
+              className="absolute left-0 top-0 h-full overflow-hidden"
+              style={{ width: `${position}%` }}
+            >
+              <div
+                className="relative h-full bg-gradient-to-br from-soul-orange/10 to-soul-orange/5 p-4 sm:p-8 flex flex-col justify-center"
+                style={{ width: `${containerRef.current ? containerRef.current.offsetWidth : 800}px` }}
+              >
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-soul-orange mb-4 sm:mb-6">
                   Resistance Bands
                 </h3>
@@ -83,20 +89,25 @@ export default function ComparisonSlider() {
 
             {/* Right Panel - Dumbbells */}
             <div
-              className="absolute top-0 right-0 h-full overflow-hidden bg-gradient-to-br from-soul-white/5 to-soul-white/10 p-4 sm:p-8 flex flex-col justify-center"
+              className="absolute top-0 right-0 h-full overflow-hidden bg-gradient-to-br from-soul-white/5 to-soul-white/10"
               style={{ width: `${100 - position}%` }}
             >
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-soul-white mb-4 sm:mb-6">
-                Dumbbells
-              </h3>
-              <ul className="space-y-2 sm:space-y-3 text-soul-gray">
-                {['Fixed weight increments only', 'Heavy impact on joints', 'Requires home gym space', 'Expensive full rack setup', 'Limited exercise library'].map((item) => (
-                  <li key={item} className="flex items-start gap-2 sm:gap-3">
-                    <span className="text-soul-gray text-base sm:text-lg flex-shrink-0">•</span>
-                    <span className="text-sm sm:text-base">{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <div
+                className="absolute top-0 right-0 h-full p-4 sm:p-8 flex flex-col justify-center"
+                style={{ width: `${containerRef.current ? containerRef.current.offsetWidth : 800}px` }}
+              >
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-soul-white mb-4 sm:mb-6">
+                  Dumbbells
+                </h3>
+                <ul className="space-y-2 sm:space-y-3 text-soul-gray">
+                  {['Fixed weight increments only', 'Heavy impact on joints', 'Requires home gym space', 'Expensive full rack setup', 'Limited exercise library'].map((item) => (
+                    <li key={item} className="flex items-start gap-2 sm:gap-3">
+                      <span className="text-soul-gray text-base sm:text-lg flex-shrink-0">•</span>
+                      <span className="text-sm sm:text-base">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* Divider Handle */}

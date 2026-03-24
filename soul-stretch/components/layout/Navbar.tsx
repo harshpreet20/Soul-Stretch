@@ -110,7 +110,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden fixed inset-0 top-14 bg-soul-black/98 backdrop-blur-lg z-40"
+              className="md:hidden fixed inset-0 top-14 bg-soul-black z-[55]"
             >
               <div className="flex flex-col items-center justify-center h-full -mt-14 gap-2">
                 {navItems.map((item, idx) => (

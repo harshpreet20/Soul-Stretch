@@ -10,7 +10,7 @@ interface ProductCTAButtonsProps {
 }
 
 export default function ProductCTAButtons({ productName, productSlug }: ProductCTAButtonsProps) {
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210'
+  const whatsappNumber = '919217103413'
 
   const handleWhatsAppClick = () => {
     sendToN8N({

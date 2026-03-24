@@ -507,7 +507,7 @@ export default function GuidesPage() {
                 <p className="text-soul-gray">Did this guide elevate your training knowledge?</p>
                 <div className="flex gap-3">
                   <a
-                    href={`https://wa.me/919876543210?text=I found your guide "${guide.title}" helpful!`}
+                    href={`https://wa.me/919217103413?text=I found your guide "${guide.title}" helpful!`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-6 py-3 bg-soul-orange text-soul-black font-bold rounded-lg hover:bg-orange-600 transition-colors"
