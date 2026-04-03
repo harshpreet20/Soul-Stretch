@@ -23,7 +23,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     shortDescription: 'Premium muscle recovery roller by Soul Stretch. Buy foam roller online in India for deep tissue relief.',
     description: 'The Soul Stretch Foam Roller is the go-to muscle recovery roller for Indian athletes seeking deep tissue relief. Engineered to target muscle knots and lactic acid buildup, this high-density EVA foam roller maintains shape under pressure, delivering consistent myofascial release. Buy foam roller online in India from Soul Stretch and recover faster after every session.',
     category: 'recovery',
-    imageUrl: 'https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?w=600&q=80',
+    imageUrl: '/images/products/foam-roller.jpg',
     images: [],
     benefits: ['Breaks down muscle knots and adhesions', 'Accelerates post-workout recovery', 'Improves blood circulation and oxygen delivery'],
     features: ['High-density EVA foam', '33cm x 14cm standard size', 'Supports up to 120kg', 'Grid texture for targeted relief']
@@ -83,7 +83,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     shortDescription: 'Premium wrist exerciser by Soul Stretch. Buy wrist trainer online in India for mobility and strength.',
     description: 'The Soul Stretch Wrist Exerciser targets the often-neglected forearm rotator muscles, improving wrist stability and reducing injury risk for Indian athletes. This premium wrist trainer unlocks the mobility needed for heavy pressing and pulling movements. Buy wrist exerciser online in India from Soul Stretch.',
     category: 'strength',
-    imageUrl: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80',
+    imageUrl: '/images/products/wrist-exerciser.webp',
     images: [],
     benefits: ['Improves wrist flexibility and range of motion', 'Strengthens wrist stabilizers', 'Reduces wrist injury risk'],
     features: ['360° rotation mechanism', 'Non-slip rubber grip', 'Compact travel design', 'Adjustable tension']
@@ -157,7 +157,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     shortDescription: 'Premium wrist support wraps by Soul Stretch. Buy wrist wraps online in India for gym protection.',
     description: 'The Soul Stretch Wrist Support wraps your wrists in firm neoprene compression, stabilizing the joint during heavy lifts, overhead pressing, and wrist-intensive sports. Trusted by Indian athletes for reliable wrist protection, this premium wrist wrap lets you train harder and stay protected. Buy wrist support online in India from Soul Stretch.',
     category: 'support',
-    imageUrl: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&q=80',
+    imageUrl: '/images/products/wrist-support.jpeg',
     images: [],
     benefits: ['Prevents hyperextension during heavy lifts', 'Reduces wrist inflammation', 'Improves lifting confidence'],
     features: ['Neoprene compression material', 'Adjustable velcro closure', 'Thumb loop for secure fit', 'One size fits most']
@@ -170,7 +170,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     shortDescription: 'Premium resistance bands India by Soul Stretch. Buy 5-band progressive resistance set online in India.',
     description: 'The Soul Stretch Resistance Band Set is a complete strength and mobility training system for Indian athletes. Five color-coded resistance bands spanning 5 to 50lbs let you progressively overload any movement pattern. Buy resistance bands online in India from Soul Stretch and train at home, at the gym, or on the road.',
     category: 'recovery',
-    imageUrl: 'https://images.unsplash.com/photo-1598971457999-ca4ef48a9a71?w=600&q=80',
+    imageUrl: '/images/products/resistance-band.jpg',
     images: [],
     benefits: ['Progressive overload for every fitness level', 'Full-body training capability', 'Joint-friendly resistance'],
     features: ['5 resistance levels: 5/10/20/35/50lbs', 'Natural latex construction', 'Includes carry bag + door anchor', '150cm length per band']
@@ -196,7 +196,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     shortDescription: 'Premium skipping rope by Soul Stretch. Buy speed jump rope online in India with ball-bearing handles.',
     description: 'The Soul Stretch Skipping Rope is a premium speed jump rope built for Indian athletes who take cardio seriously. Precision ball-bearing handles deliver zero-tangle high-speed rotation, while the durable 3m adjustable cable and contoured foam grips ensure sustained sessions without hand fatigue. Buy skipping rope online in India from Soul Stretch.',
     category: 'cardio',
-    imageUrl: 'https://images.unsplash.com/photo-1598632640487-6ea4a442ca55?w=600&q=80',
+    imageUrl: '/images/products/skipping-rope.jpg',
     images: [],
     benefits: ['Burns 10-16 calories per minute', 'Improves coordination and footwork', 'Compact cardio anywhere'],
     features: ['Ball-bearing swivel handles', '3m adjustable cable', 'Foam cushion grips', 'PVC-coated steel cable']
