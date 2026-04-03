@@ -72,11 +72,9 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
 
         {/* Image Section */}
         <div
-          className="relative h-56 sm:h-72 overflow-hidden cursor-pointer"
+          className="relative h-56 sm:h-72 overflow-hidden cursor-pointer bg-white"
           onClick={() => onToggle(product.slug)}
         >
-          {/* Background glow */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent" />
 
           {/* Product Image with crossfade */}
           <AnimatePresence mode="wait">

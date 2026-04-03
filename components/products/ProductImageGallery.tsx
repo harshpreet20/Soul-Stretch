@@ -43,9 +43,7 @@ export default function ProductImageGallery({ imageUrl, images, name }: ProductI
   return (
     <div className="space-y-3 sm:space-y-4">
       {/* Main Image Container */}
-      <div className="relative h-72 sm:h-96 md:h-[520px] rounded-2xl sm:rounded-3xl overflow-hidden bg-white/[0.02] border border-white/[0.06]">
-        {/* Subtle inner glow */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] via-transparent to-soul-black/20 pointer-events-none z-10" />
+      <div className="relative h-72 sm:h-96 md:h-[520px] rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-white/[0.06]">
 
         {/* Animated image */}
         <AnimatePresence mode="wait" custom={direction}>
@@ -115,7 +113,7 @@ export default function ProductImageGallery({ imageUrl, images, name }: ProductI
               key={idx}
               whileTap={{ scale: 0.95 }}
               onClick={() => navigate(idx)}
-              className={`relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-xl overflow-hidden bg-white/[0.02] transition-all duration-300 touch-manipulation ${
+              className={`relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-xl overflow-hidden bg-white transition-all duration-300 touch-manipulation ${
                 idx === activeIndex
                   ? 'border-2 border-soul-orange shadow-lg shadow-soul-orange/20 scale-105'
                   : 'border-2 border-white/[0.06] hover:border-soul-orange/30'

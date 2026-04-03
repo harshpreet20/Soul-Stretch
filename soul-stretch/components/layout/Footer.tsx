@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 const WHATSAPP_NUMBER = '919217103413'
@@ -67,9 +68,15 @@ export default function Footer() {
             viewport={{ once: true }}
             className="col-span-2 sm:col-span-2 md:col-span-1"
           >
-            <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
-              SOUL <span className="text-soul-orange">STRETCH</span>
-            </h3>
+            <Link href="/" className="inline-block mb-2 sm:mb-3">
+              <Image
+                src="/images/ss-logo.png"
+                alt="Soul Stretch"
+                width={140}
+                height={46}
+                className="h-9 sm:h-10 w-auto"
+              />
+            </Link>
             <p className="text-xs sm:text-sm text-soul-gray mb-3 sm:mb-4">
               Train Better. Recover Faster. Stretch Further.
             </p>

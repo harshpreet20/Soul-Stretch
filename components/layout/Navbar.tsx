@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -62,8 +63,15 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link href="/" className="text-lg sm:text-xl font-bold tracking-tight">
-                SOUL <span className="text-soul-orange">STRETCH</span>
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/images/ss-logo.png"
+                  alt="Soul Stretch"
+                  width={120}
+                  height={40}
+                  className="h-8 sm:h-10 w-auto"
+                  priority
+                />
               </Link>
             </motion.div>
 
@@ -126,10 +134,16 @@ export default function Navbar() {
               <div className="flex justify-between items-center h-14 px-4">
                 <Link
                   href="/"
-                  className="text-lg font-bold tracking-tight"
+                  className="flex items-center"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  SOUL <span className="text-soul-orange">STRETCH</span>
+                  <Image
+                    src="/images/ss-logo.png"
+                    alt="Soul Stretch"
+                    width={120}
+                    height={40}
+                    className="h-8 w-auto"
+                  />
                 </Link>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
