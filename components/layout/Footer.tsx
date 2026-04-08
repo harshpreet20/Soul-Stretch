@@ -74,7 +74,7 @@ export default function Footer() {
                 alt="Soul Stretch"
                 width={176}
                 height={56}
-                className="h-12 sm:h-14 w-auto mix-blend-screen"
+                className="h-7 sm:h-8 w-auto mix-blend-screen"
               />
             </Link>
             <p className="text-xs sm:text-sm text-soul-gray mb-3 sm:mb-4">

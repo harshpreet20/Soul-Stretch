@@ -69,7 +69,7 @@ export default function Navbar() {
                   alt="Soul Stretch"
                   width={176}
                   height={56}
-                  className="h-12 sm:h-14 w-auto mix-blend-screen"
+                  className="h-6 sm:h-7 w-auto mix-blend-screen"
                   priority
                 />
               </Link>
@@ -142,7 +142,7 @@ export default function Navbar() {
                     alt="Soul Stretch"
                     width={144}
                     height={48}
-                    className="h-12 w-auto mix-blend-screen"
+                    className="h-6 w-auto mix-blend-screen"
                   />
                 </Link>
                 <button
