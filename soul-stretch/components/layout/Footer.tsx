@@ -69,13 +69,15 @@ export default function Footer() {
             className="col-span-2 sm:col-span-2 md:col-span-1"
           >
             <Link href="/" className="inline-block mb-2 sm:mb-3">
-              <Image
-                src="/images/ss-logo.png"
-                alt="Soul Stretch"
-                width={140}
-                height={46}
-                className="h-9 sm:h-10 w-auto"
-              />
+              <div className="relative h-12 sm:h-14 w-36 sm:w-44 rounded-lg overflow-hidden bg-white/90">
+                <Image
+                  src="/images/ss-logo.png"
+                  alt="Soul Stretch"
+                  fill
+                  sizes="176px"
+                  className="object-contain"
+                />
+              </div>
             </Link>
             <p className="text-xs sm:text-sm text-soul-gray mb-3 sm:mb-4">
               Train Better. Recover Faster. Stretch Further.

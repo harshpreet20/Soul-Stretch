@@ -64,14 +64,16 @@ export default function Navbar() {
               whileTap={{ scale: 0.95 }}
             >
               <Link href="/" className="flex items-center">
-                <Image
-                  src="/images/ss-logo.png"
-                  alt="Soul Stretch"
-                  width={120}
-                  height={40}
-                  className="h-8 sm:h-10 w-auto"
-                  priority
-                />
+                <div className="relative h-12 sm:h-14 w-36 sm:w-44 rounded-lg overflow-hidden bg-white/90">
+                  <Image
+                    src="/images/ss-logo.png"
+                    alt="Soul Stretch"
+                    fill
+                    sizes="176px"
+                    className="object-contain"
+                    priority
+                  />
+                </div>
               </Link>
             </motion.div>
 
@@ -137,13 +139,15 @@ export default function Navbar() {
                   className="flex items-center"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <Image
-                    src="/images/ss-logo.png"
-                    alt="Soul Stretch"
-                    width={120}
-                    height={40}
-                    className="h-8 w-auto"
-                  />
+                  <div className="relative h-12 w-36 rounded-lg overflow-hidden bg-white/90">
+                    <Image
+                      src="/images/ss-logo.png"
+                      alt="Soul Stretch"
+                      fill
+                      sizes="144px"
+                      className="object-contain"
+                    />
+                  </div>
                 </Link>
                 <button
                   onClick={() => setMobileMenuOpen(false)}

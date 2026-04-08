@@ -1,0 +1,363 @@
+{
+  "name": "Soul Stretch - Ask Soul Chatbot",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "webhook",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "id": "webhook-trigger",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [220, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "condition-chat",
+              "leftValue": "={{ $json.body.source }}",
+              "rightValue": "chat_message",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "route-by-source",
+      "name": "Route by Source",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [440, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "assign-name",
+              "name": "name",
+              "value": "={{ $json.body.name || 'Anonymous' }}",
+              "type": "string"
+            },
+            {
+              "id": "assign-email",
+              "name": "email",
+              "value": "={{ $json.body.email || 'not provided' }}",
+              "type": "string"
+            },
+            {
+              "id": "assign-message",
+              "name": "message",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            },
+            {
+              "id": "assign-source",
+              "name": "source",
+              "value": "={{ $json.body.source }}",
+              "type": "string"
+            },
+            {
+              "id": "assign-page",
+              "name": "page",
+              "value": "={{ $json.body.page }}",
+              "type": "string"
+            },
+            {
+              "id": "assign-timestamp",
+              "name": "timestamp",
+              "value": "={{ $json.body.timestamp }}",
+              "type": "string"
+            },
+            {
+              "id": "assign-product",
+              "name": "product",
+              "value": "={{ $json.body.product || '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "extract-data",
+      "name": "Extract Chat Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [660, 200]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "assign-wa-name",
+              "name": "name",
+              "value": "={{ $json.body.name || 'Anonymous' }}",
+              "type": "string"
+            },
+            {
+              "id": "assign-wa-email",
+              "name": "email",
+              "value": "={{ $json.body.email || 'not provided' }}",
+              "type": "string"
+            },
+            {
+              "id": "assign-wa-source",
+              "name": "source",
+              "value": "={{ $json.body.source }}",
+              "type": "string"
+            },
+            {
+              "id": "assign-wa-page",
+              "name": "page",
+              "value": "={{ $json.body.page }}",
+              "type": "string"
+            },
+            {
+              "id": "assign-wa-timestamp",
+              "name": "timestamp",
+              "value": "={{ $json.body.timestamp }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "extract-whatsapp",
+      "name": "Extract WhatsApp Click",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [660, 420]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Sheet1",
+          "mode": "list"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "timestamp": "={{ $json.timestamp }}",
+            "source": "={{ $json.source }}",
+            "name": "={{ $json.name }}",
+            "email": "={{ $json.email }}",
+            "message": "={{ $json.message }}",
+            "page": "={{ $json.page }}",
+            "product": "={{ $json.product }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            { "id": "timestamp", "displayName": "timestamp", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "source", "displayName": "source", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "name", "displayName": "name", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "email", "displayName": "email", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "message", "displayName": "message", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "page", "displayName": "page", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "product", "displayName": "product", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true }
+          ]
+        },
+        "options": {}
+      },
+      "id": "save-to-sheet",
+      "name": "Save to Google Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [880, 200],
+      "notes": "Connect your Google Sheet here. Create a sheet with columns: timestamp, source, name, email, message, page, product"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Sheet1",
+          "mode": "list"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "timestamp": "={{ $json.timestamp }}",
+            "source": "={{ $json.source }}",
+            "name": "={{ $json.name }}",
+            "email": "={{ $json.email }}",
+            "message": "WhatsApp click",
+            "page": "={{ $json.page }}",
+            "product": ""
+          },
+          "matchingColumns": [],
+          "schema": [
+            { "id": "timestamp", "displayName": "timestamp", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "source", "displayName": "source", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "name", "displayName": "name", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "email", "displayName": "email", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "message", "displayName": "message", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "page", "displayName": "page", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "product", "displayName": "product", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true }
+          ]
+        },
+        "options": {}
+      },
+      "id": "save-whatsapp-click",
+      "name": "Log WhatsApp Click",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [880, 420],
+      "notes": "Logs WhatsApp button clicks to the same sheet"
+    },
+    {
+      "parameters": {
+        "options": {
+          "emailType": "text"
+        },
+        "subject": "=New Ask Soul Chat: {{ $json.source }} from {{ $json.name }}",
+        "message": "=New message from Ask Soul chatbot:\n\nName: {{ $json.name }}\nEmail: {{ $json.email }}\nSource: {{ $json.source }}\nPage: {{ $json.page }}\nProduct: {{ $json.product }}\nTimestamp: {{ $json.timestamp }}\n\nMessage:\n{{ $json.message }}",
+        "toEmail": "support@soulstretch.in"
+      },
+      "id": "send-email",
+      "name": "Email Notification",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [1100, 200],
+      "notes": "Optional: sends email notification for chat messages. Configure SMTP credentials."
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"success\": true, \"message\": \"Message received\" }",
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "id": "respond-success",
+      "name": "Respond Success",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1100, 420]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Route by Source",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route by Source": {
+      "main": [
+        [
+          {
+            "node": "Extract Chat Data",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract WhatsApp Click",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Chat Data": {
+      "main": [
+        [
+          {
+            "node": "Save to Google Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract WhatsApp Click": {
+      "main": [
+        [
+          {
+            "node": "Log WhatsApp Click",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Respond Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save to Google Sheet": {
+      "main": [
+        [
+          {
+            "node": "Email Notification",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Respond Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "description": "Soul Stretch Ask Soul chatbot webhook workflow. Receives chat messages and WhatsApp click events from the website, saves to Google Sheets, and optionally sends email notifications.",
+    "setup_instructions": [
+      "1. Import this workflow into your n8n instance",
+      "2. Configure the Webhook Trigger URL and update NEXT_PUBLIC_N8N_WEBHOOK_URL in your .env",
+      "3. Connect your Google Sheets credentials and select your tracking spreadsheet",
+      "4. Create a Google Sheet with columns: timestamp, source, name, email, message, page, product",
+      "5. (Optional) Configure SMTP credentials for the Email Notification node",
+      "6. Activate the workflow"
+    ]
+  }
+}
