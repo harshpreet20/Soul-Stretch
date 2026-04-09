@@ -363,7 +363,7 @@ export default function WhatsAppButton() {
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
           className={`flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-lg hover:shadow-xl transition-all touch-manipulation ${
-            isOpen ? 'bg-soul-black border border-soul-orange/30' : 'bg-white'
+            isOpen ? 'bg-soul-black border border-soul-orange/30' : 'bg-transparent'
           }`}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}

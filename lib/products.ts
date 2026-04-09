@@ -36,7 +36,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     shortDescription: 'Premium arch support insoles by Soul Stretch. Buy foot insoles online in India for all-day athletic comfort.',
     description: 'Soul Stretch Foot Insoles deliver biomechanical arch support that reduces plantar fatigue, corrects overpronation, and keeps Indian athletes performing at full intensity. Trusted by fitness enthusiasts across India, these premium insoles ensure your feet are ready from morning runs to heavy squats.',
     category: 'support',
-    imageUrl: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80',
+    imageUrl: '/images/products/foot-insoles.jpeg',
     images: [],
     benefits: ['Reduces plantar fascia strain', 'Corrects foot alignment', 'Absorbs impact on hard surfaces'],
     features: ['Memory foam heel cup', 'Breathable top layer', 'Fits sizes 6-12', 'Anti-odor treatment']
@@ -183,7 +183,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     shortDescription: 'Premium gym gloves by Soul Stretch. Buy gym gloves online in India with anti-slip silicone palm grip.',
     description: 'Soul Stretch Gym Gloves are premium fitness gloves designed for Indian athletes, combining anti-slip silicone palm grips with breathable mesh backing and a wraparound wrist strap. Maximum grip security, zero calluses, full range of motion. Buy gym gloves online in India from Soul Stretch.',
     category: 'accessories',
-    imageUrl: 'https://images.unsplash.com/photo-1606170033648-5d55a3edf314?w=600&q=80',
+    imageUrl: '/images/products/gym-gloves.jpeg',
     images: [],
     benefits: ['Eliminates grip fatigue during long sets', 'Prevents callus formation', 'Wrist support integrated'],
     features: ['Silicone anti-slip palm', 'Breathable mesh dorsal', 'Adjustable wrist wrap', 'Sizes S/M/L/XL']
