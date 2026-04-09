@@ -57,7 +57,7 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-14 sm:h-16">
+          <div className="flex justify-between items-center h-24 sm:h-28">
             {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -69,7 +69,7 @@ export default function Navbar() {
                   alt="Soul Stretch"
                   width={176}
                   height={56}
-                  className="h-7 sm:h-8 w-auto mix-blend-screen"
+                  className="h-[84px] sm:h-24 w-auto mix-blend-screen"
                   priority
                 />
               </Link>
@@ -142,7 +142,7 @@ export default function Navbar() {
                     alt="Soul Stretch"
                     width={144}
                     height={48}
-                    className="h-7 w-auto mix-blend-screen"
+                    className="h-[84px] w-auto mix-blend-screen"
                   />
                 </Link>
                 <button
