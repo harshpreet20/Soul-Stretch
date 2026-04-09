@@ -235,19 +235,19 @@
     },
     {
       "parameters": {
-        "options": {
-          "emailType": "text"
-        },
+        "sendTo": "support@soulstretch.in",
         "subject": "=New Ask Soul Chat: {{ $json.source }} from {{ $json.name }}",
+        "emailType": "text",
         "message": "=New message from Ask Soul chatbot:\n\nName: {{ $json.name }}\nEmail: {{ $json.email }}\nSource: {{ $json.source }}\nPage: {{ $json.page }}\nProduct: {{ $json.product }}\nTimestamp: {{ $json.timestamp }}\n\nMessage:\n{{ $json.message }}",
-        "toEmail": "support@soulstretch.in"
+        "options": {}
       },
       "id": "send-email",
       "name": "Email Notification",
-      "type": "n8n-nodes-base.emailSend",
+      "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [1100, 200],
-      "notes": "Optional: sends email notification for chat messages. Configure SMTP credentials."
+      "credentials": { "gmailOAuth2": { "id": "", "name": "Gmail Account" } },
+      "notes": "Connect your Gmail account via OAuth in n8n credentials. No SMTP config needed."
     },
     {
       "parameters": {
@@ -356,7 +356,7 @@
       "2. Configure the Webhook Trigger URL and update NEXT_PUBLIC_N8N_WEBHOOK_URL in your .env",
       "3. Connect your Google Sheets credentials and select your tracking spreadsheet",
       "4. Create a Google Sheet with columns: timestamp, source, name, email, message, page, product",
-      "5. (Optional) Configure SMTP credentials for the Email Notification node",
+      "5. (Optional) Connect Gmail credentials: n8n Settings → Credentials → Gmail OAuth2 → Sign in with Google",
       "6. Activate the workflow"
     ]
   }

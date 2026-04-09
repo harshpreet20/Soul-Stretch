@@ -311,17 +311,19 @@
     },
     {
       "parameters": {
-        "options": { "emailType": "html" },
+        "sendTo": "support@soulstretch.in",
         "subject": "=New {{ $json.subject }} from {{ $json.name }} - Soul Stretch Website",
+        "emailType": "html",
         "message": "=<div style=\"font-family:Arial,sans-serif;max-width:600px\">\n<div style=\"background:#1a1a1a;padding:20px;border-radius:12px 12px 0 0\">\n<h2 style=\"color:#FF6B00;margin:0\">Soul Stretch - New Form Submission</h2>\n</div>\n<div style=\"background:#f9f9f9;padding:20px;border-radius:0 0 12px 12px\">\n<table style=\"width:100%;border-collapse:collapse\">\n<tr><td style=\"padding:8px;font-weight:bold;color:#333\">Name:</td><td style=\"padding:8px\">{{ $json.name }}</td></tr>\n<tr><td style=\"padding:8px;font-weight:bold;color:#333\">Email:</td><td style=\"padding:8px\"><a href=\"mailto:{{ $json.email }}\">{{ $json.email }}</a></td></tr>\n<tr><td style=\"padding:8px;font-weight:bold;color:#333\">Phone:</td><td style=\"padding:8px\">{{ $json.phone || 'Not provided' }}</td></tr>\n<tr><td style=\"padding:8px;font-weight:bold;color:#333\">Subject:</td><td style=\"padding:8px\">{{ $json.subject }}</td></tr>\n<tr><td style=\"padding:8px;font-weight:bold;color:#333\">Page:</td><td style=\"padding:8px\">{{ $json.page }}</td></tr>\n</table>\n<div style=\"margin-top:16px;padding:16px;background:#fff;border-left:4px solid #FF6B00;border-radius:4px\">\n<strong>Message:</strong><br>{{ $json.message }}\n</div>\n<p style=\"margin-top:16px;font-size:12px;color:#999\">Submitted at {{ $json.timestamp }}</p>\n</div>\n</div>",
-        "toEmail": "support@soulstretch.in"
+        "options": {}
       },
       "id": "email-form",
       "name": "Email Form Notification",
-      "type": "n8n-nodes-base.emailSend",
+      "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [1200, 400],
-      "notes": "Configure SMTP credentials. Sends styled HTML email for form submissions."
+      "credentials": { "gmailOAuth2": { "id": "", "name": "Gmail Account" } },
+      "notes": "Connect your Gmail account via OAuth in n8n credentials. No SMTP config needed."
     },
     {
       "parameters": {
@@ -435,17 +437,19 @@
     },
     {
       "parameters": {
-        "options": { "emailType": "html" },
+        "sendTo": "support@soulstretch.in",
         "subject": "=Product Inquiry: {{ $json.product }} from {{ $json.name }}",
+        "emailType": "html",
         "message": "=<div style=\"font-family:Arial,sans-serif;max-width:600px\">\n<div style=\"background:#1a1a1a;padding:20px;border-radius:12px 12px 0 0\">\n<h2 style=\"color:#FF6B00;margin:0\">New Product Inquiry</h2>\n</div>\n<div style=\"background:#f9f9f9;padding:20px;border-radius:0 0 12px 12px\">\n<table style=\"width:100%;border-collapse:collapse\">\n<tr><td style=\"padding:8px;font-weight:bold\">Product:</td><td style=\"padding:8px;color:#FF6B00;font-weight:bold\">{{ $json.product }}</td></tr>\n<tr><td style=\"padding:8px;font-weight:bold\">Quantity:</td><td style=\"padding:8px\">{{ $json.quantity }}</td></tr>\n<tr><td style=\"padding:8px;font-weight:bold\">Name:</td><td style=\"padding:8px\">{{ $json.name }}</td></tr>\n<tr><td style=\"padding:8px;font-weight:bold\">Email:</td><td style=\"padding:8px\"><a href=\"mailto:{{ $json.email }}\">{{ $json.email }}</a></td></tr>\n<tr><td style=\"padding:8px;font-weight:bold\">Phone:</td><td style=\"padding:8px\">{{ $json.phone || 'Not provided' }}</td></tr>\n</table>\n<div style=\"margin-top:16px;padding:16px;background:#fff;border-left:4px solid #FF6B00;border-radius:4px\">\n<strong>Message:</strong><br>{{ $json.message }}\n</div>\n</div>\n</div>",
-        "toEmail": "support@soulstretch.in"
+        "options": {}
       },
       "id": "email-product",
       "name": "Email Product Inquiry",
-      "type": "n8n-nodes-base.emailSend",
+      "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [1200, 760],
-      "notes": "Sends styled email for product inquiries."
+      "credentials": { "gmailOAuth2": { "id": "", "name": "Gmail Account" } },
+      "notes": "Connect your Gmail account via OAuth in n8n credentials."
     },
     {
       "parameters": {
@@ -606,8 +610,8 @@
       "   - FormSubmissions: timestamp, name, email, phone, subject, message, page",
       "   - Analytics: timestamp, source, name, message, page",
       "   - ProductInquiries: timestamp, name, email, phone, product, quantity, message, page",
-      "5. Configure SMTP credentials for email notification nodes",
-      "6. Update support@soulstretch.in to your actual support email",
+      "5. Connect Gmail credentials: n8n Settings → Credentials → Gmail OAuth2 → Sign in with Google",
+      "6. Update support@soulstretch.in to your actual support email in both Gmail nodes",
       "7. Set the Error Fallback node as the error handler for AI Chat Response",
       "8. Activate the workflow"
     ],
