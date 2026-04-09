@@ -1,0 +1,488 @@
+{
+  "name": "Soul Stretch - Live AI Chat",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "soulstretect-globel",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "id": "webhook",
+      "name": "Chat Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [200, 340]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.source }}",
+                    "rightValue": "chat_message",
+                    "operator": { "type": "string", "operation": "equals" }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": "Chat"
+            },
+            {
+              "conditions": {
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.source }}",
+                    "rightValue": "whatsapp_click",
+                    "operator": { "type": "string", "operation": "equals" }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": "WhatsApp"
+            },
+            {
+              "conditions": {
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.source }}",
+                    "rightValue": "contact_form",
+                    "operator": { "type": "string", "operation": "equals" }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": "Contact Form"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "router",
+      "name": "Route by Source",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [420, 340]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "a1", "name": "name", "value": "={{ $json.body.name || 'Visitor' }}", "type": "string" },
+            { "id": "a2", "name": "email", "value": "={{ $json.body.email || '' }}", "type": "string" },
+            { "id": "a3", "name": "message", "value": "={{ $json.body.message }}", "type": "string" },
+            { "id": "a4", "name": "page", "value": "={{ $json.body.page || '/' }}", "type": "string" },
+            { "id": "a5", "name": "timestamp", "value": "={{ $json.body.timestamp || new Date().toISOString() }}", "type": "string" },
+            { "id": "a6", "name": "session_id", "value": "={{ $json.body.session_id || '' }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "extract-chat",
+      "name": "Extract Chat Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [660, 200]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are Ask Soul, the friendly AI assistant for Soul Stretch — India's premium fitness equipment brand.\n\nProduct catalog with prices:\n- Foam Roller (₹899) — EVA foam, 33cm, grid texture, up to 120kg\n- Resistance Bands Set (₹1,299) — 5 levels (5/10/20/35/50 lbs), latex, carry bag included\n- Yoga Mat (₹1,499) — 6mm TPE, 183x61cm, anti-slip, alignment lines\n- Hand Gripper (₹499) — Adjustable 10-60kg, steel spring, foam handles\n- Ab Roller (₹799) — Dual wheel, steel axle, knee pad included\n- Gym Gloves (₹699) — Silicone palm grip, breathable mesh, wrist wrap\n- Skipping Rope (₹599) — Ball-bearing, adjustable 3m cable, foam grips\n- Foot Insoles (₹399) — Memory foam, arch support, anti-odor, sizes 6-12\n- Pull-up Bar (₹1,899) — Doorframe mount, 65-100cm, 150kg capacity\n- Massage Gun (₹3,499) — 6 heads, 30 speeds, 6hr battery\n- Knee Sleeves (₹899/pair) — 7mm neoprene, compression fit\n- Wrist Wraps (₹499/pair) — 18\" cotton blend, thumb loop\n- Lacrosse Ball (₹349) — Solid rubber, 65mm diameter\n\nRules:\n- Be warm, concise, and energetic\n- Always quote prices in ₹ when asked\n- For orders/bulk pricing, direct to WhatsApp: +91 92171 03413\n- Suggest relevant products based on user goals\n- If user asks about delivery: Free shipping on orders above ₹999, delivery in 3-5 business days across India\n- If user asks about returns: 7-day easy returns, no questions asked\n- Keep responses under 120 words\n- End with a follow-up question or CTA when appropriate"
+            },
+            {
+              "role": "user",
+              "content": "={{ $json.message }}"
+            }
+          ]
+        },
+        "options": {
+          "maxTokens": 250,
+          "temperature": 0.7
+        }
+      },
+      "id": "ai-reply",
+      "name": "Generate AI Reply",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [900, 100],
+      "notes": "Uses GPT-4o-mini for fast, affordable responses. Swap for Claude, Gemini, or Ollama as needed. Add your OpenAI API key in n8n credentials."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "r1", "name": "success", "value": true, "type": "boolean" },
+            { "id": "r2", "name": "reply", "value": "={{ $json.message?.content || $json.text || $json.output || \"Thanks for reaching out! For quick help, WhatsApp us at +91 92171 03413.\" }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "format-reply",
+      "name": "Format Reply",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1140, 100]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": { "__rl": true, "value": "", "mode": "list" },
+        "sheetName": { "__rl": true, "value": "ChatLogs", "mode": "list" },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "timestamp": "={{ $('Extract Chat Data').item.json.timestamp }}",
+            "name": "={{ $('Extract Chat Data').item.json.name }}",
+            "email": "={{ $('Extract Chat Data').item.json.email }}",
+            "user_message": "={{ $('Extract Chat Data').item.json.message }}",
+            "ai_reply": "={{ $json.reply }}",
+            "page": "={{ $('Extract Chat Data').item.json.page }}",
+            "session_id": "={{ $('Extract Chat Data').item.json.session_id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            { "id": "timestamp", "displayName": "timestamp", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "name", "displayName": "name", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "email", "displayName": "email", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "user_message", "displayName": "user_message", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "ai_reply", "displayName": "ai_reply", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "page", "displayName": "page", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "session_id", "displayName": "session_id", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true }
+          ]
+        },
+        "options": {}
+      },
+      "id": "log-chat",
+      "name": "Log to Google Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [1380, 100],
+      "notes": "Create sheet 'ChatLogs' with columns: timestamp, name, email, user_message, ai_reply, page, session_id"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ success: true, reply: $('Format Reply').item.json.reply, source: 'ai' }) }}",
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              { "name": "Access-Control-Allow-Origin", "value": "*" },
+              { "name": "Access-Control-Allow-Headers", "value": "Content-Type" }
+            ]
+          }
+        }
+      },
+      "id": "respond-ai",
+      "name": "Send AI Reply",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1600, 100]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Fallback when AI fails\nreturn [{\n  json: {\n    success: true,\n    reply: \"Hey! I'm having a moment. For instant help, WhatsApp us at +91 92171 03413 — we're super quick! 💪\",\n    source: 'fallback'\n  }\n}];"
+      },
+      "id": "error-fallback",
+      "name": "AI Error Fallback",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1140, -60],
+      "notes": "Returns friendly fallback when OpenAI is down or errors. Set this as error handler for Generate AI Reply node."
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              { "name": "Access-Control-Allow-Origin", "value": "*" },
+              { "name": "Access-Control-Allow-Headers", "value": "Content-Type" }
+            ]
+          }
+        }
+      },
+      "id": "respond-fallback",
+      "name": "Send Fallback Reply",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1380, -60]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "w1", "name": "name", "value": "={{ $json.body.name || 'Visitor' }}", "type": "string" },
+            { "id": "w2", "name": "message", "value": "={{ $json.body.message || 'WhatsApp click' }}", "type": "string" },
+            { "id": "w3", "name": "page", "value": "={{ $json.body.page || '/' }}", "type": "string" },
+            { "id": "w4", "name": "timestamp", "value": "={{ $json.body.timestamp || new Date().toISOString() }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "extract-wa",
+      "name": "Extract WhatsApp Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [660, 400]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": { "__rl": true, "value": "", "mode": "list" },
+        "sheetName": { "__rl": true, "value": "Analytics", "mode": "list" },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "timestamp": "={{ $json.timestamp }}",
+            "event": "whatsapp_click",
+            "name": "={{ $json.name }}",
+            "message": "={{ $json.message }}",
+            "page": "={{ $json.page }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            { "id": "timestamp", "displayName": "timestamp", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "event", "displayName": "event", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "name", "displayName": "name", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "message", "displayName": "message", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "page", "displayName": "page", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true }
+          ]
+        },
+        "options": {}
+      },
+      "id": "log-wa",
+      "name": "Log WhatsApp Click",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [900, 400],
+      "notes": "Sheet: Analytics. Columns: timestamp, event, name, message, page"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"success\": true }",
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              { "name": "Access-Control-Allow-Origin", "value": "*" },
+              { "name": "Access-Control-Allow-Headers", "value": "Content-Type" }
+            ]
+          }
+        }
+      },
+      "id": "respond-wa",
+      "name": "Respond OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1140, 400]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "f1", "name": "name", "value": "={{ $json.body.name }}", "type": "string" },
+            { "id": "f2", "name": "email", "value": "={{ $json.body.email }}", "type": "string" },
+            { "id": "f3", "name": "phone", "value": "={{ $json.body.phone || '' }}", "type": "string" },
+            { "id": "f4", "name": "subject", "value": "={{ $json.body.subject || 'General Inquiry' }}", "type": "string" },
+            { "id": "f5", "name": "message", "value": "={{ $json.body.message }}", "type": "string" },
+            { "id": "f6", "name": "page", "value": "={{ $json.body.page || '/contact' }}", "type": "string" },
+            { "id": "f7", "name": "timestamp", "value": "={{ $json.body.timestamp || new Date().toISOString() }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "extract-form",
+      "name": "Extract Form Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [660, 580]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": { "__rl": true, "value": "", "mode": "list" },
+        "sheetName": { "__rl": true, "value": "FormSubmissions", "mode": "list" },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "timestamp": "={{ $json.timestamp }}",
+            "name": "={{ $json.name }}",
+            "email": "={{ $json.email }}",
+            "phone": "={{ $json.phone }}",
+            "subject": "={{ $json.subject }}",
+            "message": "={{ $json.message }}",
+            "page": "={{ $json.page }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            { "id": "timestamp", "displayName": "timestamp", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "name", "displayName": "name", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "email", "displayName": "email", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "phone", "displayName": "phone", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "subject", "displayName": "subject", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "message", "displayName": "message", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "page", "displayName": "page", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true }
+          ]
+        },
+        "options": {}
+      },
+      "id": "log-form",
+      "name": "Log Form Submission",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [900, 580],
+      "notes": "Sheet: FormSubmissions. Columns: timestamp, name, email, phone, subject, message, page"
+    },
+    {
+      "parameters": {
+        "sendTo": "support@soulstretch.in",
+        "subject": "=New {{ $json.subject }} from {{ $json.name }} — Soul Stretch",
+        "emailType": "html",
+        "message": "=<div style=\"font-family:Arial,sans-serif;max-width:600px;margin:0 auto\">\n<div style=\"background:#1a1a1a;padding:20px 24px;border-radius:12px 12px 0 0\">\n<h2 style=\"color:#FF6B00;margin:0;font-size:20px\">New Contact Form Submission</h2>\n</div>\n<div style=\"background:#f8f8f8;padding:24px;border-radius:0 0 12px 12px\">\n<table style=\"width:100%;border-collapse:collapse\">\n<tr><td style=\"padding:10px 8px;font-weight:bold;color:#333;width:100px\">Name</td><td style=\"padding:10px 8px\">{{ $json.name }}</td></tr>\n<tr style=\"background:#fff\"><td style=\"padding:10px 8px;font-weight:bold;color:#333\">Email</td><td style=\"padding:10px 8px\"><a href=\"mailto:{{ $json.email }}\" style=\"color:#FF6B00\">{{ $json.email }}</a></td></tr>\n<tr><td style=\"padding:10px 8px;font-weight:bold;color:#333\">Phone</td><td style=\"padding:10px 8px\">{{ $json.phone || 'Not provided' }}</td></tr>\n<tr style=\"background:#fff\"><td style=\"padding:10px 8px;font-weight:bold;color:#333\">Subject</td><td style=\"padding:10px 8px\">{{ $json.subject }}</td></tr>\n<tr><td style=\"padding:10px 8px;font-weight:bold;color:#333\">Page</td><td style=\"padding:10px 8px\">{{ $json.page }}</td></tr>\n</table>\n<div style=\"margin-top:20px;padding:16px;background:#fff;border-left:4px solid #FF6B00;border-radius:4px\">\n<p style=\"margin:0 0 4px;font-weight:bold;color:#333\">Message:</p>\n<p style=\"margin:0;color:#555;line-height:1.6\">{{ $json.message }}</p>\n</div>\n<p style=\"margin-top:16px;font-size:11px;color:#999\">Received at {{ $json.timestamp }}</p>\n</div>\n</div>",
+        "options": {}
+      },
+      "id": "gmail-form",
+      "name": "Gmail Notification",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [1140, 580],
+      "credentials": { "gmailOAuth2": { "id": "", "name": "Gmail Account" } },
+      "notes": "Connect Gmail via OAuth. Update sendTo to your email."
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"success\": true, \"message\": \"Thanks! We'll get back to you within 24 hours.\" }",
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              { "name": "Access-Control-Allow-Origin", "value": "*" },
+              { "name": "Access-Control-Allow-Headers", "value": "Content-Type" }
+            ]
+          }
+        }
+      },
+      "id": "respond-form",
+      "name": "Respond Form OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1380, 580]
+    }
+  ],
+  "connections": {
+    "Chat Webhook": {
+      "main": [
+        [
+          { "node": "Route by Source", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Route by Source": {
+      "main": [
+        [
+          { "node": "Extract Chat Data", "type": "main", "index": 0 }
+        ],
+        [
+          { "node": "Extract WhatsApp Data", "type": "main", "index": 0 }
+        ],
+        [
+          { "node": "Extract Form Data", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Extract Chat Data": {
+      "main": [
+        [
+          { "node": "Generate AI Reply", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Generate AI Reply": {
+      "main": [
+        [
+          { "node": "Format Reply", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Format Reply": {
+      "main": [
+        [
+          { "node": "Log to Google Sheet", "type": "main", "index": 0 },
+          { "node": "Send AI Reply", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "AI Error Fallback": {
+      "main": [
+        [
+          { "node": "Send Fallback Reply", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Extract WhatsApp Data": {
+      "main": [
+        [
+          { "node": "Log WhatsApp Click", "type": "main", "index": 0 },
+          { "node": "Respond OK", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Extract Form Data": {
+      "main": [
+        [
+          { "node": "Log Form Submission", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Log Form Submission": {
+      "main": [
+        [
+          { "node": "Gmail Notification", "type": "main", "index": 0 },
+          { "node": "Respond Form OK", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "description": "Soul Stretch live AI chatbot with real-time GPT responses, Google Sheets logging, Gmail notifications, and WhatsApp analytics.",
+    "setup_instructions": [
+      "1. Import this workflow into n8n",
+      "2. Add OpenAI API credentials: Settings → Credentials → OpenAI API → paste your key",
+      "3. Connect Google Sheets: Settings → Credentials → Google Sheets OAuth2",
+      "4. Create a Google Sheet with 3 tabs:",
+      "   - ChatLogs: timestamp, name, email, user_message, ai_reply, page, session_id",
+      "   - Analytics: timestamp, event, name, message, page",
+      "   - FormSubmissions: timestamp, name, email, phone, subject, message, page",
+      "5. Connect Gmail: Settings → Credentials → Gmail OAuth2 → Sign in with Google",
+      "6. Update support@soulstretch.in to your actual email in the Gmail node",
+      "7. Right-click 'Generate AI Reply' → Settings → Error Handling → set 'AI Error Fallback' as error handler",
+      "8. Set webhook path to 'soulstretect-globel' (matches your website config)",
+      "9. Activate the workflow"
+    ],
+    "flow_diagram": [
+      "Chat Webhook",
+      "  └─ Route by Source",
+      "     ├─ Chat → Extract → AI Reply (GPT-4o-mini) → Format → Log to Sheet + Respond with AI reply",
+      "     │                                              └─ Error? → Fallback Reply",
+      "     ├─ WhatsApp → Extract → Log Click + Respond OK",
+      "     └─ Contact Form → Extract → Log to Sheet → Gmail Notification + Respond OK"
+    ]
+  }
+}
