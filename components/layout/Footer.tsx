@@ -70,11 +70,11 @@ export default function Footer() {
           >
             <Link href="/" className="inline-block mb-2 sm:mb-3">
               <Image
-                src="/images/ss-logo.png"
+                src="/images/soulstretchf.png"
                 alt="Soul Stretch"
                 width={176}
                 height={56}
-                className="h-7 sm:h-8 w-auto mix-blend-screen"
+                className="h-8 sm:h-9 w-auto mix-blend-screen"
               />
             </Link>
             <p className="text-xs sm:text-sm text-soul-gray mb-3 sm:mb-4">

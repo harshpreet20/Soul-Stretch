@@ -103,13 +103,13 @@ export default function WhatsAppButton() {
             {/* Header with SS Logo */}
             <div className="bg-gradient-to-r from-soul-orange to-amber-500 px-4 py-3 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full overflow-hidden bg-white border-2 border-white/50 flex-shrink-0">
+                <div className="w-10 h-10 rounded-full overflow-hidden bg-soul-black border-2 border-white/50 flex-shrink-0">
                   <Image
-                    src="/images/ss-logo.png"
+                    src="/images/soulstretchf.png"
                     alt="Soul Stretch"
                     width={40}
                     height={40}
-                    className="w-full h-full object-contain p-0.5"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div>
@@ -168,13 +168,13 @@ export default function WhatsAppButton() {
                       className={`flex items-end gap-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
                       {msg.sender === 'bot' && (
-                        <div className="w-6 h-6 rounded-full overflow-hidden bg-white flex-shrink-0 mb-0.5">
+                        <div className="w-6 h-6 rounded-full overflow-hidden bg-soul-black flex-shrink-0 mb-0.5">
                           <Image
-                            src="/images/ss-logo.png"
+                            src="/images/soulstretchf.png"
                             alt="SS"
                             width={24}
                             height={24}
-                            className="w-full h-full object-contain p-0.5"
+                            className="w-full h-full object-cover"
                           />
                         </div>
                       )}
@@ -191,8 +191,8 @@ export default function WhatsAppButton() {
                   ))}
                   {isSending && (
                     <div className="flex items-end gap-2 justify-start">
-                      <div className="w-6 h-6 rounded-full overflow-hidden bg-white flex-shrink-0 mb-0.5">
-                        <Image src="/images/ss-logo.png" alt="SS" width={24} height={24} className="w-full h-full object-contain p-0.5" />
+                      <div className="w-6 h-6 rounded-full overflow-hidden bg-soul-black flex-shrink-0 mb-0.5">
+                        <Image src="/images/soulstretchf.png" alt="SS" width={24} height={24} className="w-full h-full object-cover" />
                       </div>
                       <div className="bg-white/[0.06] text-soul-gray rounded-2xl rounded-bl-sm px-4 py-3 text-sm">
                         <span className="inline-flex gap-1">
@@ -375,11 +375,11 @@ export default function WhatsAppButton() {
           ) : (
             <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden">
               <Image
-                src="/images/ss-logo.png"
+                src="/images/soulstretchf.png"
                 alt="Ask Soul"
                 width={56}
                 height={56}
-                className="w-full h-full object-contain p-1"
+                className="w-full h-full object-cover"
               />
             </div>
           )}

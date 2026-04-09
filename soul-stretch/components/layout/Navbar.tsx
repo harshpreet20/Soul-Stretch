@@ -65,11 +65,11 @@ export default function Navbar() {
             >
               <Link href="/" className="flex items-center">
                 <Image
-                  src="/images/ss-logo.png"
+                  src="/images/soulstretchf.png"
                   alt="Soul Stretch"
                   width={176}
                   height={56}
-                  className="h-6 sm:h-7 w-auto mix-blend-screen"
+                  className="h-7 sm:h-8 w-auto mix-blend-screen"
                   priority
                 />
               </Link>
@@ -138,11 +138,11 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Image
-                    src="/images/ss-logo.png"
+                    src="/images/soulstretchf.png"
                     alt="Soul Stretch"
                     width={144}
                     height={48}
-                    className="h-6 w-auto mix-blend-screen"
+                    className="h-7 w-auto mix-blend-screen"
                   />
                 </Link>
                 <button
