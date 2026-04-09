@@ -1,4 +1,4 @@
-const N8N_WEBHOOK_URL = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL || 'https://hotbotst.app.n8n.cloud/webhook'
+const N8N_WEBHOOK_URL = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL || 'https://hotbotst.app.n8n.cloud/webhook/soulstretect-globel'
 
 export interface WebhookPayload {
   source: 'contact_form' | 'product_inquiry' | 'chat_message' | 'whatsapp_click'
