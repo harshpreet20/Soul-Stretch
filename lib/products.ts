@@ -10,6 +10,10 @@ export interface Product {
   benefits: string[]
   features: string[]
   tagline: string
+  price: number
+  comparePrice?: number
+  seoTitle: string
+  seoKeywords: string[]
 }
 
 const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/10R0JbenWYvmOE-VH3shvcSpn_IaobaLmU7z3DQqpzB8/export?format=csv'
@@ -20,11 +24,15 @@ export const FALLBACK_PRODUCTS: Product[] = [
     name: 'Foam Roller',
     slug: 'foam-roller',
     tagline: 'Deep tissue relief, engineered for recovery.',
-    shortDescription: 'Premium muscle recovery roller by Soul Stretch. Buy foam roller online in India for deep tissue relief.',
-    description: 'The Soul Stretch Foam Roller is the go-to muscle recovery roller for Indian athletes seeking deep tissue relief. Engineered to target muscle knots and lactic acid buildup, this high-density EVA foam roller maintains shape under pressure, delivering consistent myofascial release. Buy foam roller online in India from Soul Stretch and recover faster after every session.',
+    shortDescription: 'Best foam roller for muscle recovery in India. High-density EVA grid foam roller for back pain, leg soreness, and post-workout myofascial release. Free shipping.',
+    description: 'The Soul Stretch Foam Roller is the best-rated muscle recovery foam roller in India, built for athletes who train hard and recover harder. High-density EVA construction with a precision grid texture targets deep knots, releases lactic acid, and restores mobility after intense sessions. Whether you need a foam roller for back pain relief, IT band release, or post-gym recovery, this roller supports up to 120kg and maintains shape through thousands of rolls. Buy foam roller online in India with free shipping from Soul Stretch.',
     category: 'recovery',
     imageUrl: '/images/products/foam-roller.jpg',
     images: [],
+    price: 899,
+    comparePrice: 1499,
+    seoTitle: 'Buy Foam Roller Online India | Best Foam Roller for Back Pain & Recovery',
+    seoKeywords: ['foam roller', 'foam roller India', 'buy foam roller online India', 'best foam roller for back pain', 'muscle recovery foam roller', 'foam roller for legs', 'EVA foam roller', 'grid foam roller India', 'foam roller price India', 'myofascial release roller', 'gym foam roller', 'foam roller for home workout'],
     benefits: ['Breaks down muscle knots and adhesions', 'Accelerates post-workout recovery', 'Improves blood circulation and oxygen delivery'],
     features: ['High-density EVA foam', '33cm x 14cm standard size', 'Supports up to 120kg', 'Grid texture for targeted relief']
   },
@@ -33,11 +41,15 @@ export const FALLBACK_PRODUCTS: Product[] = [
     name: 'Foot Insoles',
     slug: 'foot-insoles',
     tagline: 'Every step, engineered for performance.',
-    shortDescription: 'Premium arch support insoles by Soul Stretch. Buy foot insoles online in India for all-day athletic comfort.',
-    description: 'Soul Stretch Foot Insoles deliver biomechanical arch support that reduces plantar fatigue, corrects overpronation, and keeps Indian athletes performing at full intensity. Trusted by fitness enthusiasts across India, these premium insoles ensure your feet are ready from morning runs to heavy squats.',
+    shortDescription: 'Best arch support insoles in India for flat feet, plantar fasciitis, and running. Memory foam shoe insoles with anti-odor treatment. Free shipping.',
+    description: 'Soul Stretch Foot Insoles are the best orthopedic shoe insoles in India for flat feet, plantar fasciitis, and high-impact sports. Medical-grade memory foam heel cup with breathable anti-odor top layer delivers biomechanical arch support that reduces foot fatigue, corrects overpronation, and cushions every step. Trusted by runners, gym-goers, and everyday athletes across India. Available in sizes 6-12. Buy foot insoles online in India from Soul Stretch with free shipping.',
     category: 'support',
     imageUrl: '/images/products/foot-insoles.jpeg',
     images: [],
+    price: 399,
+    comparePrice: 799,
+    seoTitle: 'Buy Foot Insoles Online India | Best Arch Support Insoles for Flat Feet',
+    seoKeywords: ['foot insoles', 'shoe insoles India', 'buy insoles online India', 'arch support insoles', 'insoles for flat feet', 'plantar fasciitis insoles India', 'memory foam insoles', 'running insoles India', 'orthopedic insoles', 'insoles for gym shoes', 'best insoles India price', 'shoe insoles for standing all day'],
     benefits: ['Reduces plantar fascia strain', 'Corrects foot alignment', 'Absorbs impact on hard surfaces'],
     features: ['Memory foam heel cup', 'Breathable top layer', 'Fits sizes 6-12', 'Anti-odor treatment']
   },
@@ -46,8 +58,8 @@ export const FALLBACK_PRODUCTS: Product[] = [
     name: 'Hand Gripper',
     slug: 'hand-gripper',
     tagline: 'Crush your limits. Build iron grip.',
-    shortDescription: 'Premium hand gripper India by Soul Stretch. Ergonomic grip strength trainer for daily training.',
-    description: 'The Soul Stretch Hand Gripper is India\'s top-rated grip strength trainer, built for athletes who demand reliable hand gripper performance. Durable steel spring with ergonomic foam handles delivers consistent resistance for serious strength development. Buy hand gripper online in India from Soul Stretch for fitness, rehabilitation, and stress relief.',
+    shortDescription: 'Best hand gripper in India for grip strength training. Steel spring hand exerciser for forearm strength, stress relief, and rehabilitation. Free shipping.',
+    description: 'The Soul Stretch Hand Gripper is India\'s top-rated grip strength trainer with durable steel spring construction and ergonomic foam handles. Built for athletes, climbers, and anyone who wants to build crushing grip strength and forearm size. This compact hand exerciser is perfect for daily grip training, stress relief, and post-injury rehabilitation. Portable enough for office, home, or gym use. Buy hand gripper online in India from Soul Stretch with free delivery.',
     category: 'strength',
     imageUrl: '/images/products/hand-gripper.jpeg',
     images: [
@@ -55,6 +67,10 @@ export const FALLBACK_PRODUCTS: Product[] = [
       '/images/products/hand-gripper-in-use.jpeg',
       '/images/products/hand-gripper-packaging.jpeg',
     ],
+    price: 499,
+    comparePrice: 899,
+    seoTitle: 'Buy Hand Gripper Online India | Best Grip Strength Trainer ₹499',
+    seoKeywords: ['hand gripper', 'hand gripper India', 'buy hand gripper online', 'grip strength trainer', 'hand exerciser India', 'forearm strengthener', 'hand gripper for gym', 'grip trainer India price', 'steel hand gripper', 'hand gripper exercise', 'best hand gripper India', 'grip strengthener for men'],
     benefits: ['Builds forearm and grip strength', 'Supports recovery and rehabilitation', 'Portable training anywhere'],
     features: ['Durable steel spring', 'Ergonomic foam handles', 'Compact carry size', 'Non-slip grip surface']
   },
@@ -63,8 +79,8 @@ export const FALLBACK_PRODUCTS: Product[] = [
     name: 'Adjustable Hand Gripper',
     slug: 'adjustable-hand-gripper',
     tagline: 'Progressive resistance. Progressive results.',
-    shortDescription: 'Adjustable hand gripper with digital counter. Buy grip strength trainer online in India from Soul Stretch.',
-    description: 'Train smarter with the Soul Stretch Adjustable Hand Gripper, a premium grip strength trainer available online in India. Dial in resistance from 5 to 60kg and track every rep with the built-in digital counter. Trusted by Indian athletes for progressive overload, this adjustable hand gripper suits beginners and advanced athletes alike.',
+    shortDescription: 'Adjustable hand gripper 5-60kg with digital counter. Best adjustable grip strengthener in India for progressive overload training. Free shipping.',
+    description: 'The Soul Stretch Adjustable Hand Gripper features a 5-60kg resistance dial and built-in digital rep counter for serious grip training. This is the best adjustable hand gripper in India for progressive overload, letting you increase resistance as you get stronger. Perfect for gym-goers, rock climbers, martial artists, and anyone recovering from hand injuries. Track every rep, adjust every session. Buy adjustable hand gripper online in India from Soul Stretch.',
     category: 'strength',
     imageUrl: '/images/products/adjustable-hand-gripper.jpeg',
     images: [
@@ -72,6 +88,10 @@ export const FALLBACK_PRODUCTS: Product[] = [
       '/images/products/adjustable-hand-gripper-box.jpeg',
       '/images/products/adjustable-hand-gripper-packaging.jpeg',
     ],
+    price: 699,
+    comparePrice: 1299,
+    seoTitle: 'Buy Adjustable Hand Gripper Online India | 5-60kg with Digital Counter',
+    seoKeywords: ['adjustable hand gripper', 'adjustable hand gripper India', 'hand gripper with counter', 'buy adjustable gripper online India', 'grip strengthener adjustable', 'hand gripper 60kg', 'digital counter hand gripper', 'progressive hand gripper', 'best adjustable hand gripper India', 'hand gripper for men', 'grip trainer with counter'],
     benefits: ['Progressive overload built-in', 'Digital rep counter for tracking', 'Suitable for all fitness levels'],
     features: ['5-60kg adjustable dial', 'Built-in digital counter', 'Anti-slip grip surface', 'Resistance indicator window']
   },
@@ -80,11 +100,15 @@ export const FALLBACK_PRODUCTS: Product[] = [
     name: 'Wrist Exerciser',
     slug: 'wrist-exerciser',
     tagline: 'Unlock wrist mobility. Unlock performance.',
-    shortDescription: 'Premium wrist exerciser by Soul Stretch. Buy wrist trainer online in India for mobility and strength.',
-    description: 'The Soul Stretch Wrist Exerciser targets the often-neglected forearm rotator muscles, improving wrist stability and reducing injury risk for Indian athletes. This premium wrist trainer unlocks the mobility needed for heavy pressing and pulling movements. Buy wrist exerciser online in India from Soul Stretch.',
+    shortDescription: 'Best wrist exerciser in India for forearm strength and mobility. 360° rotation wrist roller for carpal tunnel relief and wrist rehab. Free shipping.',
+    description: 'The Soul Stretch Wrist Exerciser targets forearm rotator muscles with a 360° rotation mechanism, improving wrist stability, grip endurance, and reducing carpal tunnel risk. This is the best wrist strengthener in India for athletes, gamers, desk workers, and anyone recovering from wrist injuries. Compact design with adjustable tension fits in any gym bag or desk drawer. Buy wrist exerciser online in India from Soul Stretch.',
     category: 'strength',
     imageUrl: '/images/products/wrist-exerciser.webp',
     images: [],
+    price: 599,
+    comparePrice: 999,
+    seoTitle: 'Buy Wrist Exerciser Online India | Best Wrist Strengthener & Forearm Roller',
+    seoKeywords: ['wrist exerciser', 'wrist exerciser India', 'buy wrist exerciser online', 'wrist strengthener', 'forearm roller', 'wrist roller India', 'carpal tunnel exercise tool', 'wrist rehab equipment', 'forearm exerciser India', 'wrist trainer', 'wrist exercise equipment India price'],
     benefits: ['Improves wrist flexibility and range of motion', 'Strengthens wrist stabilizers', 'Reduces wrist injury risk'],
     features: ['360° rotation mechanism', 'Non-slip rubber grip', 'Compact travel design', 'Adjustable tension']
   },
@@ -93,13 +117,17 @@ export const FALLBACK_PRODUCTS: Product[] = [
     name: 'Protein Shaker - Orange Edition',
     slug: 'protein-shaker-orange',
     tagline: 'Fuel your recovery. On the go.',
-    shortDescription: 'Premium protein shaker online India. Soul Stretch 700ml BPA-free gym shaker bottle with leak-proof design.',
-    description: 'The Soul Stretch Protein Shaker in signature Orange is the ultimate gym shaker bottle for Indian athletes. This 700ml BPA-free vessel features a stainless mixing ball for lump-free blends and a secure leak-proof lid. Buy protein shaker online in India from Soul Stretch and fuel your recovery on the go.',
+    shortDescription: 'Best protein shaker bottle in India. 700ml BPA-free gym shaker with stainless mixing ball and leak-proof lid. Buy shaker bottle online. Free shipping.',
+    description: 'The Soul Stretch Protein Shaker Orange Edition is the best gym shaker bottle in India with 700ml BPA-free Tritan construction, stainless steel mixing ball for lump-free protein shakes, and a secure screw-lock leak-proof lid. Measurement markings make dosing easy. Perfect for whey protein, BCAA, creatine, or pre-workout supplements. Buy protein shaker online in India from Soul Stretch.',
     category: 'accessories',
     imageUrl: '/images/products/protein-shaker-orange.jpeg',
     images: [
       '/images/products/protein-shaker.jpeg',
     ],
+    price: 349,
+    comparePrice: 699,
+    seoTitle: 'Buy Protein Shaker Bottle Online India | 700ml BPA-Free Gym Shaker',
+    seoKeywords: ['protein shaker', 'protein shaker bottle India', 'buy shaker bottle online India', 'gym shaker bottle', 'BPA free shaker bottle', 'protein shake mixer', 'shaker bottle 700ml', 'best shaker bottle India', 'gym water bottle India', 'protein shaker with ball', 'leak proof shaker bottle'],
     benefits: ['Smooth lump-free protein blends', 'Leak-proof at any angle', 'Easy to clean'],
     features: ['700ml BPA-free Tritan', 'Stainless mixing ball', 'Screw-lock lid', 'Measurement markings']
   },
@@ -108,13 +136,17 @@ export const FALLBACK_PRODUCTS: Product[] = [
     name: 'Protein Shaker - Blue Edition',
     slug: 'protein-shaker-blue',
     tagline: 'Move Better. Feel Stronger.',
-    shortDescription: 'Compact gym shaker bottle by Soul Stretch. Buy protein shaker online in India with BPA-free construction.',
-    description: 'The Soul Stretch Blue Edition Protein Shaker is a compact gym shaker bottle perfect for Indian athletes on the go. BPA-free construction with a secure flip-top lid ensures your shakes stay contained. Buy protein shaker online in India from Soul Stretch for reliable, vibrant nutrition support.',
+    shortDescription: 'Compact gym shaker bottle for protein shakes. BPA-free construction with flip-top leak-proof lid. Buy protein shaker online India. Free shipping.',
+    description: 'The Soul Stretch Blue Edition Protein Shaker is a compact, BPA-free gym shaker bottle designed for Indian athletes. Flip-top secure lid with leak-proof seal ensures your protein shake stays inside your bag, not on it. Translucent body lets you monitor fill levels at a glance. Buy protein shaker bottle online in India from Soul Stretch.',
     category: 'accessories',
     imageUrl: '/images/products/protein-shaker-blue.jpeg',
     images: [
       '/images/products/protein-shaker-blue-alt.jpeg',
     ],
+    price: 299,
+    comparePrice: 599,
+    seoTitle: 'Buy Protein Shaker Blue Online India | Compact Gym Shaker Bottle',
+    seoKeywords: ['protein shaker blue', 'gym shaker bottle India', 'buy protein shaker online', 'compact shaker bottle', 'BPA free gym bottle', 'flip top shaker', 'protein shake bottle India', 'shaker bottle for gym', 'best gym bottle India'],
     benefits: ['Compact size for gym bags', 'Leak-proof flip-top lid', 'Easy to clean'],
     features: ['BPA-free construction', 'Flip-top secure lid', 'Translucent body for fill level', 'Soul Stretch branded']
   },
@@ -123,14 +155,18 @@ export const FALLBACK_PRODUCTS: Product[] = [
     name: 'Protein Shaker - Stealth Black',
     slug: 'protein-shaker-black',
     tagline: 'Move Better. Feel Stronger.',
-    shortDescription: 'Stealth black gym shaker bottle by Soul Stretch. Buy protein shaker online in India with sleek design.',
-    description: 'The Soul Stretch Stealth Black Protein Shaker is a premium gym shaker bottle that combines a clean all-black aesthetic with reliable performance. Compact enough for any gym bag, this protein shaker is a favourite among Indian athletes who prefer understated style. Buy online in India from Soul Stretch.',
+    shortDescription: 'Premium black protein shaker bottle for gym. Sleek stealth design with leak-proof screw-lock lid. Buy gym shaker online India. Free shipping.',
+    description: 'The Soul Stretch Stealth Black Protein Shaker combines a clean all-black matte aesthetic with reliable gym-grade performance. Screw-lock lid ensures zero leaks during commute or gym sessions. Measurement markings and BPA-free construction make it the best black shaker bottle in India for athletes who prefer understated style. Buy protein shaker online in India from Soul Stretch.',
     category: 'accessories',
     imageUrl: '/images/products/protein-shaker-black-small.jpeg',
     images: [
       '/images/products/protein-shaker-black-large.jpeg',
       '/images/products/protein-shaker-black-large-alt.jpeg',
     ],
+    price: 349,
+    comparePrice: 699,
+    seoTitle: 'Buy Black Protein Shaker Online India | Premium Stealth Gym Bottle',
+    seoKeywords: ['black protein shaker', 'black gym shaker bottle', 'buy shaker bottle online India', 'stealth black shaker', 'matte black gym bottle', 'protein shaker black India', 'premium shaker bottle', 'gym bottle India price'],
     benefits: ['Sleek stealth design', 'Leak-proof at any angle', 'Easy to clean'],
     features: ['BPA-free construction', 'All-black design', 'Screw-lock lid', 'Measurement markings']
   },
@@ -139,13 +175,17 @@ export const FALLBACK_PRODUCTS: Product[] = [
     name: 'Double Toning Tube',
     slug: 'double-toning-tube',
     tagline: 'Build Strength. Tone Muscles. Stay Active.',
-    shortDescription: 'Premium toning tube by Soul Stretch. Buy resistance tube online in India for full-body strength training.',
-    description: 'The Soul Stretch Double Toning Tube is a premium resistance tube trusted by Indian athletes for compound strength training. It creates bilateral resistance that activates multiple muscle groups simultaneously, delivering efficient full-body conditioning and lean muscle development. Buy toning tube online in India from Soul Stretch.',
+    shortDescription: 'Best toning tube in India for full-body workout. Double resistance tube with padded handles for strength training, toning, and home gym. Free shipping.',
+    description: 'The Soul Stretch Double Toning Tube is the best resistance toning tube in India for full-body strength training at home or gym. Dual-tube bilateral resistance activates chest, shoulders, arms, back, and legs simultaneously. Padded handles and non-slip foot straps ensure safe, comfortable workouts. Perfect for muscle toning, strength building, and physiotherapy exercises. Buy double toning tube online in India from Soul Stretch.',
     category: 'strength',
     imageUrl: '/images/products/double-toning-tube.jpeg',
     images: [
       '/images/products/double-toning-tube-box.jpeg',
     ],
+    price: 499,
+    comparePrice: 899,
+    seoTitle: 'Buy Double Toning Tube Online India | Best Resistance Tube for Home Workout',
+    seoKeywords: ['toning tube', 'double toning tube India', 'buy toning tube online', 'resistance tube India', 'toning tube for women', 'toning tube for men', 'resistance tube for home workout', 'exercise tube India', 'best toning tube India price', 'pull tube for exercise', 'chest expander tube', 'home gym resistance tube'],
     benefits: ['Activates multiple muscle groups', 'Improves bilateral strength balance', 'Portable full-body workout'],
     features: ['Dual tube resistance', 'Padded handles', 'Non-slip foot strap', 'Foldable for storage']
   },
@@ -154,11 +194,15 @@ export const FALLBACK_PRODUCTS: Product[] = [
     name: 'Wrist Support',
     slug: 'wrist-support',
     tagline: 'Protect what powers your performance.',
-    shortDescription: 'Premium wrist support wraps by Soul Stretch. Buy wrist wraps online in India for gym protection.',
-    description: 'The Soul Stretch Wrist Support wraps your wrists in firm neoprene compression, stabilizing the joint during heavy lifts, overhead pressing, and wrist-intensive sports. Trusted by Indian athletes for reliable wrist protection, this premium wrist wrap lets you train harder and stay protected. Buy wrist support online in India from Soul Stretch.',
+    shortDescription: 'Best wrist wraps for gym in India. Neoprene compression wrist support with velcro strap for weightlifting, bench press, and CrossFit. Free shipping.',
+    description: 'Soul Stretch Wrist Support wraps deliver firm neoprene compression that stabilizes your wrists during heavy bench press, overhead press, deadlifts, and CrossFit WODs. Adjustable velcro closure with thumb loop ensures a secure, custom fit. These are the best wrist wraps in India for powerlifters, bodybuilders, and serious gym-goers who need joint protection without sacrificing mobility. Buy wrist support online in India from Soul Stretch.',
     category: 'support',
     imageUrl: '/images/products/wrist-support.jpeg',
     images: [],
+    price: 499,
+    comparePrice: 899,
+    seoTitle: 'Buy Wrist Support Online India | Best Wrist Wraps for Gym & Weightlifting',
+    seoKeywords: ['wrist support', 'wrist wraps India', 'buy wrist support online India', 'wrist wraps for gym', 'wrist band for weightlifting', 'wrist support for bench press', 'neoprene wrist wrap', 'gym wrist band India', 'best wrist wraps India', 'wrist support for CrossFit', 'wrist guard gym India price'],
     benefits: ['Prevents hyperextension during heavy lifts', 'Reduces wrist inflammation', 'Improves lifting confidence'],
     features: ['Neoprene compression material', 'Adjustable velcro closure', 'Thumb loop for secure fit', 'One size fits most']
   },
@@ -167,11 +211,15 @@ export const FALLBACK_PRODUCTS: Product[] = [
     name: 'Resistance Band Set',
     slug: 'resistance-band-set',
     tagline: 'Five bands. Infinite possibilities.',
-    shortDescription: 'Premium resistance bands India by Soul Stretch. Buy 5-band progressive resistance set online in India.',
-    description: 'The Soul Stretch Resistance Band Set is a complete strength and mobility training system for Indian athletes. Five color-coded resistance bands spanning 5 to 50lbs let you progressively overload any movement pattern. Buy resistance bands online in India from Soul Stretch and train at home, at the gym, or on the road.',
+    shortDescription: 'Best resistance bands set in India. 5 latex loop bands (5-50lbs) with carry bag for home gym, pull-ups, stretching, and physiotherapy. Free shipping.',
+    description: 'The Soul Stretch Resistance Band Set is India\'s best-selling resistance band kit with 5 color-coded natural latex bands spanning 5 to 50lbs of progressive resistance. Includes carry bag and door anchor for 100+ exercises at home, gym, or on the road. Perfect for pull-up assistance, stretching, physiotherapy, muscle building, and mobility work. Buy resistance bands online in India from Soul Stretch with free shipping.',
     category: 'recovery',
     imageUrl: '/images/products/resistance-band.jpg',
     images: [],
+    price: 1299,
+    comparePrice: 2499,
+    seoTitle: 'Buy Resistance Bands Set Online India | 5 Loop Bands for Home Gym ₹1,299',
+    seoKeywords: ['resistance bands', 'resistance bands India', 'buy resistance bands online India', 'resistance band set', 'loop resistance bands', 'pull up bands India', 'exercise bands for home workout', 'resistance bands for stretching', 'latex resistance bands', 'best resistance bands India price', 'resistance bands for physiotherapy', 'home gym bands set'],
     benefits: ['Progressive overload for every fitness level', 'Full-body training capability', 'Joint-friendly resistance'],
     features: ['5 resistance levels: 5/10/20/35/50lbs', 'Natural latex construction', 'Includes carry bag + door anchor', '150cm length per band']
   },
@@ -180,11 +228,15 @@ export const FALLBACK_PRODUCTS: Product[] = [
     name: 'Gym Gloves',
     slug: 'gym-gloves',
     tagline: 'Grip. Protect. Dominate.',
-    shortDescription: 'Premium gym gloves by Soul Stretch. Buy gym gloves online in India with anti-slip silicone palm grip.',
-    description: 'Soul Stretch Gym Gloves are premium fitness gloves designed for Indian athletes, combining anti-slip silicone palm grips with breathable mesh backing and a wraparound wrist strap. Maximum grip security, zero calluses, full range of motion. Buy gym gloves online in India from Soul Stretch.',
+    shortDescription: 'Best gym gloves in India with anti-slip silicone palm grip. Breathable workout gloves for weightlifting, CrossFit, and pull-ups. Free shipping.',
+    description: 'Soul Stretch Gym Gloves are the best workout gloves in India, featuring anti-slip silicone palm grips for maximum barbell and dumbbell control, breathable mesh backing for sweat-free comfort, and an integrated wraparound wrist strap for joint support. Zero calluses, full range of motion, and sizes from S to XL. Perfect for weightlifting, CrossFit, pull-ups, and deadlifts. Buy gym gloves online in India from Soul Stretch.',
     category: 'accessories',
     imageUrl: '/images/products/gym-gloves.jpeg',
     images: [],
+    price: 699,
+    comparePrice: 1299,
+    seoTitle: 'Buy Gym Gloves Online India | Best Workout Gloves for Weightlifting',
+    seoKeywords: ['gym gloves', 'gym gloves India', 'buy gym gloves online India', 'workout gloves', 'weightlifting gloves India', 'gym gloves for men', 'gym gloves for women', 'anti-slip gym gloves', 'best gym gloves India price', 'CrossFit gloves', 'gym hand gloves', 'pull up gloves India'],
     benefits: ['Eliminates grip fatigue during long sets', 'Prevents callus formation', 'Wrist support integrated'],
     features: ['Silicone anti-slip palm', 'Breathable mesh dorsal', 'Adjustable wrist wrap', 'Sizes S/M/L/XL']
   },
@@ -193,11 +245,15 @@ export const FALLBACK_PRODUCTS: Product[] = [
     name: 'Skipping Rope',
     slug: 'skipping-rope',
     tagline: 'Speed. Endurance. No excuses.',
-    shortDescription: 'Premium skipping rope by Soul Stretch. Buy speed jump rope online in India with ball-bearing handles.',
-    description: 'The Soul Stretch Skipping Rope is a premium speed jump rope built for Indian athletes who take cardio seriously. Precision ball-bearing handles deliver zero-tangle high-speed rotation, while the durable 3m adjustable cable and contoured foam grips ensure sustained sessions without hand fatigue. Buy skipping rope online in India from Soul Stretch.',
+    shortDescription: 'Best skipping rope in India with ball-bearing handles. Adjustable speed jump rope for weight loss, cardio, and boxing training. Free shipping.',
+    description: 'The Soul Stretch Skipping Rope is the best speed jump rope in India with precision ball-bearing swivel handles for zero-tangle, high-speed rotation. Adjustable 3m PVC-coated steel cable and contoured foam grips deliver sustained cardio sessions without hand fatigue. Burns 10-16 calories per minute. Perfect for weight loss, HIIT, boxing footwork, and CrossFit double-unders. Buy skipping rope online in India from Soul Stretch.',
     category: 'cardio',
     imageUrl: '/images/products/skipping-rope.jpg',
     images: [],
+    price: 599,
+    comparePrice: 999,
+    seoTitle: 'Buy Skipping Rope Online India | Best Speed Jump Rope for Weight Loss',
+    seoKeywords: ['skipping rope', 'skipping rope India', 'buy skipping rope online India', 'jump rope India', 'speed jump rope', 'skipping rope for weight loss', 'ball bearing skipping rope', 'best skipping rope India price', 'boxing skipping rope', 'adjustable skipping rope', 'gym skipping rope', 'CrossFit jump rope India'],
     benefits: ['Burns 10-16 calories per minute', 'Improves coordination and footwork', 'Compact cardio anywhere'],
     features: ['Ball-bearing swivel handles', '3m adjustable cable', 'Foam cushion grips', 'PVC-coated steel cable']
   }
@@ -207,8 +263,6 @@ export async function fetchProducts(): Promise<Product[]> {
   try {
     const response = await fetch(SHEET_CSV_URL, { next: { revalidate: 3600 } })
     if (!response.ok) throw new Error('Sheet fetch failed')
-    // CSV is fetched; in production, parse and map rows to Product type.
-    // For now, returns the static dataset while the sheet populates.
     await response.text()
     return FALLBACK_PRODUCTS
   } catch {
