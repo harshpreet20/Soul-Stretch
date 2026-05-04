@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { getProductBySlug, getAllProductSlugs, FALLBACK_PRODUCTS } from '@/lib/products'
 import ProductDetailClient from '@/components/products/ProductDetailClient'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://soulstretch.in'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://soulstretchglobal.com'
 
 export async function generateStaticParams() {
   const slugs = getAllProductSlugs()

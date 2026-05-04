@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { FALLBACK_PRODUCTS } from '@/lib/products'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://soulstretch.in'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://soulstretchglobal.com'
   const now = new Date()
 
   const staticPages: MetadataRoute.Sitemap = [

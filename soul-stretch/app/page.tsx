@@ -7,7 +7,7 @@ import GuidesPreview from '@/components/home/GuidesPreview'
 import DistributorCTA from '@/components/home/DistributorCTA'
 import { FALLBACK_PRODUCTS } from '@/lib/products'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://soulstretch.in'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://soulstretchglobal.com'
 
 export const metadata: Metadata = {
   title: 'Soul Stretch | Buy Premium Fitness Equipment Online India',

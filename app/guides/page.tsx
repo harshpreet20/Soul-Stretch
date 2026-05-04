@@ -413,20 +413,20 @@ export default function GuidesPage() {
               author: {
                 '@type': 'Organization',
                 name: 'Soul Stretch',
-                url: 'https://soulstretch.in',
+                url: 'https://soulstretchglobal.com',
               },
               publisher: {
                 '@type': 'Organization',
                 name: 'Soul Stretch',
-                url: 'https://soulstretch.in',
+                url: 'https://soulstretchglobal.com',
                 logo: {
                   '@type': 'ImageObject',
-                  url: 'https://soulstretch.in/logo.png',
+                  url: 'https://soulstretchglobal.com/logo.png',
                 },
               },
               mainEntityOfPage: {
                 '@type': 'WebPage',
-                '@id': `https://soulstretch.in/guides#guide-${guide.id}`,
+                '@id': `https://soulstretchglobal.com/guides#guide-${guide.id}`,
               },
               inLanguage: 'en',
               isAccessibleForFree: true,

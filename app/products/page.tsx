@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { fetchProducts } from '@/lib/products'
 import ProductsPageClient from '@/components/products/ProductsPageClient'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://soulstretch.in'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://soulstretchglobal.com'
 
 export const metadata: Metadata = {
   title: 'Buy Gym & Fitness Equipment Online India | Soul Stretch Store',

@@ -5,7 +5,7 @@ import WhatsAppButton from '@/components/ui/WhatsAppButton'
 import SegmentProvider from '@/components/segments/SegmentProvider'
 import './globals.css'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://soulstretch.in'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://soulstretchglobal.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -98,7 +98,7 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Organization',
               name: 'Soul Stretch',
-              url: 'https://soulstretch.in',
+              url: 'https://soulstretchglobal.com',
               logo: `${siteUrl}/images/soulstretchf.png`,
               description:
                 'Soul Stretch is India\u2019s premium fitness equipment and recovery accessories brand, offering high-quality foam rollers, resistance bands, grip trainers, and athletic recovery tools engineered for Indian athletes and fitness enthusiasts.',
