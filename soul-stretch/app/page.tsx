@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import HeroSection from '@/components/home/HeroSection'
+import HeroCarousel from '@/components/home/HeroCarousel'
 import ScrollStorytelling from '@/components/home/ScrollStorytelling'
 import AppleProductReveal from '@/components/home/AppleProductReveal'
 import ComparisonSlider from '@/components/home/ComparisonSlider'
@@ -73,7 +73,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
 
-      <HeroSection />
+      <HeroCarousel />
       <ScrollStorytelling />
       <AppleProductReveal />
       <ComparisonSlider />
