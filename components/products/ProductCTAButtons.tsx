@@ -3,13 +3,16 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { sendToN8N } from '@/lib/n8n'
+import { MarketplaceLink } from '@/lib/products'
+import MarketplaceButtons from './MarketplaceButtons'
 
 interface ProductCTAButtonsProps {
   productName: string
   productSlug: string
+  marketplaceLinks?: MarketplaceLink[]
 }
 
-export default function ProductCTAButtons({ productName, productSlug }: ProductCTAButtonsProps) {
+export default function ProductCTAButtons({ productName, productSlug, marketplaceLinks }: ProductCTAButtonsProps) {
   const whatsappNumber = '919217103413'
 
   const handleWhatsAppClick = () => {
@@ -55,6 +58,13 @@ export default function ProductCTAButtons({ productName, productSlug }: ProductC
           Request a Quote
         </motion.button>
       </Link>
+
+      {/* Marketplace Buttons */}
+      {marketplaceLinks && marketplaceLinks.length > 0 && (
+        <div className="pt-4 mt-4 border-t border-white/[0.06]">
+          <MarketplaceButtons links={marketplaceLinks} productName={productName} />
+        </div>
+      )}
     </div>
   )
 }

@@ -15,21 +15,9 @@ interface Banner {
 const banners: Banner[] = [
   {
     id: 1,
-    image: '/images/banners/foam-roller-banner.jpg',
+    image: '/images/banners/foam-roller-banner.png',
     alt: 'Soul Stretch Premium Foam Roller - Roll Better, Feel Better',
     link: '/products/foam-roller',
-  },
-  {
-    id: 2,
-    image: '/images/banners/banner-2.jpg',
-    alt: 'Soul Stretch Premium Fitness Equipment',
-    link: '/products',
-  },
-  {
-    id: 3,
-    image: '/images/banners/banner-3.jpg',
-    alt: 'Soul Stretch Recovery Tools',
-    link: '/products',
   },
 ]
 
@@ -42,7 +30,7 @@ export default function HeroCarousel() {
   const [isPaused, setIsPaused] = useState(false)
   const [touchStart, setTouchStart] = useState<number | null>(null)
 
-  const activeBanners = banners.filter((_, i) => i === 0 || true)
+  const activeBanners = banners
 
   const goTo = useCallback(
     (index: number) => {

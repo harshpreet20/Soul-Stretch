@@ -1,3 +1,9 @@
+export interface MarketplaceLink {
+  platform: 'amazon' | 'flipkart'
+  url: string
+  label?: string
+}
+
 export interface Product {
   id: string
   name: string
@@ -14,6 +20,7 @@ export interface Product {
   comparePrice?: number
   seoTitle: string
   seoKeywords: string[]
+  marketplaceLinks?: MarketplaceLink[]
 }
 
 const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/10R0JbenWYvmOE-VH3shvcSpn_IaobaLmU7z3DQqpzB8/export?format=csv'
@@ -51,7 +58,12 @@ export const FALLBACK_PRODUCTS: Product[] = [
     seoTitle: 'Buy Foot Insoles Online India | Best Arch Support Insoles for Flat Feet',
     seoKeywords: ['foot insoles', 'shoe insoles India', 'buy insoles online India', 'arch support insoles', 'insoles for flat feet', 'plantar fasciitis insoles India', 'memory foam insoles', 'running insoles India', 'orthopedic insoles', 'insoles for gym shoes', 'best insoles India price', 'shoe insoles for standing all day'],
     benefits: ['Reduces plantar fascia strain', 'Corrects foot alignment', 'Absorbs impact on hard surfaces'],
-    features: ['Memory foam heel cup', 'Breathable top layer', 'Fits sizes 6-12', 'Anti-odor treatment']
+    features: ['Memory foam heel cup', 'Breathable top layer', 'Fits sizes 6-12', 'Anti-odor treatment'],
+    marketplaceLinks: [
+      { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZDZ7WKY', label: 'Size 6' },
+      { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZNYCRGP', label: 'Size 7' },
+      { platform: 'amazon', url: 'https://www.amazon.in/dp/B0H114KP2W', label: 'Size 8' },
+    ],
   },
   {
     id: '3',

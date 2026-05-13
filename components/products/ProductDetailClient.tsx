@@ -139,7 +139,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
 
                 {/* CTA Buttons */}
                 <motion.div variants={fadeUp}>
-                  <ProductCTAButtons productName={product.name} productSlug={product.slug} />
+                  <ProductCTAButtons productName={product.name} productSlug={product.slug} marketplaceLinks={product.marketplaceLinks} />
                 </motion.div>
 
                 {/* Trust Badges */}
