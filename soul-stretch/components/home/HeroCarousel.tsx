@@ -112,9 +112,9 @@ export default function HeroCarousel() {
   const banner = activeBanners[current]
 
   return (
-    <section className="pt-14 sm:pt-16">
+    <section>
       <div
-        className="relative w-full aspect-[2/1] sm:aspect-[2.5/1] lg:aspect-[3/1] bg-soul-black overflow-hidden"
+        className="relative w-full h-[50vw] sm:h-[40vw] lg:h-[33.33vw] bg-soul-black overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
         onTouchStart={handleTouchStart}
