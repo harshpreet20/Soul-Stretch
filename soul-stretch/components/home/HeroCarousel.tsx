@@ -19,6 +19,30 @@ const banners: Banner[] = [
     alt: 'Soul Stretch Premium Foam Roller - Roll Better, Feel Better',
     link: '/products/foam-roller',
   },
+  {
+    id: 2,
+    image: '/images/banners/banner-2.png',
+    alt: 'Soul Stretch Premium Fitness Equipment - Banner 2',
+    link: '/products',
+  },
+  {
+    id: 3,
+    image: '/images/banners/banner-3.png',
+    alt: 'Soul Stretch Premium Fitness Equipment - Banner 3',
+    link: '/products',
+  },
+  {
+    id: 4,
+    image: '/images/banners/banner-4.png',
+    alt: 'Soul Stretch Premium Fitness Equipment - Banner 4',
+    link: '/products',
+  },
+  {
+    id: 5,
+    image: '/images/banners/banner-5.png',
+    alt: 'Soul Stretch Premium Fitness Equipment - Banner 5',
+    link: '/products',
+  },
 ]
 
 const AUTOPLAY_INTERVAL = 5000
