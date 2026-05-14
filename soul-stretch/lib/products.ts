@@ -41,7 +41,10 @@ export const FALLBACK_PRODUCTS: Product[] = [
     seoTitle: 'Buy Foam Roller Online India | Best Foam Roller for Back Pain & Recovery',
     seoKeywords: ['foam roller', 'foam roller India', 'buy foam roller online India', 'best foam roller for back pain', 'muscle recovery foam roller', 'foam roller for legs', 'EVA foam roller', 'grid foam roller India', 'foam roller price India', 'myofascial release roller', 'gym foam roller', 'foam roller for home workout'],
     benefits: ['Breaks down muscle knots and adhesions', 'Accelerates post-workout recovery', 'Improves blood circulation and oxygen delivery'],
-    features: ['High-density EVA foam', '33cm x 14cm standard size', 'Supports up to 120kg', 'Grid texture for targeted relief']
+    features: ['High-density EVA foam', '33cm x 14cm standard size', 'Supports up to 120kg', 'Grid texture for targeted relief'],
+    marketplaceLinks: [
+      { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZHX3MRP' },
+    ],
   },
   {
     id: '2',
@@ -105,7 +108,11 @@ export const FALLBACK_PRODUCTS: Product[] = [
     seoTitle: 'Buy Adjustable Hand Gripper Online India | 5-60kg with Digital Counter',
     seoKeywords: ['adjustable hand gripper', 'adjustable hand gripper India', 'hand gripper with counter', 'buy adjustable gripper online India', 'grip strengthener adjustable', 'hand gripper 60kg', 'digital counter hand gripper', 'progressive hand gripper', 'best adjustable hand gripper India', 'hand gripper for men', 'grip trainer with counter'],
     benefits: ['Progressive overload built-in', 'Digital rep counter for tracking', 'Suitable for all fitness levels'],
-    features: ['5-60kg adjustable dial', 'Built-in digital counter', 'Anti-slip grip surface', 'Resistance indicator window']
+    features: ['5-60kg adjustable dial', 'Built-in digital counter', 'Anti-slip grip surface', 'Resistance indicator window'],
+    marketplaceLinks: [
+      { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZ7MNZDZ?th=1', label: 'Black' },
+      { platform: 'amazon', url: 'https://www.amazon.in/dp/B0H11YCZYB?th=1', label: 'Green' },
+    ],
   },
   {
     id: '5',
@@ -122,7 +129,10 @@ export const FALLBACK_PRODUCTS: Product[] = [
     seoTitle: 'Buy Wrist Exerciser Online India | Best Wrist Strengthener & Forearm Roller',
     seoKeywords: ['wrist exerciser', 'wrist exerciser India', 'buy wrist exerciser online', 'wrist strengthener', 'forearm roller', 'wrist roller India', 'carpal tunnel exercise tool', 'wrist rehab equipment', 'forearm exerciser India', 'wrist trainer', 'wrist exercise equipment India price'],
     benefits: ['Improves wrist flexibility and range of motion', 'Strengthens wrist stabilizers', 'Reduces wrist injury risk'],
-    features: ['360° rotation mechanism', 'Non-slip rubber grip', 'Compact travel design', 'Adjustable tension']
+    features: ['360° rotation mechanism', 'Non-slip rubber grip', 'Compact travel design', 'Adjustable tension'],
+    marketplaceLinks: [
+      { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZJ1MVM3' },
+    ],
   },
   {
     id: '6',
@@ -141,7 +151,11 @@ export const FALLBACK_PRODUCTS: Product[] = [
     seoTitle: 'Buy Protein Shaker Bottle Online India | 700ml BPA-Free Gym Shaker',
     seoKeywords: ['protein shaker', 'protein shaker bottle India', 'buy shaker bottle online India', 'gym shaker bottle', 'BPA free shaker bottle', 'protein shake mixer', 'shaker bottle 700ml', 'best shaker bottle India', 'gym water bottle India', 'protein shaker with ball', 'leak proof shaker bottle'],
     benefits: ['Smooth lump-free protein blends', 'Leak-proof at any angle', 'Easy to clean'],
-    features: ['700ml BPA-free Tritan', 'Stainless mixing ball', 'Screw-lock lid', 'Measurement markings']
+    features: ['700ml BPA-free Tritan', 'Stainless mixing ball', 'Screw-lock lid', 'Measurement markings'],
+    marketplaceLinks: [
+      { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZK9T8VY', label: 'Orange 700ml (Spring)' },
+      { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZ816L4F', label: 'Orange 700ml (Medium)' },
+    ],
   },
   {
     id: '7',
@@ -160,7 +174,11 @@ export const FALLBACK_PRODUCTS: Product[] = [
     seoTitle: 'Buy Protein Shaker Blue Online India | Compact Gym Shaker Bottle',
     seoKeywords: ['protein shaker blue', 'gym shaker bottle India', 'buy protein shaker online', 'compact shaker bottle', 'BPA free gym bottle', 'flip top shaker', 'protein shake bottle India', 'shaker bottle for gym', 'best gym bottle India'],
     benefits: ['Compact size for gym bags', 'Leak-proof flip-top lid', 'Easy to clean'],
-    features: ['BPA-free construction', 'Flip-top secure lid', 'Translucent body for fill level', 'Soul Stretch branded']
+    features: ['BPA-free construction', 'Flip-top secure lid', 'Translucent body for fill level', 'Soul Stretch branded'],
+    marketplaceLinks: [
+      { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZ8F6V7Y', label: 'Blue 700ml (Medium)' },
+      { platform: 'amazon', url: 'https://www.amazon.in/dp/B0H11QWD6S', label: 'Blue 500ml (Small)' },
+    ],
   },
   {
     id: '8',
@@ -180,7 +198,11 @@ export const FALLBACK_PRODUCTS: Product[] = [
     seoTitle: 'Buy Black Protein Shaker Online India | Premium Stealth Gym Bottle',
     seoKeywords: ['black protein shaker', 'black gym shaker bottle', 'buy shaker bottle online India', 'stealth black shaker', 'matte black gym bottle', 'protein shaker black India', 'premium shaker bottle', 'gym bottle India price'],
     benefits: ['Sleek stealth design', 'Leak-proof at any angle', 'Easy to clean'],
-    features: ['BPA-free construction', 'All-black design', 'Screw-lock lid', 'Measurement markings']
+    features: ['BPA-free construction', 'All-black design', 'Screw-lock lid', 'Measurement markings'],
+    marketplaceLinks: [
+      { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZKDSXPF', label: 'Black 700ml (Spring)' },
+      { platform: 'amazon', url: 'https://www.amazon.in/dp/B0H11Z8YD4', label: 'Black 500ml (Small)' },
+    ],
   },
   {
     id: '9',
@@ -199,7 +221,11 @@ export const FALLBACK_PRODUCTS: Product[] = [
     seoTitle: 'Buy Double Toning Tube Online India | Best Resistance Tube for Home Workout',
     seoKeywords: ['toning tube', 'double toning tube India', 'buy toning tube online', 'resistance tube India', 'toning tube for women', 'toning tube for men', 'resistance tube for home workout', 'exercise tube India', 'best toning tube India price', 'pull tube for exercise', 'chest expander tube', 'home gym resistance tube'],
     benefits: ['Activates multiple muscle groups', 'Improves bilateral strength balance', 'Portable full-body workout'],
-    features: ['Dual tube resistance', 'Padded handles', 'Non-slip foot strap', 'Foldable for storage']
+    features: ['Dual tube resistance', 'Padded handles', 'Non-slip foot strap', 'Foldable for storage'],
+    marketplaceLinks: [
+      { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZHS3S3P', label: 'Black' },
+      { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GYZ8TQKT', label: 'Yellow' },
+    ],
   },
   {
     id: '10',
