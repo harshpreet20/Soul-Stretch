@@ -203,6 +203,70 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
             </div>
           )}
 
+          {/* Marketplace buy buttons (collapsed) */}
+          {!isExpanded && product.marketplaceLinks && product.marketplaceLinks.length > 0 && (
+            <div className="flex gap-2 pt-2">
+              {(() => {
+                const amazonLinks = product.marketplaceLinks.filter(l => l.platform === 'amazon')
+                const flipkartLinks = product.marketplaceLinks.filter(l => l.platform === 'flipkart')
+                return (
+                  <>
+                    {amazonLinks.length > 0 && (
+                      <motion.a
+                        href={amazonLinks[0].url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        whileHover={{ scale: 1.04, y: -1 }}
+                        whileTap={{ scale: 0.96 }}
+                        className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-[#232F3E] border border-[#FF9900]/30 rounded-lg hover:border-[#FF9900]/60 hover:shadow-[0_0_12px_rgba(255,153,0,0.15)] transition-all duration-300 group/amz"
+                      >
+                        <svg className="h-3.5 flex-shrink-0" viewBox="0 0 100 30" fill="none">
+                          <text x="0" y="22" fontFamily="Arial,sans-serif" fontWeight="800" fontSize="22" fill="#FF9900">amazon</text>
+                        </svg>
+                        <motion.svg
+                          className="w-3 h-3 text-[#FF9900] flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          animate={{ x: [0, 3, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </motion.svg>
+                      </motion.a>
+                    )}
+                    {flipkartLinks.length > 0 && (
+                      <motion.a
+                        href={flipkartLinks[0].url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        whileHover={{ scale: 1.04, y: -1 }}
+                        whileTap={{ scale: 0.96 }}
+                        className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-[#172B4D] border border-[#2874F0]/30 rounded-lg hover:border-[#2874F0]/60 hover:shadow-[0_0_12px_rgba(40,116,240,0.15)] transition-all duration-300"
+                      >
+                        <svg className="h-3.5 flex-shrink-0" viewBox="0 0 80 30" fill="none">
+                          <text x="0" y="22" fontFamily="Arial,sans-serif" fontWeight="800" fontSize="22" fill="#2874F0">Flipkart</text>
+                        </svg>
+                        <motion.svg
+                          className="w-3 h-3 text-[#2874F0] flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          animate={{ x: [0, 3, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </motion.svg>
+                      </motion.a>
+                    )}
+                  </>
+                )
+              })()}
+            </div>
+          )}
+
           {/* Expanded Content */}
           <AnimatePresence>
             {isExpanded && (
