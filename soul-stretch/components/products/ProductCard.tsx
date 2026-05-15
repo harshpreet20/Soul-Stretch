@@ -185,86 +185,120 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
             <p className="text-xs sm:text-sm text-soul-orange/80 font-medium italic">{product.tagline}</p>
           </div>
 
-          {/* Collapsed - Short Description */}
+          {/* Price + Short Description (always visible) */}
           {!isExpanded && (
-            <p className="text-xs sm:text-sm text-soul-gray/80 truncate-2 leading-relaxed">
-              {product.shortDescription}
-            </p>
-          )}
+            <>
+              {/* Price Row */}
+              <div className="flex items-baseline gap-2">
+                <span className="text-2xl font-black text-soul-white">₹{product.price}</span>
+                {product.comparePrice && (
+                  <span className="text-sm text-soul-gray/50 line-through">₹{product.comparePrice}</span>
+                )}
+                {product.comparePrice && (
+                  <span className="px-1.5 py-0.5 bg-green-500/10 border border-green-500/20 rounded text-[10px] font-bold text-green-400">
+                    {Math.round(((product.comparePrice - product.price) / product.comparePrice) * 100)}% OFF
+                  </span>
+                )}
+              </div>
 
-          {/* Quick benefits pills (collapsed) */}
-          {!isExpanded && (
-            <div className="flex flex-wrap gap-1.5 pt-1">
-              {product.benefits.slice(0, 2).map((benefit, idx) => (
-                <span key={idx} className="px-2 py-0.5 bg-soul-orange/5 border border-soul-orange/10 rounded-full text-[10px] text-soul-gray/70 leading-tight">
-                  {benefit.length > 30 ? benefit.slice(0, 30) + '...' : benefit}
-                </span>
-              ))}
-            </div>
-          )}
+              <p className="text-xs sm:text-sm text-soul-gray/70 line-clamp-2 leading-relaxed">
+                {product.shortDescription}
+              </p>
 
-          {/* Marketplace buy buttons (collapsed) */}
-          {!isExpanded && product.marketplaceLinks && product.marketplaceLinks.length > 0 && (
-            <div className="flex gap-2 pt-2">
-              {(() => {
-                const amazonLinks = product.marketplaceLinks.filter(l => l.platform === 'amazon')
-                const flipkartLinks = product.marketplaceLinks.filter(l => l.platform === 'flipkart')
-                return (
-                  <>
-                    {amazonLinks.length > 0 && (
-                      <motion.a
-                        href={amazonLinks[0].url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        whileHover={{ scale: 1.04, y: -1 }}
-                        whileTap={{ scale: 0.96 }}
-                        className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-[#232F3E] border border-[#FF9900]/30 rounded-lg hover:border-[#FF9900]/60 hover:shadow-[0_0_12px_rgba(255,153,0,0.15)] transition-all duration-300 group/amz"
-                      >
-                        <svg className="h-3.5 flex-shrink-0" viewBox="0 0 100 30" fill="none">
-                          <text x="0" y="22" fontFamily="Arial,sans-serif" fontWeight="800" fontSize="22" fill="#FF9900">amazon</text>
-                        </svg>
-                        <motion.svg
-                          className="w-3 h-3 text-[#FF9900] flex-shrink-0"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          animate={{ x: [0, 3, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </motion.svg>
-                      </motion.a>
-                    )}
-                    {flipkartLinks.length > 0 && (
-                      <motion.a
-                        href={flipkartLinks[0].url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        whileHover={{ scale: 1.04, y: -1 }}
-                        whileTap={{ scale: 0.96 }}
-                        className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-[#172B4D] border border-[#2874F0]/30 rounded-lg hover:border-[#2874F0]/60 hover:shadow-[0_0_12px_rgba(40,116,240,0.15)] transition-all duration-300"
-                      >
-                        <svg className="h-3.5 flex-shrink-0" viewBox="0 0 80 30" fill="none">
-                          <text x="0" y="22" fontFamily="Arial,sans-serif" fontWeight="800" fontSize="22" fill="#2874F0">Flipkart</text>
-                        </svg>
-                        <motion.svg
-                          className="w-3 h-3 text-[#2874F0] flex-shrink-0"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          animate={{ x: [0, 3, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </motion.svg>
-                      </motion.a>
-                    )}
-                  </>
-                )
-              })()}
-            </div>
+              {/* Buy Buttons — always visible */}
+              <div className="space-y-2 pt-2">
+                {/* WhatsApp Order */}
+                <motion.a
+                  href={`https://wa.me/919217103413?text=${encodeURIComponent(`Hi, I'd like to order ${product.name} (₹${product.price})`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(37,211,102,0.2)' }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-[#25D366] text-white font-bold rounded-xl text-sm touch-manipulation transition-all hover:bg-[#20BD5A]"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                  </svg>
+                  Order on WhatsApp
+                </motion.a>
+
+                {/* Amazon / Flipkart Row */}
+                {product.marketplaceLinks && product.marketplaceLinks.length > 0 && (
+                  <div className="flex gap-2">
+                    {(() => {
+                      const amazonLinks = product.marketplaceLinks!.filter(l => l.platform === 'amazon')
+                      const flipkartLinks = product.marketplaceLinks!.filter(l => l.platform === 'flipkart')
+                      return (
+                        <>
+                          {amazonLinks.length > 0 && (
+                            <motion.a
+                              href={amazonLinks[0].url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              whileHover={{ scale: 1.04, y: -1 }}
+                              whileTap={{ scale: 0.96 }}
+                              className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 bg-[#232F3E] border border-[#FF9900]/30 rounded-xl hover:border-[#FF9900]/60 hover:shadow-[0_0_12px_rgba(255,153,0,0.15)] transition-all duration-300"
+                            >
+                              <span className="text-xs font-bold text-white">Buy on</span>
+                              <svg className="h-3" viewBox="0 0 100 30" fill="none">
+                                <text x="0" y="22" fontFamily="Arial,sans-serif" fontWeight="800" fontSize="22" fill="#FF9900">amazon</text>
+                              </svg>
+                              <motion.svg
+                                className="w-3 h-3 text-[#FF9900] flex-shrink-0"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                animate={{ x: [0, 3, 0] }}
+                                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+                              >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                              </motion.svg>
+                            </motion.a>
+                          )}
+                          {flipkartLinks.length > 0 && (
+                            <motion.a
+                              href={flipkartLinks[0].url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              whileHover={{ scale: 1.04, y: -1 }}
+                              whileTap={{ scale: 0.96 }}
+                              className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 bg-[#172B4D] border border-[#2874F0]/30 rounded-xl hover:border-[#2874F0]/60 hover:shadow-[0_0_12px_rgba(40,116,240,0.15)] transition-all duration-300"
+                            >
+                              <span className="text-xs font-bold text-white">Buy on</span>
+                              <svg className="h-3" viewBox="0 0 80 30" fill="none">
+                                <text x="0" y="22" fontFamily="Arial,sans-serif" fontWeight="800" fontSize="22" fill="#2874F0">Flipkart</text>
+                              </svg>
+                              <motion.svg
+                                className="w-3 h-3 text-[#2874F0] flex-shrink-0"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                animate={{ x: [0, 3, 0] }}
+                                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+                              >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                              </motion.svg>
+                            </motion.a>
+                          )}
+                        </>
+                      )
+                    })()}
+                  </div>
+                )}
+
+                {/* View Details link */}
+                <Link
+                  href={`/products/${product.slug}`}
+                  onClick={(e) => e.stopPropagation()}
+                  className="block text-center text-xs text-soul-gray/50 hover:text-soul-orange transition-colors pt-1 underline underline-offset-2 decoration-soul-gray/20 hover:decoration-soul-orange/40"
+                >
+                  View full details &amp; more sizes →
+                </Link>
+              </div>
+            </>
           )}
 
           {/* Expanded Content */}
