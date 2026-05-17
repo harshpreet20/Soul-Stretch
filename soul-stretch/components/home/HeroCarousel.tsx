@@ -114,7 +114,7 @@ export default function HeroCarousel() {
   return (
     <section>
       <div
-        className="relative w-full aspect-[2/1] bg-soul-black overflow-hidden"
+        className="relative w-full aspect-[20/7] bg-soul-black overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
         onTouchStart={handleTouchStart}
