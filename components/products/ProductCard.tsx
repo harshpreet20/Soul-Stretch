@@ -225,12 +225,12 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
                               whileTap={{ scale: 0.96 }}
                               className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-[#232F3E] border border-[#FF9900]/30 rounded-xl hover:border-[#FF9900]/60 hover:shadow-[0_0_15px_rgba(255,153,0,0.2)] transition-all duration-300"
                             >
-                              <span className="text-sm font-bold text-white">Buy on</span>
-                              <svg className="h-4" viewBox="0 0 100 30" fill="none">
+                              <span className="text-base font-bold text-white">Buy on</span>
+                              <svg className="h-[1.35rem]" viewBox="0 0 100 30" fill="none">
                                 <text x="0" y="22" fontFamily="Arial,sans-serif" fontWeight="800" fontSize="22" fill="#FF9900">amazon</text>
                               </svg>
                               <motion.svg
-                                className="w-3.5 h-3.5 text-[#FF9900] flex-shrink-0"
+                                className="w-4 h-4 text-[#FF9900] flex-shrink-0"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -251,12 +251,12 @@ export default function ProductCard({ product, isExpanded, onToggle }: ProductCa
                               whileTap={{ scale: 0.96 }}
                               className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-[#172B4D] border border-[#2874F0]/30 rounded-xl hover:border-[#2874F0]/60 hover:shadow-[0_0_15px_rgba(40,116,240,0.2)] transition-all duration-300"
                             >
-                              <span className="text-sm font-bold text-white">Buy on</span>
-                              <svg className="h-4" viewBox="0 0 80 30" fill="none">
+                              <span className="text-base font-bold text-white">Buy on</span>
+                              <svg className="h-[1.35rem]" viewBox="0 0 80 30" fill="none">
                                 <text x="0" y="22" fontFamily="Arial,sans-serif" fontWeight="800" fontSize="22" fill="#2874F0">Flipkart</text>
                               </svg>
                               <motion.svg
-                                className="w-3.5 h-3.5 text-[#2874F0] flex-shrink-0"
+                                className="w-4 h-4 text-[#2874F0] flex-shrink-0"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"

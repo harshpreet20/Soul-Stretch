@@ -62,12 +62,12 @@ export default function MarketplaceButtons({ links, productName }: MarketplaceBu
               <div className="relative z-10 flex items-center justify-center gap-3 px-6 py-3.5">
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-bold text-white">Buy on</span>
-                  <svg className="h-5" viewBox="0 0 100 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="h-[1.625rem]" viewBox="0 0 100 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <text x="0" y="22" fontFamily="Arial,sans-serif" fontWeight="800" fontSize="22" fill="#FF9900">amazon.in</text>
                   </svg>
                 </div>
                 <motion.svg
-                  className="w-4 h-4 text-[#FF9900]"
+                  className="w-5 h-5 text-[#FF9900]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -96,7 +96,7 @@ export default function MarketplaceButtons({ links, productName }: MarketplaceBu
                 <div className="relative z-10 flex items-center justify-between px-6 py-3.5">
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-bold text-white">Buy on</span>
-                    <svg className="h-5" viewBox="0 0 100 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg className="h-[1.625rem]" viewBox="0 0 100 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <text x="0" y="22" fontFamily="Arial,sans-serif" fontWeight="800" fontSize="22" fill="#FF9900">amazon.in</text>
                     </svg>
                   </div>
@@ -165,12 +165,12 @@ export default function MarketplaceButtons({ links, productName }: MarketplaceBu
               <div className="relative z-10 flex items-center justify-center gap-3 px-6 py-3.5">
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-bold text-white">Buy on</span>
-                  <svg className="h-5" viewBox="0 0 90 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="h-[1.625rem]" viewBox="0 0 90 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <text x="0" y="22" fontFamily="Arial,sans-serif" fontWeight="800" fontSize="22" fill="#2874F0">Flipkart</text>
                   </svg>
                 </div>
                 <motion.svg
-                  className="w-4 h-4 text-[#2874F0]"
+                  className="w-5 h-5 text-[#2874F0]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -198,7 +198,7 @@ export default function MarketplaceButtons({ links, productName }: MarketplaceBu
               <div className="relative z-10 flex items-center justify-between px-6 py-3.5">
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-bold text-white">Buy on</span>
-                  <svg className="h-5" viewBox="0 0 90 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="h-[1.625rem]" viewBox="0 0 90 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <text x="0" y="22" fontFamily="Arial,sans-serif" fontWeight="800" fontSize="22" fill="#2874F0">Flipkart</text>
                   </svg>
                 </div>

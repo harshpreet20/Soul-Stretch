@@ -44,6 +44,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     features: ['High-density EVA foam', '33cm x 14cm standard size', 'Supports up to 120kg', 'Grid texture for targeted relief'],
     marketplaceLinks: [
       { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZHX3MRP' },
+      { platform: 'flipkart', url: 'https://dl.flipkart.com/s/FORHMRGS5VGZBYMU' },
     ],
   },
   {
@@ -66,6 +67,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
       { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZDZ7WKY', label: 'Size 6' },
       { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZNYCRGP', label: 'Size 7' },
       { platform: 'amazon', url: 'https://www.amazon.in/dp/B0H114KP2W', label: 'Size 8' },
+      { platform: 'flipkart', url: 'https://dl.flipkart.com/s/ISEHMRH52EGYA83S', label: 'Size 6' },
+      { platform: 'flipkart', url: 'https://dl.flipkart.com/s/ISEHMYAP3FFHQ8GR', label: 'Size 7' },
+      { platform: 'flipkart', url: 'https://dl.flipkart.com/s/ISEHMYAWHXDGMYAU', label: 'Size 8' },
     ],
   },
   {
@@ -87,7 +91,11 @@ export const FALLBACK_PRODUCTS: Product[] = [
     seoTitle: 'Buy Hand Gripper Online India | Best Grip Strength Trainer ₹499',
     seoKeywords: ['hand gripper', 'hand gripper India', 'buy hand gripper online', 'grip strength trainer', 'hand exerciser India', 'forearm strengthener', 'hand gripper for gym', 'grip trainer India price', 'steel hand gripper', 'hand gripper exercise', 'best hand gripper India', 'grip strengthener for men'],
     benefits: ['Builds forearm and grip strength', 'Supports recovery and rehabilitation', 'Portable training anywhere'],
-    features: ['Durable steel spring', 'Ergonomic foam handles', 'Compact carry size', 'Non-slip grip surface']
+    features: ['Durable steel spring', 'Ergonomic foam handles', 'Compact carry size', 'Non-slip grip surface'],
+    marketplaceLinks: [
+      { platform: 'flipkart', url: 'https://dl.flipkart.com/s/FGPHMRMFB4CERXFV', label: 'Grey' },
+      { platform: 'flipkart', url: 'https://dl.flipkart.com/s/FGPHMQK2DEV6QYWY', label: 'Red' },
+    ],
   },
   {
     id: '4',
@@ -112,6 +120,8 @@ export const FALLBACK_PRODUCTS: Product[] = [
     marketplaceLinks: [
       { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZ7MNZDZ?th=1', label: 'Black' },
       { platform: 'amazon', url: 'https://www.amazon.in/dp/B0H11YCZYB?th=1', label: 'Green' },
+      { platform: 'flipkart', url: 'https://dl.flipkart.com/s/FGPHGVC8UGHG4X8E', label: 'Black' },
+      { platform: 'flipkart', url: 'https://dl.flipkart.com/s/FGPHGUTNQGKAHUMH', label: 'Green' },
     ],
   },
   {
@@ -132,6 +142,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     features: ['360° rotation mechanism', 'Non-slip rubber grip', 'Compact travel design', 'Adjustable tension'],
     marketplaceLinks: [
       { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZJ1MVM3' },
+      { platform: 'flipkart', url: 'https://dl.flipkart.com/s/FGPHN3RM6TFGVTH6' },
     ],
   },
   {
@@ -155,6 +166,8 @@ export const FALLBACK_PRODUCTS: Product[] = [
     marketplaceLinks: [
       { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZK9T8VY', label: 'Orange 700ml (Spring)' },
       { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZ816L4F', label: 'Orange 700ml (Medium)' },
+      { platform: 'flipkart', url: 'https://dl.flipkart.com/s/BOTHN3UMXSHUAG8G', label: 'Orange 700ml (Spring)' },
+      { platform: 'flipkart', url: 'https://dl.flipkart.com/s/BOTHMP86DUCZ5CPR', label: 'Orange 700ml (Medium)' },
     ],
   },
   {
@@ -178,6 +191,8 @@ export const FALLBACK_PRODUCTS: Product[] = [
     marketplaceLinks: [
       { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZ8F6V7Y', label: 'Blue 700ml (Medium)' },
       { platform: 'amazon', url: 'https://www.amazon.in/dp/B0H11QWD6S', label: 'Blue 500ml (Small)' },
+      { platform: 'flipkart', url: 'https://dl.flipkart.com/s/BOTHNYGUFZNDVPFC', label: 'Blue 700ml (Medium)' },
+      { platform: 'flipkart', url: 'https://dl.flipkart.com/s/BOTHMQGRHJZGZMRF', label: 'Blue 500ml (Small)' },
     ],
   },
   {
@@ -202,6 +217,8 @@ export const FALLBACK_PRODUCTS: Product[] = [
     marketplaceLinks: [
       { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZKDSXPF', label: 'Black 700ml (Spring)' },
       { platform: 'amazon', url: 'https://www.amazon.in/dp/B0H11Z8YD4', label: 'Black 500ml (Small)' },
+      { platform: 'flipkart', url: 'https://dl.flipkart.com/s/BOTHN4NNAWTR9GXP', label: 'Black 700ml (Spring)' },
+      { platform: 'flipkart', url: 'https://dl.flipkart.com/s/BOTHMRM8FTTEWWRS', label: 'Black 500ml (Small)' },
     ],
   },
   {
@@ -225,6 +242,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
     marketplaceLinks: [
       { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GZHS3S3P', label: 'Black' },
       { platform: 'amazon', url: 'https://www.amazon.in/dp/B0GYZ8TQKT', label: 'Yellow' },
+      { platform: 'flipkart', url: 'https://dl.flipkart.com/s/RTBHMRMVHJVTAWMA', label: 'Black' },
     ],
   },
   {
