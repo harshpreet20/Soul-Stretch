@@ -164,7 +164,7 @@ export default function ComparisonSlider() {
               onDrag={(_, info) => {
                 if (!containerRef.current) return
                 const rect = containerRef.current.getBoundingClientRect()
-                const newPosition = ((info.x) / rect.width) * 100
+                const newPosition = ((info.point.x - rect.left) / rect.width) * 100
                 if (newPosition >= 0 && newPosition <= 100) {
                   setPosition(newPosition)
                 }
