@@ -31,9 +31,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.15 },
   },
 }
 
@@ -42,13 +40,13 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6 },
+    transition: { duration: 0.5 },
   },
 }
 
 export default function GuidesPreview() {
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative py-12 sm:py-20 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-soul-black via-soul-black to-soul-card opacity-50" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,12 +55,12 @@ export default function GuidesPreview() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-16"
         >
-          <h2 className="text-5xl sm:text-6xl font-black text-soul-white mb-4">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-soul-white mb-3 sm:mb-4">
             Learn from the Best
           </h2>
-          <p className="text-xl text-soul-gray max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-soul-gray max-w-2xl mx-auto px-2">
             Expert guides designed to elevate your training and recovery game.
           </p>
         </motion.div>
@@ -73,26 +71,25 @@ export default function GuidesPreview() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6"
         >
           {guides.map((guide) => (
             <motion.div
               key={guide.id}
               variants={itemVariants}
-              whileHover={{ y: -5 }}
               className="group"
             >
               <Link href={guide.href}>
-                <div className="h-full bg-soul-card rounded-xl p-6 border border-soul-orange/10 hover:border-soul-orange/30 transition-all duration-300 cursor-pointer">
-                  <div className="space-y-4">
-                    <div className="text-4xl">{guide.icon}</div>
-                    <h3 className="text-xl font-bold text-soul-white group-hover:text-soul-orange transition-colors leading-tight">
+                <div className="h-full bg-soul-card rounded-xl p-5 sm:p-6 border border-soul-orange/10 hover:border-soul-orange/30 active:border-soul-orange/40 transition-all duration-300 cursor-pointer">
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="text-3xl sm:text-4xl">{guide.icon}</div>
+                    <h3 className="text-lg sm:text-xl font-bold text-soul-white group-hover:text-soul-orange transition-colors leading-tight">
                       {guide.title}
                     </h3>
-                    <p className="text-soul-gray text-sm leading-relaxed">
+                    <p className="text-soul-gray text-xs sm:text-sm leading-relaxed">
                       {guide.summary}
                     </p>
-                    <div className="pt-4 border-t border-soul-orange/10 group-hover:border-soul-orange/30 transition-colors">
+                    <div className="pt-3 sm:pt-4 border-t border-soul-orange/10 group-hover:border-soul-orange/30 transition-colors">
                       <span className="text-soul-orange text-sm font-medium flex items-center gap-2">
                         Read Guide
                         <svg
@@ -122,14 +119,13 @@ export default function GuidesPreview() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="text-center mt-12"
+          transition={{ delay: 0.4 }}
+          className="text-center mt-8 sm:mt-12"
         >
           <Link href="/guides">
             <motion.button
-              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-soul-orange text-soul-black font-bold rounded-lg hover:bg-orange-600 transition-colors"
+              className="w-full sm:w-auto px-8 py-3.5 sm:py-4 bg-soul-orange text-soul-black font-bold rounded-lg hover:bg-orange-600 transition-colors touch-manipulation"
             >
               View All Guides
             </motion.button>

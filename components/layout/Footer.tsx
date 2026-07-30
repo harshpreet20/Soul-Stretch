@@ -1,9 +1,10 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
-const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210'
+const WHATSAPP_NUMBER = '919217103413'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -28,9 +29,9 @@ export default function Footer() {
     {
       label: 'Support',
       links: [
-        { label: 'FAQ', href: '#' },
-        { label: 'Returns', href: '#' },
-        { label: 'Shipping', href: '#' },
+        { label: 'FAQ', href: '/contact' },
+        { label: 'Returns', href: '/contact' },
+        { label: 'Shipping', href: '/contact' },
       ],
     },
   ]
@@ -57,19 +58,26 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-soul-black border-t border-soul-orange/10 mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+    <footer className="bg-soul-black border-t border-soul-orange/10 mt-12 sm:mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 pb-28 sm:pb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-12">
           {/* Brand */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="col-span-2 sm:col-span-2 md:col-span-1"
           >
-            <h3 className="text-xl font-bold mb-3">
-              SOUL <span className="text-soul-orange">STRETCH</span>
-            </h3>
-            <p className="text-sm text-soul-gray mb-4">
+            <Link href="/" className="inline-block mb-2 sm:mb-3">
+              <Image
+                src="/images/soulstretchf.png"
+                alt="Soul Stretch"
+                width={176}
+                height={56}
+                className="h-24 sm:h-[108px] w-auto mix-blend-screen"
+              />
+            </Link>
+            <p className="text-xs sm:text-sm text-soul-gray mb-3 sm:mb-4">
               Train Better. Recover Faster. Stretch Further.
             </p>
             <div className="flex items-center gap-2 text-xs text-soul-gray">
@@ -89,13 +97,13 @@ export default function Footer() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
             >
-              <h4 className="font-semibold mb-4 text-sm">{section.label}</h4>
-              <ul className="space-y-2">
+              <h4 className="font-semibold mb-3 sm:mb-4 text-xs sm:text-sm">{section.label}</h4>
+              <ul className="space-y-1.5 sm:space-y-2">
                 {section.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-soul-gray hover:text-soul-orange transition-colors"
+                      className="text-xs sm:text-sm text-soul-gray hover:text-soul-orange transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -107,10 +115,10 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-soul-orange/10 my-8" />
+        <div className="border-t border-soul-orange/10 my-6 sm:my-8" />
 
         {/* Bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
           <p className="text-xs text-soul-gray">
             © {currentYear} Soul Stretch. All rights reserved.
           </p>
@@ -118,33 +126,31 @@ export default function Footer() {
           {/* Social Links */}
           <div className="flex gap-4">
             {socialLinks.map((social) => (
-              <motion.a
+              <a
                 key={social.name}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, color: '#ff7a18' }}
-                className="text-soul-gray hover:text-soul-orange transition-colors"
+                className="text-soul-gray hover:text-soul-orange transition-colors p-1 touch-manipulation"
                 title={social.name}
               >
                 {social.icon}
-              </motion.a>
+              </a>
             ))}
           </div>
 
           {/* WhatsApp CTA */}
-          <motion.a
+          <a
             href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi, I'm interested in Soul Stretch products`}
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            className="text-xs font-medium text-soul-orange hover:text-soul-white transition-colors flex items-center gap-2"
+            className="text-xs font-medium text-soul-orange hover:text-soul-white transition-colors flex items-center gap-2 touch-manipulation"
           >
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-5.031 1.378c-3.55 2.152-5.831 6.003-5.831 10.252 0 1.052.148 2.102.44 3.104l.6 2.256-2.404.6c-1.084.271-2.007.887-2.727 1.78-.52.639-.89 1.375-1.077 2.153H0c0-4.97 2.02-9.317 5.303-12.557C8.104 2.529 12.361.996 16.807.996c4.443 0 8.696 1.533 11.976 4.322 3.28 2.788 5.301 6.531 5.301 10.456 0 4.926-2.021 9.674-5.302 12.457-3.281 2.783-7.535 4.313-11.976 4.313-1.052 0-2.102-.148-3.104-.44l-2.256-.6.6 2.404c.271 1.084.887 2.007 1.78 2.727.639.52 1.375.89 2.153 1.077v2.151c-4.97 0-9.317-2.02-12.557-5.303C2.529 39.896.996 35.639.996 31.193c0-4.443 1.533-8.696 4.322-11.976z" />
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403C6.036 21.785 2 17.748 2 12.785 2 7.267 6.477 2.79 11.995 2.79c2.67 0 5.15 1.04 7.027 2.926A9.862 9.862 0 0122 12.785c0 5.508-4.477 9.985-9.995 9.985m0-21.97C5.372.815 0 6.187 0 12.785c0 2.178.585 4.316 1.689 6.164L.057 24.439l5.624-1.475a11.907 11.907 0 005.373 1.29h.005C17.618 24.254 24 18.882 24 12.284 24 5.687 17.618-.584 11.055-.584" />
             </svg>
             WhatsApp
-          </motion.a>
+          </a>
         </div>
       </div>
     </footer>

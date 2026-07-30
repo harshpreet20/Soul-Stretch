@@ -2,23 +2,31 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Fitness Guides & Training Tips | Soul Stretch',
+  title: 'Fitness Recovery Guides & Gym Tips | Soul Stretch',
   description:
-    'Expert guides on foam rolling, resistance training, grip strength, and recovery techniques for athletes.',
+    'Expert fitness recovery guides and gym equipment tips for Indian athletes. Master foam rolling, resistance training, and grip strength techniques to transform your performance.',
+  keywords: [
+    'fitness recovery guides',
+    'gym equipment usage tips India',
+    'foam rolling guide',
+    'resistance band workouts',
+    'grip strength training tips',
+    'muscle recovery techniques India',
+  ],
 }
 
 const guides = [
   {
     id: 1,
-    title: '10 Foam Roller Exercises for Muscle Recovery',
-    excerpt: 'Master the essential foam rolling techniques to accelerate post-workout recovery and break down muscle adhesions.',
-    content: `Foam rolling has become essential to every elite athlete's recovery protocol. Here's why: your muscles don't recover during your workout. They recover after it. And recovery protocol determines your performance.
+    title: 'Foam Roller Exercises: 10 Recovery Techniques to Master',
+    excerpt: 'The definitive guide to foam roller exercises for muscle recovery. Learn the techniques that make a premium foam roller the most essential fitness recovery equipment in your gym bag.',
+    content: `Every serious athlete needs a foam roller. It's the single most effective piece of fitness recovery equipment you can own. Here's why: your muscles don't recover during your workout. They recover after it. And your recovery protocol determines your performance.
 
 ## The Science
 
-When you exercise intensely, your muscles develop micro-tears. More critically, muscle fibers develop adhesions—tight knots that restrict blood flow and oxygen delivery. Foam rolling breaks these adhesions, improving circulation and reducing soreness.
+When you exercise intensely, your muscles develop micro-tears. More critically, muscle fibers develop adhesions, tight knots that restrict blood flow and oxygen delivery. Foam rolling breaks these adhesions, improving circulation and reducing soreness.
 
-Studies show that athletes who foam roll for 5-10 minutes daily experience 30% faster recovery compared to control groups. That's not marginal. That's the difference between adequate and elite performance.
+Studies show that athletes who foam roll for 5-10 minutes daily experience 30% faster recovery compared to control groups. That's not marginal. That's why the foam roller is essential premium fitness equipment for any athlete in India or anywhere.
 
 ## The Protocol: 10 Essential Exercises
 
@@ -28,7 +36,7 @@ Place the foam roller under your quads. Support yourself on your forearms. Roll 
 Why: Quads absorb impact from every sprint, jump, and squat. Tight quads restrict hip mobility and knee stability.
 
 ### 2. IT Band Release
-Lie on your side, foam roller under your hip. Cross your top leg over for stability. Roll from hip to knee. This is intense—breathe through it. 90 seconds per side.
+Lie on your side, foam roller under your hip. Cross your top leg over for stability. Roll from hip to knee. This is intense, so breathe through it. 90 seconds per side.
 
 Why: The IT band is notoriously tight. It stabilizes every lateral movement. Releasing it prevents knee pain and improves lateral agility.
 
@@ -60,7 +68,7 @@ Why: Calves are constantly contracted. Tight calves create plantar fasciitis, re
 ### 8. Thoracic Spine Extension
 Foam roller perpendicular under your mid-back. Hands behind your head. Slowly extend backward, letting your spine articulate around the roller. 12-15 reps.
 
-Why: This isn't rolling—it's mobility work. It opens your chest and restores thoracic extension needed for pressing.
+Why: This is not rolling. It's mobility work. It opens your chest and restores thoracic extension needed for pressing.
 
 ### 9. Spinal Rotations
 Foam roller under your mid-back, perpendicular to your spine. Hands behind your head. Rotate your torso right and left. 15 reps each side.
@@ -88,23 +96,23 @@ Days 2-5: Focus on your specific tight areas (5-10 minutes)
 Day 6: Light full-body rolling
 Day 7: Complete rest
 
-Performance is not built in the gym alone. It's built in recovery. Make foam rolling non-negotiable.`,
+Performance is not built in the gym alone. It's built in recovery. Buy a foam roller online and make rolling non-negotiable. Soul Stretch delivers premium fitness recovery equipment across India, fast and reliable.`,
     category: 'Recovery',
     readTime: '12 min read',
   },
   {
     id: 2,
-    title: 'Best Resistance Band Workouts at Home',
-    excerpt: 'Complete full-body conditioning program using resistance bands. Infinite exercise variations with zero equipment footprint.',
-    content: `Resistance bands are the most underrated strength tool in fitness. They're portable. They're affordable. They deliver variable resistance that dumbbells cannot.
+    title: 'Best Resistance Bands India: Complete Home Workout & Toning Tube Exercise Guide',
+    excerpt: 'Full-body resistance band and toning tube exercise program. The best gym accessories for athletes in India with infinite workout variations and zero equipment footprint.',
+    content: `Resistance bands are the most underrated premium fitness equipment you can own. They're portable. They're affordable. They deliver variable resistance that dumbbells cannot.
 
-Elite athletes use resistance bands because they work. Full stop.
+Elite athletes across India use resistance bands and toning tubes because they work. Full stop.
 
 ## Why Resistance Bands
 
 Traditional weights use fixed resistance. 20 pounds is 20 pounds at the start and end of the movement. Resistance bands use variable resistance. They increase as you stretch. This matches the strength curve of most movements perfectly.
 
-Second: bands produce mechanical tension at the range where you're strongest—the lockout. This drives hypertrophy and strength gains.
+Second: bands produce mechanical tension at the range where you're strongest, the lockout. This drives hypertrophy and strength gains.
 
 Third: bands are safer on your joints. They reduce deceleration forces. Your rotator cuff stays healthy while you build serious strength.
 
@@ -219,9 +227,9 @@ Bands allow infinite progression:
 
 ## Equipment Needed
 
-Soul Stretch Resistance Band Set provides exactly what you need: 5 bands spanning 5-50 lbs, carrying bag, door anchor. Everything for complete home gym training.
+Soul Stretch Resistance Band Set provides exactly what you need: 5 premium bands spanning 5-50 lbs, carrying bag, door anchor. The best resistance bands India has to offer for complete home gym training.
 
-Total cost: A fraction of a single dumbbell.
+Total cost: A fraction of a single dumbbell. Buy gym accessories online India-wide with fast delivery.
 
 ## Results Timeline
 
@@ -230,14 +238,14 @@ Total cost: A fraction of a single dumbbell.
 - Week 8: Measurable strength gains
 - Week 12: Transformed physique
 
-Your home can be your gym. Your results don't depend on your location. They depend on your consistency. Resistance bands make consistency possible.`,
+Your home can be your gym. Your results don't depend on your location. They depend on your consistency. Premium resistance bands and toning tube exercise equipment make consistency possible. Shop gym accessories online in India at Soul Stretch.`,
     category: 'Strength',
     readTime: '15 min read',
   },
   {
     id: 3,
-    title: 'How Grip Strength Improves Athletic Performance',
-    excerpt: 'The science behind grip development and how elite athletes leverage hand strength for sport-specific performance.',
+    title: 'Hand Gripper India: How a Professional Grip Strength Trainer Transforms Performance',
+    excerpt: 'The science behind grip development using a hand gripper. Why a professional grip strength trainer is the best gym accessory for athletes in India seeking total performance.',
     content: `Grip strength is the most underrated metric in fitness. Athletes obsess over bench press maxes. They film their squats. They count their pull-ups.
 
 But grip? Grip is what determines everything.
@@ -312,7 +320,7 @@ Why: Develops pinch grip strength.
 
 ### Phase 2: Strength Development (Weeks 3-6)
 
-**Captains of Crush Gripper Training** (Soul Stretch Hand Gripper)
+**Professional Grip Strength Trainer** (Soul Stretch Hand Gripper India)
 - Close your gripper fully 5 times
 - Rest 30 seconds
 - Close it 3 times
@@ -368,7 +376,7 @@ Integrate grip training directly into sport movements:
 
 ## Results Timeline
 
-- Week 1: Grip soreness (normal—new stimulus)
+- Week 1: Grip soreness (normal, it's a new stimulus)
 - Week 2: Improved dead hang time
 - Week 4: Noticeable deadlift improvement
 - Week 8: Sport-specific performance gains
@@ -376,13 +384,13 @@ Integrate grip training directly into sport movements:
 
 ## The Tools
 
-Soul Stretch offers the complete grip arsenal:
-- Fixed 60 kg gripper for maximal strength
-- Adjustable 10-60 kg gripper for progressive overload
+Soul Stretch offers the complete grip arsenal. The best hand gripper India has available:
+- Fixed 60 kg professional grip strength trainer for maximal strength
+- Adjustable 10-60 kg hand gripper for progressive overload
 - Wrist Exerciser for rotational strength
-- Grip development should be systematic, progressive, and relentless.
+- Buy fitness recovery tools online at Soul Stretch for systematic, progressive grip development.
 
-Train grip. Improve everything.`,
+Train grip. Improve everything. Shop premium fitness equipment at Soul Stretch India.`,
     category: 'Strength',
     readTime: '14 min read',
   },
@@ -391,17 +399,52 @@ Train grip. Improve everything.`,
 export default function GuidesPage() {
   return (
     <div className="min-h-screen bg-soul-black">
+      {/* Article JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': guides.map((guide) => ({
+              '@type': 'Article',
+              headline: guide.title,
+              description: guide.excerpt,
+              articleSection: guide.category,
+              author: {
+                '@type': 'Organization',
+                name: 'Soul Stretch',
+                url: 'https://soulstretchglobal.com',
+              },
+              publisher: {
+                '@type': 'Organization',
+                name: 'Soul Stretch',
+                url: 'https://soulstretchglobal.com',
+                logo: {
+                  '@type': 'ImageObject',
+                  url: 'https://soulstretchglobal.com/logo.png',
+                },
+              },
+              mainEntityOfPage: {
+                '@type': 'WebPage',
+                '@id': `https://soulstretchglobal.com/guides#guide-${guide.id}`,
+              },
+              inLanguage: 'en',
+              isAccessibleForFree: true,
+            })),
+          }),
+        }}
+      />
       {/* Header */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative pt-28 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-soul-orange/5 via-soul-black to-soul-black" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-soul-white mb-4">
-            Expert Guides &<br />
-            <span className="text-soul-orange">Training Insights</span>
+            Fitness Recovery<br />
+            <span className="text-soul-orange">Equipment Guides</span>
           </h1>
           <p className="text-xl text-soul-gray max-w-2xl mx-auto leading-relaxed">
-            Master the science of recovery, strength training, and athletic performance.
+            Expert guides on premium fitness equipment, recovery techniques, and strength training. The best gym accessories for athletes in India, explained by experts.
           </p>
         </div>
       </section>
@@ -461,10 +504,10 @@ export default function GuidesPage() {
 
               {/* Share & CTA */}
               <div className="flex flex-col sm:flex-row gap-4 items-center justify-between border-t border-soul-orange/10 pt-8 mt-12">
-                <p className="text-soul-gray">Found this guide helpful?</p>
+                <p className="text-soul-gray">Did this guide elevate your training knowledge?</p>
                 <div className="flex gap-3">
                   <a
-                    href={`https://wa.me/919876543210?text=I found your guide "${guide.title}" helpful!`}
+                    href={`https://wa.me/919217103413?text=I found your guide "${guide.title}" helpful!`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-6 py-3 bg-soul-orange text-soul-black font-bold rounded-lg hover:bg-orange-600 transition-colors"
@@ -473,7 +516,7 @@ export default function GuidesPage() {
                   </a>
                   <Link href="/products">
                     <button className="px-6 py-3 border border-soul-orange text-soul-orange font-bold rounded-lg hover:bg-soul-orange hover:text-soul-black transition-colors">
-                      Shop Now
+                      Shop the Gear
                     </button>
                   </Link>
                 </div>
@@ -491,13 +534,13 @@ export default function GuidesPage() {
       {/* Bottom CTA */}
       <section className="py-20 bg-gradient-to-r from-soul-orange/10 via-soul-black to-soul-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <h2 className="text-4xl font-bold text-soul-white">Ready to Implement?</h2>
+          <h2 className="text-4xl font-bold text-soul-white">Ready to Transform Your Recovery?</h2>
           <p className="text-soul-gray text-lg">
-            All guides recommend Soul Stretch products. Browse our complete collection.
+            Every guide features Soul Stretch premium fitness equipment. Browse our complete collection and buy gym accessories online with fast delivery India-wide.
           </p>
           <Link href="/products">
             <button className="px-8 py-4 bg-soul-orange text-soul-black font-bold rounded-lg hover:bg-orange-600 transition-colors">
-              Explore Products
+              Explore Premium Equipment
             </button>
           </Link>
         </div>
